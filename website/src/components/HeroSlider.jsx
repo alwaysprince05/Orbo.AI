@@ -1,141 +1,212 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './HeroSlider.css';
 
 const slides = [
   {
     id: 1,
     bg: '#FEBBAD',
+    tag: 'AI POWERED BEAUTY INTELLIGENCE',
     title: 'Finding The Right Beauty Products Online Is Cumbersome And Overwhelming',
     subtitle: 'ORBO uses visual AI to personalize the buying journey for high-intent beauty shoppers.',
-    badge: 'BeautyGPT Beta',
-    theme: 'peach'
+    ctaText: 'BeautyGPT',
+    badge: 'BETA',
+    ctaLink: 'https://beautygpt.orbo.ai/',
+    type: 'scan'
   },
   {
     id: 2,
     bg: '#FAC4DE',
+    tag: 'HYPER-PERSONALIZED DIAGNOSTICS',
     title: 'Get Tailored Beauty Routine For As Per Your Preferences And Unique Skin Needs',
-    subtitle: 'Hyper-personalized routines derived from clinical skin tone, texture, and hydration mapping.',
-    badge: 'BeautyGPT Beta',
-    theme: 'pink'
+    subtitle: 'Extract clinical skin parameters, melanin index, and hydration in under 2 seconds.',
+    ctaText: 'BeautyGPT',
+    badge: 'BETA',
+    ctaLink: 'https://beautygpt.orbo.ai/',
+    type: 'routine'
   },
   {
     id: 3,
     bg: '#B5A9FF',
+    tag: 'OMNICHANNEL COMMERCE LAYER',
     title: 'Personalized Beauty Recommendations: Right At Your Fingertips',
-    subtitle: 'From virtual try-ons to instant formulation matching across all digital and physical channels.',
-    badge: 'BeautyGPT Beta',
-    theme: 'purple'
+    subtitle: 'Seamless virtual try-ons and ingredient matching across Web, iOS, Android, and Smart Mirror kiosks.',
+    ctaText: 'BeautyGPT',
+    badge: 'BETA',
+    ctaLink: 'https://beautygpt.orbo.ai/',
+    type: 'omni'
   }
 ];
 
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const autoPlayRef = useRef(null);
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  // Auto-play every 4.2 seconds
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5500);
-    return () => clearInterval(interval);
-  }, [isPaused]);
+    autoPlayRef.current = setInterval(nextSlide, 4200);
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    };
+  }, []);
+
+  const resetTimer = () => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(nextSlide, 4200);
+  };
+
+  const handleDotClick = (idx) => {
+    setCurrentSlide(idx);
+    resetTimer();
+  };
+
+  // Touch Swipe Handlers for Mobile & Trackpad
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    if (isLeftSwipe) {
+      nextSlide();
+      resetTimer();
+    } else if (isRightSwipe) {
+      prevSlide();
+      resetTimer();
+    }
+  };
 
   return (
     <div 
-      className="hero-slider"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      className="hero-slider-wrapper"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
+      {/* Navigation Arrows */}
+      <button 
+        className="slider-arrow slider-arrow--prev" 
+        onClick={() => { prevSlide(); resetTimer(); }}
+        aria-label="Previous Slide"
+      >
+        ‹
+      </button>
+      <button 
+        className="slider-arrow slider-arrow--next" 
+        onClick={() => { nextSlide(); resetTimer(); }}
+        aria-label="Next Slide"
+      >
+        ›
+      </button>
+
+      {/* Track Container */}
       <div 
-        className="hero-slider__track"
+        className="hero-slider-track"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
         {slides.map((slide, idx) => (
           <div 
-            key={slide.id} 
-            className="hero-slider__slide"
+            key={slide.id}
+            className="hero-slide-item"
             style={{ backgroundColor: slide.bg }}
           >
-            <div className="hero-slider__container container-lg">
-              <div className="hero-slider__content">
-                <div className="hero-slider__tag">
-                  <span>AI Powered Beauty Intelligence</span>
-                </div>
-                <h1 className="hero-slider__title">{slide.title}</h1>
-                <p className="hero-slider__subtitle">{slide.subtitle}</p>
-                <div className="hero-slider__cta-group">
+            <div className="hero-slide-content-container container-lg">
+              {/* Left Column: Text & CTA */}
+              <div className="hero-slide-text-col">
+                <span className="hero-slide-tag-pill">{slide.tag}</span>
+                <h1 className="hero-slide-main-title">{slide.title}</h1>
+                <p className="hero-slide-desc">{slide.subtitle}</p>
+
+                <div className="hero-slide-cta-row">
                   <a 
-                    href="https://beautygpt.orbo.ai/" 
+                    href={slide.ctaLink} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="hero-slider__btn"
+                    className="hero-slide-main-btn"
                   >
-                    <span className="hero-slider__btn-pill">BeautyGPT</span>
-                    <span className="hero-slider__btn-badge">Beta</span>
+                    <span className="btn-text">{slide.ctaText}</span>
+                    <span className="btn-badge">{slide.badge}</span>
                   </a>
-                  <a href="#solutions" className="hero-slider__btn-secondary">
+                  <a href="#solutions" className="hero-slide-sub-link">
                     Explore Solutions →
                   </a>
                 </div>
               </div>
 
-              <div className="hero-slider__visual">
-                <div className="hero-slider__visual-frame">
-                  {idx === 0 && (
-                    <div className="visual-interactive visual-interactive--one">
-                      <div className="ai-face-scanner">
-                        <div className="scanner-circle"></div>
-                        <div className="scanner-line"></div>
-                        <div className="point point-1"><span>Texture: Normal</span></div>
-                        <div className="point point-2"><span>Hydration: 78%</span></div>
-                        <div className="point point-3"><span>Skin Tone: Warm Beige</span></div>
-                        <div className="mesh-grid"></div>
+              {/* Right Column: Visual Component */}
+              <div className="hero-slide-visual-col">
+                <div className="hero-slide-visual-card">
+                  {slide.type === 'scan' && (
+                    <div className="visual-face-scan-box">
+                      <div className="scan-oval-frame">
+                        <div className="scan-line-laser"></div>
+                        <div className="mesh-point-pill p-top">Texture: Normal</div>
+                        <div className="mesh-point-pill p-mid">Hydration: 78%</div>
+                        <div className="mesh-point-pill p-bot">Skin Tone: Warm Beige</div>
+                      </div>
+                      <div className="floating-cosmetic-icon c-1">💄</div>
+                      <div className="floating-cosmetic-icon c-2">✨</div>
+                      <div className="floating-cosmetic-icon c-3">🧴</div>
+                    </div>
+                  )}
+
+                  {slide.type === 'routine' && (
+                    <div className="visual-routine-box">
+                      <div className="routine-header-pill">AI Diagnosis Matched</div>
+                      <div className="routine-step-row">
+                        <span className="step-badge">01</span>
+                        <div>
+                          <strong>Barrier Hydrating Cleanser</strong>
+                          <p>Ceramide + Hyaluronic Acid</p>
+                        </div>
+                        <span className="match-pill">98%</span>
+                      </div>
+                      <div className="routine-step-row">
+                        <span className="step-badge">02</span>
+                        <div>
+                          <strong>Niacinamide 10% Serum</strong>
+                          <p>Pore refinement & balance</p>
+                        </div>
+                        <span className="match-pill">96%</span>
+                      </div>
+                      <div className="routine-step-row">
+                        <span className="step-badge">03</span>
+                        <div>
+                          <strong>SPF 50 Mineral Defense</strong>
+                          <p>Broad spectrum daily shield</p>
+                        </div>
+                        <span className="match-pill">99%</span>
                       </div>
                     </div>
                   )}
-                  {idx === 1 && (
-                    <div className="visual-interactive visual-interactive--two">
-                      <div className="ai-routine-card">
-                        <div className="card-header-badge">Smart Diagnosis</div>
-                        <div className="routine-item">
-                          <span className="step-num">01</span>
-                          <div>
-                            <strong>Barrier Hydrating Cleanser</strong>
-                            <p>Ceramide + Hyaluronic Blend</p>
-                          </div>
-                          <span className="match-tag">98% Match</span>
-                        </div>
-                        <div className="routine-item">
-                          <span className="step-num">02</span>
-                          <div>
-                            <strong>Niacinamide 10% Glow Serum</strong>
-                            <p>Pore refinement & radiance</p>
-                          </div>
-                          <span className="match-tag">95% Match</span>
-                        </div>
-                        <div className="routine-item">
-                          <span className="step-num">03</span>
-                          <div>
-                            <strong>Peptide Moisture Surge</strong>
-                            <p>Deep cellular nourishment</p>
-                          </div>
-                          <span className="match-tag">99% Match</span>
-                        </div>
+
+                  {slide.type === 'omni' && (
+                    <div className="visual-omni-box">
+                      <div className="omni-core-hub">
+                        <div className="hub-ping"></div>
+                        <span>Orbo AI Vision Core</span>
                       </div>
-                    </div>
-                  )}
-                  {idx === 2 && (
-                    <div className="visual-interactive visual-interactive--three">
-                      <div className="omni-hub">
-                        <div className="hub-center">
-                          <div className="hub-pulse"></div>
-                          <span>Orbo AI Core</span>
-                        </div>
-                        <div className="hub-node node-web">Web / Mobile</div>
-                        <div className="hub-node node-kiosk">Smart Kiosk</div>
-                        <div className="hub-node node-mirror">Smart Mirror</div>
-                        <div className="hub-node node-ar">AR Camera</div>
-                      </div>
+                      <div className="omni-node n-web">🌐 Web / Shopify</div>
+                      <div className="omni-node n-app">📱 iOS / Android</div>
+                      <div className="omni-node n-kiosk">🖥️ Smart Kiosk</div>
+                      <div className="omni-node n-mirror">🪞 Smart Mirror</div>
                     </div>
                   )}
                 </div>
@@ -145,13 +216,13 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      {/* Dots navigation */}
-      <div className="hero-slider__dots">
+      {/* Progress Dots Indicator */}
+      <div className="hero-slider-dots-bar">
         {slides.map((_, idx) => (
           <button
             key={idx}
-            className={`hero-slider__dot ${currentSlide === idx ? 'hero-slider__dot--active' : ''}`}
-            onClick={() => setCurrentSlide(idx)}
+            className={`slider-dot-btn ${currentSlide === idx ? 'slider-dot-btn--active' : ''}`}
+            onClick={() => handleDotClick(idx)}
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}

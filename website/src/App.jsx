@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import SharkTankHeroBanner from './components/SharkTankHeroBanner';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -46,6 +47,7 @@ export default function App() {
   return (
     <div className="app-layout">
       <ScrollToTop />
+      <SharkTankHeroBanner />
       <Navbar />
       <main className="page-content">
         <Routes>

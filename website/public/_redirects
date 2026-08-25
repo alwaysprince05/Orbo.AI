@@ -1,0 +1,4 @@
+# Netlify SPA Routing Fix
+# All routes fall back to /index.html so React Router handles navigation client-side.
+# Without this, refreshing any sub-page returns a 404 from Netlify's CDN.
+/*    /index.html    200

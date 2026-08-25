@@ -98,19 +98,7 @@ export default function Home() {
       {/* 1. Main Hero Carousel */}
       <HeroSlider />
 
-      {/* 2. Shark Tank India Season 3 Banner */}
-      <div className="shark-tank-banner">
-        <div className="container-lg">
-          <div className="shark-tank-content">
-            <span className="shark-tank-lead">AS SEEN ON</span>
-            <span className="shark-tank-highlight">SHARK TANK INDIA</span>
-            <span className="shark-tank-season">SEASON 3</span>
-            <span className="shark-tank-badge">Pioneering On-Device Beauty AI</span>
-          </div>
-        </div>
-      </div>
-
-      {/* 3. Hero Brand Statement Section */}
+      {/* 2. Hero Brand Statement Section */}
       <section className="section brand-hero-section">
         <div className="container">
           <div className="brand-hero-content text-center">
@@ -134,7 +122,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Live Interactive AI Studio / Before-After Canvas */}
+      {/* 3. Live Interactive AI Studio / Before-After Canvas */}
       <section className="section" id="canvas-studio">
         <div className="container">
           <div className="text-center">
@@ -150,7 +138,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Stats / MOAT Bar */}
+      {/* 4. Stats / MOAT Bar */}
       <section className="metrics-bar">
         <div className="container-lg">
           <div className="metrics-grid">
@@ -174,7 +162,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Complete 8 Solutions Showcase */}
+      {/* 5. Complete 8 Solutions Showcase */}
       <section className="section solutions-section" id="solutions">
         <div className="container">
           <div className="text-center">
@@ -215,13 +203,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Real Skincare & Beauty Product Catalog */}
+      {/* 6. Real Skincare & Beauty Product Catalog */}
       <ProductCatalog 
         title="Personalized Beauty Products & Recommendations"
         subtitle="Filter by skin type, concern, and budget to view AI match percentages and active formulation science."
       />
 
-      {/* 8. Integration Channels Section (API / SDK / Shopify) */}
+      {/* 7. Integration Channels Section (API / SDK / Shopify) */}
       <section className="section integration-section">
         <div className="container">
           <div className="text-center">
@@ -384,7 +372,7 @@ orboCamera.applyMakeup(
         </div>
       </section>
 
-      {/* 9. Contact / Demo Section */}
+      {/* 8. Contact / Demo Section */}
       <ContactForm />
     </div>
   );

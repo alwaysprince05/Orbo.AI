@@ -124,26 +124,38 @@ export default function ProductCatalog({ initialCategory = 'all', showFilters = 
         <div className="products-grid">
           {filteredProducts.map((p) => (
             <div key={p.id} className="product-card-rich">
-              {/* Top Row: Brand & Match Badge */}
-              <div className="product-card-rich__top">
-                <span className="product-brand">{p.brand}</span>
-                <div className="match-badge-pill">
-                  <span className="match-val">{p.matchPercentage}%</span>
-                  <span className="match-txt">Match</span>
+
+              {/* Product Image */}
+              <div className="product-img-wrap">
+                <img
+                  src={p.image}
+                  alt={`${p.brand} ${p.name}`}
+                  className="product-real-img"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="product-img-fallback" style={{ background: `linear-gradient(135deg, ${p.colorTag}30, ${p.colorTag}60)`, display: 'none' }}>
+                  <span style={{ fontSize: '2.5rem' }}>✨</span>
+                </div>
+                <div className="product-match-overlay">
+                  <span className="overlay-match-val">{p.matchPercentage}%</span>
+                  <span className="overlay-match-lbl">AI Match</span>
                 </div>
               </div>
 
-              {/* Product Visual & Name */}
-              <div className="product-visual-wrap">
-                <div className="product-emoji-icon" style={{ borderColor: p.colorTag }}>
-                  {p.image}
+              {/* Product Info */}
+              <div className="product-info-block">
+                <div className="product-brand-row">
+                  <span className="product-brand-name">{p.brand}</span>
+                  {p.finish && <span className="product-finish-chip">{p.finish}</span>}
                 </div>
-                <div className="product-info-block">
-                  <h3 className="product-name">{p.name}</h3>
-                  <div className="product-meta-row">
-                    <span className="product-price">${p.price.toFixed(2)}</span>
-                    <span className="product-rating">★ {p.rating} ({p.reviews.toLocaleString()})</span>
-                  </div>
+                <h3 className="product-name">{p.name}</h3>
+                <div className="product-meta-row">
+                  <span className="product-price">${p.price.toFixed(2)}</span>
+                  <span className="product-rating">★ {p.rating} <span style={{color:'#9CA3AF'}}>({p.reviews.toLocaleString()})</span></span>
                 </div>
               </div>
 

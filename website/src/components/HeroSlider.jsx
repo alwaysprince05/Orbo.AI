@@ -155,15 +155,19 @@ export default function HeroSlider() {
                 <div className="hero-slide-visual-card">
                   {slide.type === 'scan' && (
                     <div className="visual-face-scan-box">
-                      <div className="scan-oval-frame">
-                        <div className="scan-line-laser"></div>
+                      <img
+                        src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=500&h=360&fit=crop&q=80"
+                        alt="AI skin analysis"
+                        className="hero-visual-photo"
+                      />
+                      <div className="scan-hud-overlay">
+                        <div className="scan-oval-frame">
+                          <div className="scan-line-laser"></div>
+                        </div>
                         <div className="mesh-point-pill p-top">Texture: Normal</div>
                         <div className="mesh-point-pill p-mid">Hydration: 78%</div>
                         <div className="mesh-point-pill p-bot">Skin Tone: Warm Beige</div>
                       </div>
-                      <div className="floating-cosmetic-icon c-1">💄</div>
-                      <div className="floating-cosmetic-icon c-2">✨</div>
-                      <div className="floating-cosmetic-icon c-3">🧴</div>
                     </div>
                   )}
 

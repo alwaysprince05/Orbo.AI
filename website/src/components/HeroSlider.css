@@ -312,35 +312,11 @@
 
 /* Arrows */
 .slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  color: #09121D;
-  font-size: 1.8rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
+  display: none;
 }
 
-.slider-arrow:hover {
-  background: #FF2E63;
-  color: #FFF;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.slider-arrow--prev { left: 28px; }
-.slider-arrow--next { right: 28px; }
+.slider-arrow--prev { display: none; }
+.slider-arrow--next { display: none; }
 
 /* Dots Indicator */
 .hero-slider-dots-bar {

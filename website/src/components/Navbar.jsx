@@ -10,7 +10,7 @@ const solutionLinks = [
   { name: 'Smart Skin Analysis', path: '/smart-skinanalysis' },
   { name: 'Facial Attributes Enhancement', path: '/facial-attributes' },
   { name: 'Smart Beauty Mirror', path: '/smart-beautymirror' },
-  { name: 'BeautyGPT', path: '/beautygpt' },
+  { name: 'BeautyGPT Advisor', path: '/beautygpt' },
 ];
 
 export default function Navbar() {
@@ -57,10 +57,10 @@ export default function Navbar() {
         {/* Product Pills */}
         <div className="navbar__pills">
           <a href="https://beautygpt.orbo.ai/" target="_blank" rel="noopener noreferrer" className="navbar__pill navbar__pill--default">
-            BeautyGPT
+            ✨ BeautyGPT
           </a>
           <a href="https://www.orbo.ai/beautygpt-api-for-beauty-brands" target="_blank" rel="noopener noreferrer" className="navbar__pill navbar__pill--business">
-            Business
+            Enterprise
           </a>
         </div>
 
@@ -69,9 +69,9 @@ export default function Navbar() {
           <Link to="/" className={`navbar__link ${isActive('/') ? 'navbar__link--active' : ''}`}>
             Home
           </Link>
-          <Link to="/about-us" className={`navbar__link ${isActive('/about-us') ? 'navbar__link--active' : ''}`}>
-            About Us
-          </Link>
+          <a href="/#products" className="navbar__link">
+            Products & SKUs
+          </a>
           <div
             className="navbar__dropdown"
             ref={dropdownRef}
@@ -101,15 +101,18 @@ export default function Navbar() {
           <Link to="/technology" className={`navbar__link ${isActive('/technology') ? 'navbar__link--active' : ''}`}>
             Technology
           </Link>
-          <a href="https://blog.orbo.ai/" target="_blank" rel="noopener noreferrer" className="navbar__link">
+          <Link to="/about-us" className={`navbar__link ${isActive('/about-us') ? 'navbar__link--active' : ''}`}>
+            About Us
+          </Link>
+          <Link to="/blog" className={`navbar__link ${isActive('/blog') ? 'navbar__link--active' : ''}`}>
             Blog
-          </a>
+          </Link>
         </div>
 
         {/* CTA */}
-        <Link to="/#requestDemo" className="navbar__cta">
+        <a href="#requestDemo" className="navbar__cta">
           Request Demo
-        </Link>
+        </a>
 
         {/* Mobile Toggle */}
         <button
@@ -126,7 +129,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={`navbar__mobile ${isMobileOpen ? 'navbar__mobile--open' : ''}`}>
         <Link to="/" className="navbar__mobile-link">Home</Link>
-        <Link to="/about-us" className="navbar__mobile-link">About Us</Link>
+        <a href="/#products" className="navbar__mobile-link">Products & SKUs</a>
         <button
           className="navbar__mobile-link navbar__mobile-link--dropdown"
           onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
@@ -146,10 +149,11 @@ export default function Navbar() {
           </div>
         )}
         <Link to="/technology" className="navbar__mobile-link">Technology</Link>
-        <a href="https://blog.orbo.ai/" target="_blank" rel="noopener noreferrer" className="navbar__mobile-link">Blog</a>
-        <Link to="/#requestDemo" className="navbar__mobile-cta btn btn-primary">
+        <Link to="/about-us" className="navbar__mobile-link">About Us</Link>
+        <Link to="/blog" className="navbar__mobile-link">Blog</Link>
+        <a href="#requestDemo" className="navbar__mobile-cta btn btn-primary">
           Request Demo
-        </Link>
+        </a>
       </div>
     </nav>
   );

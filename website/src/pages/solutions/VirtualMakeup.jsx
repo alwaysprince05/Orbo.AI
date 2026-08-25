@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import ProductCatalog from '../../components/ProductCatalog';
 import ContactForm from '../../components/ContactForm';
 import './SolutionsCommon.css';
 
 const lipColors = [
-  { name: 'Velvet Crimson', hex: '#D62246', type: 'Matte' },
-  { name: 'Coral Sunrise', hex: '#FF6B6B', type: 'Gloss' },
-  { name: 'Nude Petal', hex: '#D48C84', type: 'Satin' },
-  { name: 'Berry Plum', hex: '#801A4B', type: 'Velvet' },
-  { name: 'Ruby Blaze', hex: '#B80D22', type: 'Gloss' }
+  { name: 'Velvet Crimson', hex: '#D62246', brand: 'M·A·C', type: 'Matte', price: '$23.00' },
+  { name: 'Pillow Talk Nude', hex: '#D48C84', brand: 'Charlotte Tilbury', type: 'Satin', price: '$35.00' },
+  { name: 'Coral Sunrise', hex: '#FF6B6B', brand: 'Fenty Beauty', type: 'Gloss', price: '$24.00' },
+  { name: 'Berry Plum Glaze', hex: '#801A4B', brand: 'NARS', type: 'Velvet', price: '$28.00' },
+  { name: 'Ruby Woo Classic', hex: '#BA0C2F', brand: 'M·A·C', type: 'Retro Matte', price: '$23.00' }
 ];
 
 export default function VirtualMakeup() {
@@ -28,14 +29,14 @@ export default function VirtualMakeup() {
                 Personalize the buying experience of customers by recommending customized beauty products. Allow users to test lipsticks, eye shadows, blushes, and foundations live with true-to-life texture shaders.
               </p>
               <a href="#demo" className="solution-cta-btn">
-                Try it now →
+                Try Live Simulator Below →
               </a>
             </div>
 
             {/* Interactive Try-on Simulator */}
             <div className="simulator-box" id="demo">
               <div className="simulator-header">
-                <span className="sim-title">💄 Interactive AR Try-On Simulator</span>
+                <span className="sim-title">💄 Interactive AR Try-On Studio</span>
                 <span className="sim-badge">Live Shader v3.2</span>
               </div>
 
@@ -62,8 +63,8 @@ export default function VirtualMakeup() {
                     transition: 'all 0.3s ease'
                   }}></div>
                 </div>
-                <strong>{selectedLip.name}</strong>
-                <p style={{ fontSize: '0.8rem', color: '#666' }}>{finish} Finish • {intensity}% Opacity</p>
+                <strong style={{ fontSize: '1rem', color: '#09121D' }}>{selectedLip.name}</strong>
+                <p style={{ fontSize: '0.8rem', color: '#666' }}>{selectedLip.brand} • {selectedLip.price} • {finish} Finish</p>
               </div>
 
               {/* Shade Selector */}
@@ -77,15 +78,17 @@ export default function VirtualMakeup() {
                       key={color.name}
                       onClick={() => setSelectedLip(color)}
                       style={{
-                        width: '32px',
-                        height: '32px',
+                        width: '34px',
+                        height: '34px',
                         borderRadius: '50%',
                         backgroundColor: color.hex,
                         border: selectedLip.name === color.name ? '3px solid #09121D' : '2px solid #FFF',
                         cursor: 'pointer',
-                        boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
+                        boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+                        transform: selectedLip.name === color.name ? 'scale(1.15)' : 'scale(1)',
+                        transition: 'transform 0.2s ease'
                       }}
-                      title={color.name}
+                      title={`${color.brand} - ${color.name}`}
                     />
                   ))}
                 </div>
@@ -94,7 +97,7 @@ export default function VirtualMakeup() {
               {/* Finish Options */}
               <div style={{ marginBottom: '14px' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: '#888' }}>
-                  Texture Finish:
+                  Texture Finish Shader:
                 </span>
                 <div style={{ display: 'flex', gap: '8px', marginTop: '6px' }}>
                   {['Matte', 'Gloss', 'Satin', 'Shimmer'].map((f) => (
@@ -102,10 +105,10 @@ export default function VirtualMakeup() {
                       key={f}
                       onClick={() => setFinish(f)}
                       style={{
-                        padding: '4px 12px',
+                        padding: '5px 14px',
                         borderRadius: '9999px',
                         fontSize: '0.75rem',
-                        fontWeight: '600',
+                        fontWeight: '700',
                         backgroundColor: finish === f ? '#09121D' : '#F0F0F0',
                         color: finish === f ? '#FFF' : '#333',
                         border: 'none',
@@ -121,7 +124,7 @@ export default function VirtualMakeup() {
               {/* Intensity Slider */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', fontWeight: '600' }}>
-                  <span>Application Intensity:</span>
+                  <span>Application Opacity & Pigment:</span>
                   <span>{intensity}%</span>
                 </div>
                 <input
@@ -137,6 +140,14 @@ export default function VirtualMakeup() {
           </div>
         </div>
       </section>
+
+      {/* Real Lipstick & Foundation Products for Try-On */}
+      <ProductCatalog 
+        initialCategory="lipstick"
+        showFilters={false}
+        title="Ready-to-Test Virtual Makeup Catalog"
+        subtitle="Click 'Live AR Try-On' on any cosmetic formulation to preview true pigmentation."
+      />
 
       {/* Feature Highlights */}
       <section className="section">

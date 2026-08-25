@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProductCatalog from '../../components/ProductCatalog';
 import ContactForm from '../../components/ContactForm';
 import './SolutionsCommon.css';
 
@@ -72,6 +73,14 @@ export default function SmartSkinAnalysis() {
           </div>
         </div>
       </section>
+
+      {/* Targeted Formulations based on Diagnostic Scores */}
+      <ProductCatalog 
+        initialCategory="serum"
+        showFilters={true}
+        title="Diagnostic-Matched Skincare Products"
+        subtitle="Formulations matched directly with diagnostic scores for Barrier Repair, Vitamin C Radiance, and BHA Exfoliation."
+      />
 
       <section className="section">
         <div className="container">

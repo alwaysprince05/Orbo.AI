@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSlider from '../components/HeroSlider';
+import ProductCatalog from '../components/ProductCatalog';
 import ContactForm from '../components/ContactForm';
 import './Home.css';
 
@@ -70,7 +71,7 @@ const solutionsList = [
   },
   {
     id: 'bGpt',
-    title: 'BeautyGPT',
+    title: 'BeautyGPT Advisor',
     subtitle: 'Conversational Generative AI beauty advisor integrated with skin analytics',
     path: '/beautygpt',
     color: '#BB6BD9',
@@ -112,8 +113,8 @@ export default function Home() {
               Elevate customer experience with Visual AI automation. Boost conversions by 3.2x, reduce product returns by 40%, and deliver hyper-personalized beauty consultations on Web, Mobile, and Smart Mirrors.
             </p>
             <div className="brand-hero-cta">
-              <a href="#requestDemo" className="btn btn-primary btn-lg">
-                Request Live Enterprise Demo →
+              <a href="#products" className="btn btn-primary btn-lg">
+                Explore Beauty Products & Formulations →
               </a>
               <Link to="/technology" className="btn btn-outline btn-lg">
                 Explore Technology Stack
@@ -187,7 +188,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Integration Channels Section (API / SDK / Shopify) */}
+      {/* 6. Real Skincare & Beauty Product Catalog */}
+      <ProductCatalog 
+        title="Personalized Beauty Products & Recommendations"
+        subtitle="Filter by skin type, concern, and budget to view AI match percentages and active formulation science."
+      />
+
+      {/* 7. Integration Channels Section (API / SDK / Shopify) */}
       <section className="section integration-section">
         <div className="container">
           <div className="text-center">
@@ -345,7 +352,7 @@ orboCamera.applyMakeup(
         </div>
       </section>
 
-      {/* 7. Contact / Demo Section */}
+      {/* 8. Contact / Demo Section */}
       <ContactForm />
     </div>
   );

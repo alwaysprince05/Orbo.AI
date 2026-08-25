@@ -1,0 +1,122 @@
+[
+  {
+    "profile_id": "profile_dry_hydration",
+    "name": "Dry Skin - Hydration Focus",
+    "skin_type": "dry",
+    "concerns": ["hydration"],
+    "category": "moisturizer",
+    "budget": 50,
+    "preferred_ingredients": ["ceramide", "hyaluronic acid", "glycerin"],
+    "avoid_ingredients": ["fragrance", "alcohol"],
+    "expected_relevant_categories": ["moisturizer"],
+    "expected_relevant_ingredients": ["ceramide", "hyaluronic acid", "glycerin", "squalane", "shea butter"]
+  },
+  {
+    "profile_id": "profile_oily_acne",
+    "name": "Oily Skin - Acne Treatment",
+    "skin_type": "oily",
+    "concerns": ["acne"],
+    "category": "cleanser",
+    "budget": 30,
+    "preferred_ingredients": ["salicylic acid", "niacinamide"],
+    "avoid_ingredients": ["fragrance"],
+    "expected_relevant_categories": ["cleanser"],
+    "expected_relevant_ingredients": ["salicylic acid", "niacinamide", "tea tree", "zinc"]
+  },
+  {
+    "profile_id": "profile_combination_pigmentation",
+    "name": "Combination Skin - Brightening Serum",
+    "skin_type": "combination",
+    "concerns": ["pigmentation"],
+    "category": "serum",
+    "budget": 60,
+    "preferred_ingredients": ["vitamin c", "niacinamide", "alpha arbutin"],
+    "avoid_ingredients": [],
+    "expected_relevant_categories": ["serum"],
+    "expected_relevant_ingredients": ["vitamin c", "niacinamide", "alpha arbutin", "kojic acid"]
+  },
+  {
+    "profile_id": "profile_sensitive_soothing",
+    "name": "Sensitive Skin - Soothing Moisturizer",
+    "skin_type": "sensitive",
+    "concerns": ["sensitivity"],
+    "category": "moisturizer",
+    "budget": 40,
+    "preferred_ingredients": ["centella asiatica", "aloe vera", "ceramide"],
+    "avoid_ingredients": ["fragrance", "alcohol", "essential oil"],
+    "expected_relevant_categories": ["moisturizer"],
+    "expected_relevant_ingredients": ["centella asiatica", "aloe vera", "ceramide", "allantoin", "panthenol"]
+  },
+  {
+    "profile_id": "profile_anti_aging",
+    "name": "Mature Skin - Anti-Aging Serum",
+    "skin_type": "dry",
+    "concerns": ["aging"],
+    "category": "serum",
+    "budget": 80,
+    "preferred_ingredients": ["retinol", "peptide", "vitamin c"],
+    "avoid_ingredients": [],
+    "expected_relevant_categories": ["serum"],
+    "expected_relevant_ingredients": ["retinol", "peptide", "vitamin c", "collagen", "coenzyme q10"]
+  },
+  {
+    "profile_id": "profile_sunscreen",
+    "name": "Sun Protection for Sensitive Skin",
+    "skin_type": "sensitive",
+    "concerns": ["sun_protection"],
+    "category": "sunscreen",
+    "budget": 35,
+    "preferred_ingredients": ["zinc oxide", "titanium dioxide"],
+    "avoid_ingredients": ["fragrance"],
+    "expected_relevant_categories": ["sunscreen"],
+    "expected_relevant_ingredients": ["zinc oxide", "titanium dioxide"]
+  },
+  {
+    "profile_id": "profile_texture_exfoliation",
+    "name": "Texture Treatment - Exfoliation",
+    "skin_type": "combination",
+    "concerns": ["texture"],
+    "category": "exfoliator",
+    "budget": 40,
+    "preferred_ingredients": ["glycolic acid", "lactic acid"],
+    "avoid_ingredients": [],
+    "expected_relevant_categories": ["exfoliator"],
+    "expected_relevant_ingredients": ["glycolic acid", "lactic acid", "mandelic acid", "salicylic acid"]
+  },
+  {
+    "profile_id": "profile_budget_moisturizer",
+    "name": "Budget-Friendly Moisturizer",
+    "skin_type": "normal",
+    "concerns": ["hydration"],
+    "category": "moisturizer",
+    "budget": 15,
+    "preferred_ingredients": ["glycerin"],
+    "avoid_ingredients": [],
+    "expected_relevant_categories": ["moisturizer"],
+    "expected_relevant_ingredients": ["glycerin", "hyaluronic acid"]
+  },
+  {
+    "profile_id": "profile_no_constraints",
+    "name": "Open Search - No Specific Requirements",
+    "skin_type": null,
+    "concerns": [],
+    "category": null,
+    "budget": null,
+    "preferred_ingredients": [],
+    "avoid_ingredients": [],
+    "expected_relevant_categories": [],
+    "expected_relevant_ingredients": []
+  },
+  {
+    "profile_id": "profile_rare_combination",
+    "name": "Rare Combination - Difficult Match",
+    "skin_type": "oily",
+    "concerns": ["acne", "aging"],
+    "category": "serum",
+    "budget": 100,
+    "preferred_ingredients": ["retinol", "salicylic acid"],
+    "avoid_ingredients": ["fragrance"],
+    "expected_relevant_categories": ["serum"],
+    "expected_relevant_ingredients": ["retinol", "salicylic acid"]
+  }
+]

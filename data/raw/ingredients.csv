@@ -1,0 +1,131 @@
+ingredient_id|inci_name|cas_number|common_name|primary_function|comedogenic_rating|is_common_allergen|is_fungal_acne_trigger|description|fda_warning
+1|WATER/EAU/AQUA|7732-18-5|Water/Eau/Aqua|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+2|OPUNTIA TUNA FRUIT EXTRACT||Opuntia Tuna Fruit Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+3|CYPRIPEDIUM PUBESCENS EXTRACT||Cypripedium Pubescens Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+4|LACTIC ACID|50-21-5|Lactic Acid|Skin-Conditioning Agent|1.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|Sunburn Alert mandatory: AHA ingredients increase sun sensitivity.
+5|SQUALANE|111-01-3|Squalane|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+6|POTASSIUM HYDROXIDE|1310-58-3|Potassium Hydroxide|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+7|STEARIC ACID|57-11-4|Stearic Acid|Skin-Conditioning Agent|2.0|0|1|Standard cosmetic ingredient registered in INCI catalog.|
+8|GLYCYRRHIZA GLABRA (LICORICE) ROOT EXTRACT||Glycyrrhiza Glabra (Licorice) Root Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+9|CYMBOPOGON SCHOENANTHUS OIL||Cymbopogon Schoenanthus Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+10|ALOE BARBADENSIS LEAF EXTRACT||Aloe Barbadensis Leaf Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+11|PHENOXYETHANOL|122-99-6|Phenoxyethanol|Preservative|0.0|1|0|Broad-spectrum synthetic preservative used to prevent microbial growth.|
+15|WATER|7732-18-5|Water|Solvent|0.0|0|0|Purified water used as a primary solvent base in cosmetic formulations.|
+17|METHYLPARABEN|99-76-3|Methylparaben|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+21|PETROLATUM||Petrolatum|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+22|GLYCERIN|56-81-5|Glycerin|Humectant / Skin-Conditioning|0.0|0|0|Natural humectant that attracts moisture into the upper layers of the skin.|
+37|CAPRYLIC/CAPRIC TRIGLYCERIDE|65381-09-1|Caprylic/Capric Triglyceride|Emollient / Solvent|1.0|0|0|Gentle coconut-derived ester providing silky texture without greasiness.|
+39|CETEARYL ALCOHOL|67762-27-0|Cetearyl Alcohol|Emulsion Stabilizer / Viscosity Controlling / Emollient|2.0|0|0|Fatty alcohol used to stabilize creams and soften skin; non-drying.|
+40|CETYL ALCOHOL|36653-82-4|Cetyl Alcohol|Skin-Conditioning Agent|2.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+42|COCOS NUCIFERA (COCONUT) OIL||Cocos Nucifera (Coconut) Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+49|COCAMIDOPROPYL BETAINE||Cocamidopropyl Betaine|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+56|ALOE BARBADENSIS LEAF JUICE||Aloe Barbadensis Leaf Juice|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+57|PANTHENOL|81-13-0|Panthenol|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+84|SODIUM HYALURONATE|9067-32-7|Sodium Hyaluronate|Humectant|0.0|0|0|Salt form of hyaluronic acid with smaller molecular size for deeper penetration.|
+89|ALLANTOIN|97-59-6|Allantoin|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+91|PROPANEDIOL|26264-14-2|Propanediol|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+92|DIMETHICONE|63148-62-9|Dimethicone|Skin-Conditioning Agent|1.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+95|TOCOPHEROL|59-02-9|Tocopherol|Skin-Conditioning Agent|2.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+96|SODIUM CHLORIDE|7647-14-5|Sodium Chloride|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+108|PURIFIED WATER|7732-18-5|Purified Water|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+135|TOCOPHERYL ACETATE|52225-20-4|Tocopheryl Acetate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+136|WATER (AQUA)|7732-18-5|Water (Aqua)|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+141|SODIUM HYDROXIDE|1310-73-2|Sodium Hydroxide|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+142|TETRASODIUM EDTA|64-02-8|Tetrasodium Edta|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+145|ETHYLHEXYLGLYCERIN|70445-33-9|Ethylhexylglycerin|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+147|PROPYLENE GLYCOL|57-55-6|Propylene Glycol|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+149|TRIETHANOLAMINE|102-71-6|Triethanolamine|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+162|AQUA|7732-18-5|Aqua (Water)|Solvent|0.0|0|0|Purified water used as a primary solvent base in cosmetic formulations.|
+169|CITRIC ACID|77-92-9|Citric Acid|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+171|LIMONENE|138-86-3|Limonene|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|Mandatory MoCRA contact allergen disclosure when >0.001% in leave-on or >0.01% in rinse-off.
+172|GERANIOL|106-24-1|Geraniol|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|Mandatory MoCRA contact allergen disclosure when >0.001% in leave-on or >0.01% in rinse-off.
+174|LINALOOL|78-70-6|Linalool|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|Mandatory MoCRA contact allergen disclosure when >0.001% in leave-on or >0.01% in rinse-off.
+175|CITRONELLOL|106-22-9|Citronellol|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|Mandatory MoCRA contact allergen disclosure when >0.001% in leave-on or >0.01% in rinse-off.
+178|PARFUM||Parfum|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+180|STEARYL ALCOHOL|112-92-5|Stearyl Alcohol|Skin-Conditioning Agent|2.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+183|ISOPROPYL PALMITATE|142-91-6|Isopropyl Palmitate|Skin-Conditioning Agent|4.0|0|1|Standard cosmetic ingredient registered in INCI catalog.|
+189|HELIANTHUS ANNUUS SEED OIL||Helianthus Annuus Seed Oil|Skin-Conditioning Agent|2.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+192|ALPHA-ISOMETHYL IONONE|127-51-5|Alpha-Isomethyl Ionone|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|
+193|CITRAL|5392-40-5|Citral|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|Mandatory MoCRA contact allergen disclosure when >0.001% in leave-on or >0.01% in rinse-off.
+195|HEXYL CINNAMAL|364364-06-7|Hexyl Cinnamal|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|
+198|PINENE||Pinene|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|
+207|CETEARYL GLUCOSIDE|246159-33-1|Cetearyl Glucoside|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+209|GLYCERYL STEARATE|11099-07-3|Glyceryl Stearate|Skin-Conditioning Agent|3.0|0|1|Standard cosmetic ingredient registered in INCI catalog.|
+218|DISODIUM EDTA|139-33-3|Disodium Edta|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+219|CAPRYLYL GLYCOL|1117-86-8|Caprylyl Glycol|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+234|CARBOMER|9007-20-9|Carbomer|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+271|FRAGRANCE/PARFUM||Fragrance/Parfum|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+323|ISOPROPYL ALCOHOL|67-63-0|Isopropyl Alcohol|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+331|TITANIUM DIOXIDE|13463-67-7|Titanium Dioxide|Skin-Conditioning Agent|1.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+351|TOCOPHEROL (VITAMIN E)||Tocopherol (Vitamin E)|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+360|COUMARIN|91-64-5|Coumarin|Skin-Conditioning Agent|0.0|1|0|Standard cosmetic ingredient registered in INCI catalog.|Mandatory MoCRA contact allergen disclosure when >0.001% in leave-on or >0.01% in rinse-off.
+382|FRAGRANCE||Fragrance|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+464|CAMELLIA SINENSIS LEAF EXTRACT||Camellia Sinensis Leaf Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+517|TRITICUM VULGARE (WHEAT) GERM OIL||Triticum Vulgare (Wheat) Germ Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+529|CI 19140|1934-21-0|Ci 19140|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+554|GLYCINE SOJA OIL||Glycine Soja Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+561|MAGNESIUM ALUMINUM SILICATE|1327-43-1|Magnesium Aluminum Silicate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+562|ETHYLHEXYL METHOXYCINNAMATE|83834-59-7|Ethylhexyl Methoxycinnamate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+572|ACRYLATES COPOLYMER||Acrylates Copolymer|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+619|HELIANTHUS ANNUUS (SUNFLOWER) SEED OIL||Helianthus Annuus (Sunflower) Seed Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+630|ISOSTEARIC ACID|2724-58-5|Isostearic Acid|Skin-Conditioning Agent|0.0|0|1|Standard cosmetic ingredient registered in INCI catalog.|
+642|GLYCOL DISTEARATE|627-83-8|Glycol Distearate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+648|AMODIMETHICONE||Amodimethicone|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+715|HEXYLENE GLYCOL|107-41-5|Hexylene Glycol|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+817|SODIUM METHYL COCOYL TAURATE||Sodium Methyl Cocoyl Taurate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+845|PALMITIC ACID|57-10-3|Palmitic Acid|Skin-Conditioning Agent|2.0|0|1|Standard cosmetic ingredient registered in INCI catalog.|
+849|AVENA SATIVA (OAT) KERNEL EXTRACT||Avena Sativa (Oat) Kernel Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+1096|VITAMIN E|1406-18-4|Vitamin E|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1297|CI 15985|2783-94-0|Ci 15985|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1304|COCONUT ACID||Coconut Acid|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1320|LAURIC ACID|143-07-7|Lauric Acid|Skin-Conditioning Agent|4.0|0|1|Standard cosmetic ingredient registered in INCI catalog.|
+1337|XYLITYLGLUCOSIDE|1095751-96-4|Xylitylglucoside|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1390|PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE||Pentaerythrityl Tetra-Di-T-Butyl Hydroxyhydrocinnamate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1448|MYRISTIC ACID|544-63-8|Myristic Acid|Skin-Conditioning Agent|3.0|0|1|Standard cosmetic ingredient registered in INCI catalog.|
+1498|CITRUS LIMON (LEMON) PEEL OIL||Citrus Limon (Lemon) Peel Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+1519|IMIDAZOLIDINYL UREA|39236-46-9|Imidazolidinyl Urea|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1587|TETRASODIUM GLUTAMATE DIACETATE|51981-21-6|Tetrasodium Glutamate Diacetate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1610|PRUNUS AMYGDALUS DULCIS (SWEET ALMOND) OIL||Prunus Amygdalus Dulcis (Sweet Almond) Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+1701|HYDROLYZED ELASTIN||Hydrolyzed Elastin|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1722|HYDROLYZED COLLAGEN||Hydrolyzed Collagen|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+1839|HYDROGENATED OLIVE OIL||Hydrogenated Olive Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+2442|SOLUBLE COLLAGEN||Soluble Collagen|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+3030|LIMNANTHES ALBA SEED OIL||Limnanthes Alba Seed Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+3273|GLYCERINE|56-81-5|Glycerine|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+3759|LINALYL ACETATE|115-95-7|Linalyl Acetate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+3897|HAMAMELIS VIRGINIANA EXTRACT||Hamamelis Virginiana Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+4963|TETRAMETHYL ACETYLOCTAHYDRONAPHTHALENES|54464-57-2|Tetramethyl Acetyloctahydronaphthalenes|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+4966|ARACHIDIC ACID|506-30-9|Arachidic Acid|Skin-Conditioning Agent|0.0|0|1|Standard cosmetic ingredient registered in INCI catalog.|
+5573|SODIUM METASILICATE|1344-09-8|Sodium Metasilicate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+5966|COCAMIDOPROPY BETAINE||Cocamidopropy Betaine|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+6065|CASTORYL MALEATE||Castoryl Maleate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+6186|PARFUM FRAGRANCE)||Parfum Fragrance)|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+7046|SCLEROCARYA BIRREA (MARULA) SEED OIL||Sclerocarya Birrea (Marula) Seed Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+7081|GLYCERYL MYRISTATE||Glyceryl Myristate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+8716|WATER/AQUA|7732-18-5|Water/Aqua|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+10045|COLOUR||Colour (Anthocyanin)|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+11595|MAGNESIUM|7439-95-4|Magnesium|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+13536|STEARTRIMONIUM CHLORIDE||Steartrimonium Chloride|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+13735|BIOFLAVONOIDS||Bioflavonoids|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+14101|GERANYL ACETATE|105-87-3|Geranyl Acetate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+16658|COCOS NUCIFERA (COCONUT OIL||Cocos Nucifera (Coconut Oil|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+17937|BEHENYL BEHENATE||Behenyl Behenate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+21148|PRUNUS AMYGDALUS DULCIS SEED O||Prunus Amygdalus Dulcis Seed O|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+21149|BRASSICA OLERACEA ITALICA EXTRACT||Brassica Oleracea Italica Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+24380|ALOE VERA EXTRACT||Aloe Vera Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+25084|COCAMIDE METHYL MEA||Cocamide Methyl Mea|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+32199|MINERAL OILIPARAFFINUM LOUIDUM||Mineral Oiliparaffinum Louidum|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+32200|CEL ALCOHOL||Cel Alcohol|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+32201|AMINOMETHYL PROPANU||Aminomethyl Propanu|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+32873|ISOSTEAROYL HYDROLYZED SILK||Isostearoyl Hydrolyzed Silk|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+34834|DIMETHICONOL/SILICA CROSSPOLYMER||Dimethiconol/Silica Crosspolymer|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+34835|ETHYLHEXYL ISOPALMITATE||Ethylhexyl Isopalmitate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+34932|PAPAYA (CARICA PAPAYA) EXTRACT||Papaya (Carica Papaya) Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+34933|LIQUORICE (GLYCYRRHIZA GLABRA EXTRACT||Liquorice (Glycyrrhiza Glabra Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+34934|MULBERRY (MORUS ALBA) EXTRACT||Mulberry (Morus Alba) Extract|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|No warning required
+34935|ETHYLENE GLYCOL MONOSTEARALE FRAGRANCE||Ethylene Glycol Monostearale Fragrance|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+34936|ANHYDROXYLIT XYLITOL||Anhydroxylit Xylitol|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+40742|ALUMINIUM SILICATE||Aluminium Silicate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+40743|PROPYPARABEN||Propyparaben|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+42144|PEG-250 DISTEARATE||Peg-250 Distearate|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|
+43048|DICOCODIMONIUM CHLORIDE||Dicocodimonium Chloride|Skin-Conditioning Agent|0.0|0|0|Standard cosmetic ingredient registered in INCI catalog.|

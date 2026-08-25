@@ -1,0 +1,128 @@
+.footer {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-4xl) 0 var(--space-xl);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+/* Addresses */
+.footer__addresses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+}
+
+.footer__address-city {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.footer__address p {
+  font-size: var(--fs-sm);
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+/* Contact */
+.footer__contact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-size: var(--fs-sm);
+}
+
+.footer__contact a {
+  color: var(--color-text-light);
+  transition: color var(--transition-fast);
+}
+
+.footer__contact a:hover {
+  color: var(--color-primary);
+}
+
+.footer__contact-divider {
+  color: var(--color-border);
+}
+
+/* Links Grid */
+.footer__links {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: var(--space-3xl);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__links-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer__links-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer__links-col a {
+  font-size: var(--fs-sm);
+  color: var(--color-text-light);
+  padding: 4px 0;
+  transition: all var(--transition-fast);
+}
+
+.footer__links-col a:hover {
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+/* Copyright */
+.footer__bottom {
+  text-align: center;
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__bottom p {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.footer__bottom-sub {
+  font-size: var(--fs-xs);
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer__addresses {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .footer__links {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .footer__contact {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__links {
+    grid-template-columns: 1fr;
+  }
+}

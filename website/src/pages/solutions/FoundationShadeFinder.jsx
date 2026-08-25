@@ -1,112 +1,183 @@
 import React, { useState } from 'react';
+import ProductCatalog from '../../components/ProductCatalog';
 import ContactForm from '../../components/ContactForm';
+import OrboMouseScroll from '../../components/OrboMouseScroll';
 import './SolutionsCommon.css';
 
-const shades = [
-  { name: 'Ivory Fair 110', undertone: 'Cool Pink', hex: '#F7E2D3' },
-  { name: 'Warm Beige 220', undertone: 'Warm Golden', hex: '#EAC8B1' },
-  { name: 'Honey Sand 310', undertone: 'Neutral Peach', hex: '#DDB393' },
-  { name: 'Caramel Amber 420', undertone: 'Warm Olive', hex: '#C28E67' },
-  { name: 'Rich Espresso 530', undertone: 'Deep Cool', hex: '#6E452C' }
+const shadeMatrix = [
+  { code: '110', name: 'Fair Cool', hex: '#F9E4D4', undertone: 'Cool Pink', depth: 'Fair' },
+  { code: '140', name: 'Fair Warm', hex: '#F3D9C3', undertone: 'Warm Peach', depth: 'Fair' },
+  { code: '210', name: 'Light Neutral', hex: '#EAC8B1', undertone: 'Neutral Beige', depth: 'Light' },
+  { code: '260', name: 'Medium Golden', hex: '#DEB896', undertone: 'Warm Olive', depth: 'Medium' },
+  { code: '330', name: 'Tan Honey', hex: '#C6936E', undertone: 'Warm Golden', depth: 'Tan' },
+  { code: '390', name: 'Deep Bronze', hex: '#A76B46', undertone: 'Neutral Bronze', depth: 'Deep' },
+  { code: '450', name: 'Rich Espresso', hex: '#6E452C', undertone: 'Deep Cool', depth: 'Deep' }
 ];
 
 export default function FoundationShadeFinder() {
-  const [selectedShade, setSelectedShade] = useState(shades[1]);
+  const [selectedShade, setSelectedShade] = useState(shadeMatrix[2]);
+  const [filterUndertone, setFilterUndertone] = useState('All');
 
   return (
     <div className="solution-page">
-      <section className="solution-hero" style={{ background: 'linear-gradient(135deg, #FEBBAD 0%, #F2994A 100%)' }}>
+      {/* 1. Hero Blue Card */}
+      <section className="solution-hero-section">
         <div className="container-lg">
-          <div className="solution-hero-grid">
-            <div>
-              <span className="solution-hero-badge">FOUNDATION SHADE FINDER</span>
-              <h1 className="solution-hero-title">Precision Skin Undertone & Shade Matching</h1>
-              <p className="solution-hero-desc">
-                Finding the right foundation online has a 45% return rate. Orbo's AI analyzes lighting conditions, melanin index, and undertones (Warm, Cool, Neutral, Olive) to match exact brand SKUs.
+          <div className="foundation-blue-card">
+            <div className="foundation-card-left">
+              <span className="foundation-card-tag">FOUNDATION SHADE FINDER</span>
+              <h1 className="foundation-card-title">Recommend Foundation By Auto-detection Of Skin Tone</h1>
+              <p className="foundation-card-desc">
+                Reduce purchase barriers by empowering users to find the right foundation shade effortlessly with AI-powered sub-tone calibration.
               </p>
-              <a href="#demo" className="solution-cta-btn">
-                Find My Shade →
-              </a>
+              <div className="foundation-card-btn-wrap">
+                <a href="#shade-matrix" className="btn btn-primary btn-lg">
+                  Try Shade Matcher →
+                </a>
+              </div>
             </div>
 
-            <div className="simulator-box" id="demo">
-              <div className="simulator-header">
-                <span className="sim-title">🎨 Melanin & Undertone Classifier</span>
-                <span className="sim-badge">Colorimetry Matrix</span>
+            <div className="foundation-card-right">
+              <div className="foundation-circle-cutout-wrap">
+                <div className="foundation-circle-bg">
+                  <div className="foundation-woman-mesh"></div>
+                </div>
+                <div className="foundation-white-line"></div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-                <div style={{
-                  height: '140px',
-                  borderRadius: '16px',
-                  backgroundColor: selectedShade.hex,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'column',
-                  color: ['#6E452C', '#C28E67'].includes(selectedShade.hex) ? '#FFF' : '#333',
-                  boxShadow: `0 8px 24px ${selectedShade.hex}60`
-                }}>
-                  <strong style={{ fontSize: '1.2rem' }}>{selectedShade.name}</strong>
-                  <span style={{ fontSize: '0.8rem', opacity: 0.9 }}>Undertone: {selectedShade.undertone}</span>
+      {/* 2. Ease Of Adoption */}
+      <section className="section">
+        <div className="container">
+          <div className="vm-two-col-grid">
+            <div className="vm-col-visual">
+              <div className="adoption-portrait-container">
+                <div className="adoption-portrait-frame" style={{ background: '#EFF6FF' }}>
+                  <div className="badge-camera-top">AI Shade Detector 🔍</div>
+                  <div style={{ textAlign: 'center', marginTop: '40px' }}>
+                    <div style={{
+                      width: '120px',
+                      height: '120px',
+                      borderRadius: '50%',
+                      backgroundColor: selectedShade.hex,
+                      margin: '0 auto 12px',
+                      border: '4px solid #FFF',
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.15)'
+                    }}></div>
+                    <strong style={{ fontSize: '1.1rem', color: '#1E3A8A' }}>{selectedShade.name} #{selectedShade.code}</strong>
+                    <p style={{ fontSize: '0.8rem', color: '#4B5563' }}>Undertone: {selectedShade.undertone}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="vm-col-content">
+              <h2 className="vm-sec-heading">Precision Skin Colorimetry</h2>
+              <ul className="vm-red-bullet-list">
+                <li>Automatic white-balance calibration corrects for ambient yellow and low-light conditions</li>
+                <li>Multi-point cheek, jawline, and forehead melanin analysis eliminates mismatched foundations</li>
+                <li>Instant cross-mapping to 40+ shade ranges across top global cosmetic brands</li>
+              </ul>
+              <OrboMouseScroll />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Interactive Shade Matrix */}
+      <section className="section" id="shade-matrix" style={{ background: '#F8FAFC' }}>
+        <div className="container">
+          <div className="text-center">
+            <span className="section-tag">Interactive Color Palette</span>
+            <h2 className="vm-sec-heading-center">40-Shade Skin Tone Classifier</h2>
+          </div>
+
+          <div style={{
+            maxWidth: '860px',
+            margin: '0 auto var(--space-3xl)',
+            background: '#FFF',
+            borderRadius: '24px',
+            padding: '32px',
+            boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
+            border: '1px solid #E2E8F0'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <div>
+                <span style={{ fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase', color: '#64748B' }}>
+                  Select Undertone:
+                </span>
+                <div style={{ display: 'flex', gap: '8px', marginTop: '6px' }}>
+                  {['All', 'Warm', 'Cool', 'Neutral', 'Olive'].map((u) => (
+                    <button
+                      key={u}
+                      onClick={() => setFilterUndertone(u)}
+                      style={{
+                        padding: '6px 14px',
+                        borderRadius: '9999px',
+                        fontSize: '0.75rem',
+                        fontWeight: '700',
+                        backgroundColor: filterUndertone === u ? '#0F172A' : '#F1F5F9',
+                        color: filterUndertone === u ? '#FFF' : '#334155',
+                        border: 'none',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      {u}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <span style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: '#888' }}>
-                Tested Skin Palette:
-              </span>
-              <div style={{ display: 'flex', gap: '8px', marginTop: '6px' }}>
-                {shades.map((shade) => (
-                  <button
-                    key={shade.name}
-                    onClick={() => setSelectedShade(shade)}
-                    style={{
-                      flex: 1,
-                      height: '42px',
-                      borderRadius: '8px',
-                      backgroundColor: shade.hex,
-                      border: selectedShade.name === shade.name ? '3px solid #09121D' : '1px solid rgba(0,0,0,0.1)',
-                      cursor: 'pointer'
-                    }}
-                    title={`${shade.name} - ${shade.undertone}`}
-                  />
-                ))}
+              <div style={{ textAlign: 'right' }}>
+                <span style={{ fontSize: '0.75rem', color: '#64748B' }}>Matched SKU:</span>
+                <div style={{ fontSize: '1rem', fontWeight: '800', color: '#0F172A' }}>{selectedShade.name}</div>
               </div>
             </div>
+
+            {/* Swatches Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '12px' }}>
+              {shadeMatrix.map((s) => (
+                <button
+                  key={s.code}
+                  onClick={() => setSelectedShade(s)}
+                  style={{
+                    backgroundColor: s.hex,
+                    height: '80px',
+                    borderRadius: '12px',
+                    border: selectedShade.code === s.code ? '3px solid #0F172A' : '1px solid rgba(0,0,0,0.1)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-end',
+                    padding: '8px',
+                    textAlign: 'left',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                    transform: selectedShade.code === s.code ? 'scale(1.05)' : 'scale(1)',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <span style={{ fontSize: '0.75rem', fontWeight: '800', color: ['#6E452C', '#A76B46'].includes(s.hex) ? '#FFF' : '#1E293B' }}>
+                    #{s.code}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">High Accuracy Colorimetry</span>
-            <h2 className="section-title">Say Goodbye To Foundation Returns</h2>
-            <p className="section-subtitle">
-              Proprietary white-balancing corrects for ambient yellow indoor bulbs, bright sunlight, and low-light smartphone selfie cameras.
-            </p>
-          </div>
+      {/* 4. Real Foundation Product Catalog */}
+      <ProductCatalog 
+        initialCategory="foundation"
+        showFilters={true}
+        title="Foundation Formulations with Exact Shade Sync"
+        subtitle="Explore Fenty Beauty and NARS foundations calibrated with Orbo's skin colorimetry algorithms."
+      />
 
-          <div className="feature-cards-grid">
-            <div className="feat-card">
-              <div className="feat-icon">☀️</div>
-              <h3>Ambient Light Normalization</h3>
-              <p>Calibrates RGB exposure and white point to evaluate true baseline skin pigmentation regardless of room lighting.</p>
-            </div>
-            <div className="feat-card">
-              <div className="feat-icon">🔬</div>
-              <h3>Multi-Zone Facial Sampling</h3>
-              <p>Cross-references cheek, jawline, forehead, and neck pigmentation to deliver seamless natural shade transitions.</p>
-            </div>
-            <div className="feat-card">
-              <div className="feat-icon">📦</div>
-              <h3>Direct Catalog Cross-Mapping</h3>
-              <p>Maps directly to your brand’s custom 40+ shade range with high-confidence purchase recommendations.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* 5. Contact Form */}
       <ContactForm />
     </div>
   );

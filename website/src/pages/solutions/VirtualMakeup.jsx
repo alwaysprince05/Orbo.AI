@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCatalog from '../../components/ProductCatalog';
 import ContactForm from '../../components/ContactForm';
+import OrboMouseScroll from '../../components/OrboMouseScroll';
 import './VirtualMakeup.css';
 
 const faqs = [
@@ -48,7 +49,7 @@ export default function VirtualMakeup() {
 
   return (
     <div className="vm-page">
-      {/* 1. Pink Hero Banner */}
+      {/* 1. Pink Hero Banner (Screenshot 1) */}
       <section className="vm-hero-section">
         <div className="container-lg">
           <div className="vm-hero-card">
@@ -67,12 +68,13 @@ export default function VirtualMakeup() {
 
             <div className="vm-hero-right">
               <div className="vm-model-cutout-wrap">
-                <div className="vm-model-circle-bg"></div>
-                <div className="vm-model-portrait">
-                  <div className="model-avatar-graphic">
-                    <div className="model-hair-style"></div>
-                    <div className="model-face-glow">
-                      <div className="model-lips-styled" style={{ backgroundColor: selectedLip }}></div>
+                <div className="vm-model-circle-bg">
+                  <div className="vm-photo-woman">
+                    <div className="woman-hair-voluminous"></div>
+                    <div className="woman-face-profile">
+                      <div className="woman-eyes-sparkle"></div>
+                      <div className="woman-lips-red" style={{ backgroundColor: selectedLip }}></div>
+                      <div className="woman-hand-touch"></div>
                     </div>
                   </div>
                 </div>
@@ -83,31 +85,25 @@ export default function VirtualMakeup() {
         </div>
       </section>
 
-      {/* 2. Ease Of Adoption Section */}
+      {/* 2. Ease Of Adoption Section (Screenshot 2) */}
       <section className="section vm-ease-section">
         <div className="container">
           <div className="vm-two-col-grid">
             <div className="vm-col-visual">
-              <div className="vm-adoption-card">
-                <div className="adoption-preview-box">
-                  <div className="model-selfie-frame">
-                    <div className="selfie-camera-icon">📷 Camera</div>
-                    <div className="selfie-cart-icon">🛒 Cart</div>
-                    <div className="selfie-face-art">
-                      <div className="art-lips" style={{ backgroundColor: selectedLip }}></div>
-                    </div>
-                    {/* Swatches Fan */}
-                    <div className="shades-fan-row">
-                      {lipstickShades.slice(0, 4).map((s, i) => (
-                        <div 
-                          key={i} 
-                          className="shade-stick" 
-                          style={{ backgroundColor: s.hex }}
-                          onClick={() => setSelectedLip(s.hex)}
-                          title={s.name}
-                        />
-                      ))}
-                    </div>
+              <div className="adoption-portrait-container">
+                <div className="adoption-portrait-frame">
+                  <div className="badge-camera-top">Camera 📷</div>
+                  <div className="badge-cart-top">Cart 🛒</div>
+                  <div className="adoption-model-head">
+                    <div className="model-blonde-curls"></div>
+                    <div className="model-lips-violet" style={{ backgroundColor: selectedLip }}></div>
+                  </div>
+                  {/* Fan of lipstick shades */}
+                  <div className="fan-shades-deck">
+                    <div className="stick-holder stick-1" style={{ backgroundColor: '#BA0C2F' }} onClick={() => setSelectedLip('#BA0C2F')}></div>
+                    <div className="stick-holder stick-2" style={{ backgroundColor: '#6B1D2F' }} onClick={() => setSelectedLip('#6B1D2F')}></div>
+                    <div className="stick-holder stick-3" style={{ backgroundColor: '#C2837D' }} onClick={() => setSelectedLip('#C2837D')}></div>
+                    <div className="stick-holder stick-4" style={{ backgroundColor: '#E25B5B' }} onClick={() => setSelectedLip('#E25B5B')}></div>
                   </div>
                 </div>
               </div>
@@ -120,15 +116,12 @@ export default function VirtualMakeup() {
                 <li>Separate mobile application not required for offering a real-time virtual makeup experience</li>
                 <li>Create an immersive virtual dressing room or a virtual beauty counter for your customers</li>
               </ul>
-              <div className="vm-cta-small">
-                <a href="#requestDemo" className="btn btn-outline">Schedule Web Demo →</a>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Accuracy Section with Interactive Laptop Comparison */}
+      {/* 3. Accuracy Section with Interactive Laptop Comparison (Screenshot 3) */}
       <section className="section vm-accuracy-section" id="live-demo">
         <div className="container">
           <div className="text-center">
@@ -136,51 +129,57 @@ export default function VirtualMakeup() {
           </div>
 
           <div className="vm-laptop-mockup-wrapper">
-            <div className="laptop-container">
+            <div className="laptop-outer-frame">
               {/* Laptop Screen */}
-              <div className="laptop-screen">
+              <div className="laptop-screen-display">
                 {/* Arm swatches overlay */}
-                <div className="arm-swatches-overlay">
-                  <div className="arm-graphic">
-                    <span className="arm-label">Live Arm Swatches</span>
-                    <div className="arm-stripe stripe-1"></div>
-                    <div className="arm-stripe stripe-2"></div>
-                    <div className="arm-stripe stripe-3"></div>
-                    <div className="arm-stripe stripe-4"></div>
-                    <div className="arm-stripe stripe-5"></div>
+                <div className="arm-swatches-panel">
+                  <div className="arm-realistic-skin">
+                    <span className="arm-header-tag">Live Arm Swatches</span>
+                    <div className="swatch-stripe s1" style={{ backgroundColor: '#BA0C2F' }}></div>
+                    <div className="swatch-stripe s2" style={{ backgroundColor: '#6B1D2F' }}></div>
+                    <div className="swatch-stripe s3" style={{ backgroundColor: '#C2837D' }}></div>
+                    <div className="swatch-stripe s4" style={{ backgroundColor: '#E25B5B' }}></div>
+                    <div className="swatch-stripe s5" style={{ backgroundColor: '#4A121A' }}></div>
+                  </div>
+                  {/* Real Standing Lipsticks */}
+                  <div className="standing-tubes-row">
+                    <div className="lip-tube tube-1"><div className="tube-bullet" style={{ backgroundColor: '#BA0C2F' }}></div><div className="tube-body"></div></div>
+                    <div className="lip-tube tube-2"><div className="tube-bullet" style={{ backgroundColor: '#6B1D2F' }}></div><div className="tube-body"></div></div>
+                    <div className="lip-tube tube-3"><div className="tube-bullet" style={{ backgroundColor: '#C2837D' }}></div><div className="tube-body"></div></div>
                   </div>
                 </div>
 
-                {/* Cosmetics Screen App Header */}
-                <div className="cosmetics-app-window">
-                  <div className="cosmetics-tabs-bar">
-                    <span className="c-tab">Concealer</span>
-                    <span className="c-tab">Highlighter</span>
-                    <span className="c-tab c-tab--active">💄 Lipstick</span>
-                    <span className="c-tab">Eyeshadow</span>
-                    <span className="c-tab">Eyeliner</span>
-                    <span className="c-tab">Eyelash</span>
+                {/* Makeup Software UI */}
+                <div className="makeup-software-panel">
+                  {/* Tabs */}
+                  <div className="software-top-tabs">
+                    <div className="sw-tab"><span>Concealer</span></div>
+                    <div className="sw-tab"><span>Highlighter</span></div>
+                    <div className="sw-tab sw-tab--active"><span className="lip-ico">💄</span><span>Lipstick</span></div>
+                    <div className="sw-tab"><span>Eyeshadow</span></div>
+                    <div className="sw-tab"><span>Eyeliner</span></div>
+                    <div className="sw-tab"><span>Eyelash</span></div>
                   </div>
 
-                  <div className="cosmetics-split-view">
-                    {/* Model 1 View */}
-                    <div className={`model-split-pane ${activeModel === 1 ? 'pane--active' : ''}`} onClick={() => setActiveModel(1)}>
-                      <div className="model-avatar-render">
-                        <div className="model-headshot">
-                          <div className="render-eyes"></div>
-                          <div className="render-lips" style={{ backgroundColor: selectedLip, opacity: activeFinish === 'Sheer' ? 0.7 : 1 }}></div>
-                        </div>
+                  {/* Split Screen Models Comparison */}
+                  <div className="sw-dual-models-viewport">
+                    {/* Model 1 */}
+                    <div className={`model-pane-box ${activeModel === 1 ? 'box--active' : ''}`} onClick={() => setActiveModel(1)}>
+                      <div className="model-render-face">
+                        <div className="render-eyes-pair"></div>
+                        <div className="render-lips-pair" style={{ backgroundColor: selectedLip, opacity: activeFinish === 'Sheer' ? 0.7 : 1 }}></div>
                       </div>
-                      <span className="model-tag-badge">Model 1 (Fair Warm)</span>
+                      <span className="model-label-pill pink-pill">Model 1 (Fair)</span>
                     </div>
 
-                    {/* Controls Sidebar */}
-                    <div className="laptop-controls-sidebar">
-                      <div className="finish-selectors">
+                    {/* Middle Controls (Finish & RGB Picker) */}
+                    <div className="sw-middle-controls">
+                      <div className="finish-box-chips">
                         {['Matte', 'Satin', 'Sheer', 'Gloss'].map(f => (
                           <button 
                             key={f} 
-                            className={`f-btn ${activeFinish === f ? 'f-btn--active' : ''}`}
+                            className={`fin-chip ${activeFinish === f ? 'fin-chip--active' : ''}`}
                             onClick={() => setActiveFinish(f)}
                           >
                             {f}
@@ -188,37 +187,43 @@ export default function VirtualMakeup() {
                         ))}
                       </div>
 
-                      <div className="color-swatch-picker">
-                        <span className="color-label">Selected Chroma:</span>
-                        <div className="color-current-preview" style={{ backgroundColor: selectedLip }}></div>
-                        <div className="mini-palette">
+                      <div className="rgb-box">
+                        <span className="rgb-txt">Color: R:110 G:46 B:83</span>
+                        <div className="current-color-block" style={{ backgroundColor: selectedLip }}></div>
+                        <div className="palette-grid-mini">
                           {lipstickShades.map(s => (
                             <button
                               key={s.name}
-                              className="mini-swatch"
+                              className="p-mini-dot"
                               style={{ backgroundColor: s.hex }}
                               onClick={() => setSelectedLip(s.hex)}
                             />
                           ))}
                         </div>
                       </div>
+
+                      <div className="intensity-stepper">
+                        <span className="minus-btn" onClick={() => setSelectedLip('#C2837D')}>−</span>
+                        <span className="val-text">0.85</span>
+                        <span className="plus-btn" onClick={() => setSelectedLip('#BA0C2F')}>+</span>
+                      </div>
                     </div>
 
-                    {/* Model 2 View */}
-                    <div className={`model-split-pane ${activeModel === 2 ? 'pane--active' : ''}`} onClick={() => setActiveModel(2)}>
-                      <div className="model-avatar-render">
-                        <div className="model-headshot model-headshot--deep">
-                          <div className="render-eyes"></div>
-                          <div className="render-lips" style={{ backgroundColor: selectedLip }}></div>
-                        </div>
+                    {/* Model 2 */}
+                    <div className={`model-pane-box ${activeModel === 2 ? 'box--active' : ''}`} onClick={() => setActiveModel(2)}>
+                      <div className="model-render-face face--deep">
+                        <div className="render-eyes-pair"></div>
+                        <div className="render-lips-pair" style={{ backgroundColor: selectedLip, opacity: activeFinish === 'Sheer' ? 0.7 : 1 }}></div>
                       </div>
-                      <span className="model-tag-badge">Model 2 (Deep Olive)</span>
+                      <span className="model-label-pill pink-pill">Model 2 (Olive)</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="laptop-keyboard-base">
-                <div className="laptop-trackpad"></div>
+
+              {/* Laptop Base */}
+              <div className="laptop-aluminum-base">
+                <div className="laptop-notch-trackpad"></div>
               </div>
             </div>
           </div>
@@ -229,11 +234,190 @@ export default function VirtualMakeup() {
               <li>Our solution is trained on more than 700,000 images with the detection capability of six different skin types and ethnicities</li>
               <li>We provide a jitter-free virtual makeup capability to create a realistic experience</li>
             </ul>
+            <OrboMouseScroll />
           </div>
         </div>
       </section>
 
-      {/* 4. Brand Benefits Section */}
+      {/* 4. How It Works? Section with 3 Curved Phone Mockups (Screenshot 4) */}
+      <section className="section vm-how-section">
+        <div className="container">
+          <div className="text-center">
+            <h2 className="vm-sec-heading-center">How It Works?</h2>
+          </div>
+
+          <div className="how-it-works-curved-wrapper">
+            <div className="curved-orbit-trajectory"></div>
+            
+            <div className="three-phones-row">
+              {/* Phone 1 */}
+              <div className="phone-isometric-card phone-1">
+                <div className="phone-bezel">
+                  <div className="phone-screen">
+                    <div className="phone-screen-camera">
+                      <div className="phone-model-face">
+                        <div className="phone-lips" style={{ backgroundColor: '#FF6B6B' }}></div>
+                      </div>
+                      <div className="phone-bottom-shades-carousel">
+                        <div className="shade-pill-chip s-active" style={{ backgroundColor: '#FF6B6B' }}></div>
+                        <div className="shade-pill-chip" style={{ backgroundColor: '#BA0C2F' }}></div>
+                        <div className="shade-pill-chip" style={{ backgroundColor: '#D48C84' }}></div>
+                        <div className="shade-pill-chip" style={{ backgroundColor: '#801A4B' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone 2 */}
+              <div className="phone-isometric-card phone-2">
+                <div className="phone-bezel">
+                  <div className="phone-screen">
+                    <div className="phone-screen-camera">
+                      <div className="phone-model-face">
+                        <div className="phone-lips" style={{ backgroundColor: '#BA0C2F' }}></div>
+                      </div>
+                      <div className="preset-cards-horizontal-deck">
+                        <div className="preset-face-card active-card"><span>Office Look</span></div>
+                        <div className="preset-face-card"><span>Glam Night</span></div>
+                        <div className="preset-face-card"><span>Natural Glow</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone 3 */}
+              <div className="phone-isometric-card phone-3">
+                <div className="phone-bezel">
+                  <div className="phone-screen">
+                    <div className="phone-screen-camera">
+                      <div className="phone-model-face">
+                        <div className="phone-lips" style={{ backgroundColor: '#BA0C2F' }}></div>
+                      </div>
+                      {/* Floating Similar Products Box */}
+                      <div className="floating-similar-products-card">
+                        <div className="similar-hdr">
+                          <span>🛒 Similar Products</span>
+                          <span className="close-x">×</span>
+                        </div>
+                        <div className="similar-item-content">
+                          <span className="sim-prod-icon">💄</span>
+                          <div className="sim-prod-info">
+                            <strong>Intense Matte Lipstick</strong>
+                            <p>584 Ruby Red, 3.8 gm</p>
+                          </div>
+                          <button className="sim-buy-btn">Buy now</button>
+                        </div>
+                      </div>
+
+                      <div className="phone-category-icons-row">
+                        <span className="cat-bubble">👁️</span>
+                        <span className="cat-bubble">✨</span>
+                        <span className="cat-bubble active-bubble">💄</span>
+                        <span className="cat-bubble">🎭</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="how-bullets-wrap">
+            <ul className="vm-red-bullet-list">
+              <li>Click your photo using the device camera or try makeup in real-time</li>
+              <li>Choose the product and shade or apply a preset look</li>
+              <li>Our technology automatically applies the shade/look and also recommends products</li>
+            </ul>
+            <OrboMouseScroll />
+          </div>
+        </div>
+      </section>
+
+      {/* 5. How/Where To Integrate (Screenshot 5 Top) */}
+      <section className="section vm-integration-showcase-section">
+        <div className="container">
+          <div className="integration-split-columns">
+            {/* Column 1: API and SDK */}
+            <div className="integration-column-box">
+              <h2 className="integration-column-title">API and SDK</h2>
+              <div className="integration-circular-visual">
+                <div className="circle-glow-bg">
+                  <div className="half-face-half-phone">
+                    <div className="face-natural-side"></div>
+                    <div className="phone-makeup-side">
+                      <div className="makeup-applied-eye"></div>
+                      <div className="makeup-applied-lip"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p className="integration-column-desc">
+                Integrate our virtual makeup API or SDK across multiple devices
+              </p>
+            </div>
+
+            {/* Vertical Divider */}
+            <div className="integration-vertical-divider"></div>
+
+            {/* Column 2: Cross-platform Integration */}
+            <div className="integration-column-box">
+              <h2 className="integration-column-title">Cross-platform Integration</h2>
+              <div className="integration-circular-visual">
+                <div className="circle-glow-bg pink-glow">
+                  <div className="omnichannel-devices-cluster">
+                    <div className="device-phone">📱</div>
+                    <div className="device-smart-kiosk">
+                      <div className="kiosk-screen-face"></div>
+                      <div className="kiosk-swatches"></div>
+                    </div>
+                    <div className="device-desktop">💻</div>
+                  </div>
+                </div>
+              </div>
+              <p className="integration-column-desc">
+                As a smart mirror, digital kiosk, website, tablet, and mobile application
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. FOUNDATION SHADE FINDER Section (Screenshot 5 Bottom) */}
+      <section className="section vm-foundation-blue-section">
+        <div className="container-lg">
+          <div className="foundation-blue-card">
+            <div className="foundation-card-left">
+              <span className="foundation-card-tag">FOUNDATION SHADE FINDER</span>
+              <h2 className="foundation-card-title">Recommend Foundation By Auto-detection Of Skin Tone</h2>
+              <p className="foundation-card-desc">
+                Reduce purchase barriers by empowering users to find the right foundation shade effortlessly
+              </p>
+              <div className="foundation-card-btn-wrap">
+                <Link to="/foundation-shadefinder" className="btn btn-primary btn-lg">
+                  Explore Shade Finder →
+                </Link>
+              </div>
+            </div>
+
+            <div className="foundation-card-right">
+              <div className="foundation-circle-cutout-wrap">
+                <div className="foundation-circle-bg">
+                  <div className="foundation-woman-mesh">
+                    <div className="mesh-polygon-lines"></div>
+                    <div className="woman-applicator-sponge"></div>
+                  </div>
+                </div>
+                <div className="foundation-white-line"></div>
+              </div>
+            </div>
+          </div>
+          <OrboMouseScroll />
+        </div>
+      </section>
+
+      {/* 7. Brand Benefits Section */}
       <section className="section vm-benefits-section">
         <div className="container">
           <div className="text-center">
@@ -270,94 +454,7 @@ export default function VirtualMakeup() {
         </div>
       </section>
 
-      {/* 5. How It Works Section with 3 Curved Phone Mockups */}
-      <section className="section vm-how-section">
-        <div className="container">
-          <div className="text-center">
-            <h2 className="vm-sec-heading-center">How It Works?</h2>
-          </div>
-
-          <div className="how-it-works-visual-flow">
-            {/* Phone 1 */}
-            <div className="phone-step-card">
-              <div className="step-number-tag">Step 1</div>
-              <div className="phone-mockup">
-                <div className="phone-screen-content">
-                  <div className="phone-header-bar">
-                    <span>Camera Live</span>
-                  </div>
-                  <div className="phone-face-preview">
-                    <div className="phone-lips-apply" style={{ backgroundColor: '#FF6B6B' }}></div>
-                  </div>
-                  <div className="phone-swatch-carousel">
-                    <div className="p-dot" style={{ backgroundColor: '#D62246' }}></div>
-                    <div className="p-dot" style={{ backgroundColor: '#FF6B6B' }}></div>
-                    <div className="p-dot" style={{ backgroundColor: '#BA0C2F' }}></div>
-                    <div className="p-dot" style={{ backgroundColor: '#801A4B' }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Phone 2 */}
-            <div className="phone-step-card">
-              <div className="step-number-tag">Step 2</div>
-              <div className="phone-mockup">
-                <div className="phone-screen-content">
-                  <div className="phone-header-bar">
-                    <span>Preset Looks</span>
-                  </div>
-                  <div className="phone-face-preview">
-                    <div className="phone-lips-apply" style={{ backgroundColor: '#BA0C2F' }}></div>
-                  </div>
-                  <div className="preset-looks-row">
-                    <span className="preset-chip">Glam Red</span>
-                    <span className="preset-chip">Smokey</span>
-                    <span className="preset-chip">Natural</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Phone 3 */}
-            <div className="phone-step-card">
-              <div className="step-number-tag">Step 3</div>
-              <div className="phone-mockup">
-                <div className="phone-screen-content">
-                  <div className="phone-header-bar">
-                    <span>Instant Match</span>
-                  </div>
-                  <div className="phone-face-preview">
-                    <div className="phone-lips-apply" style={{ backgroundColor: '#D62246' }}></div>
-                  </div>
-                  {/* Floating Similar Product Overlay */}
-                  <div className="phone-product-popup">
-                    <span className="popup-title">🛒 Similar Products</span>
-                    <div className="popup-item">
-                      <span className="p-img">💄</span>
-                      <div>
-                        <strong>Intense Matte Ruby</strong>
-                        <p>$23.00 • 98% Match</p>
-                      </div>
-                      <button className="popup-buy-btn">Buy Now</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="how-bullets-wrap">
-            <ul className="vm-red-bullet-list">
-              <li>Click your photo using the device camera or try makeup in real-time</li>
-              <li>Choose the product and shade or apply a preset look</li>
-              <li>Our technology automatically applies the shade/look and also recommends products</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Who We Work With ? */}
+      {/* 8. Who We Work With ? */}
       <section className="section vm-partners-section">
         <div className="container">
           <div className="text-center">
@@ -389,49 +486,11 @@ export default function VirtualMakeup() {
         </div>
       </section>
 
-      {/* 7. How/Where To Integrate */}
-      <section className="section vm-integrate-section">
-        <div className="container">
-          <div className="text-center">
-            <h2 className="vm-sec-heading-center">How / Where To Integrate</h2>
-          </div>
-
-          <div className="integrate-two-grid">
-            <div className="integrate-card">
-              <span className="integrate-badge">Developers</span>
-              <h3>API and SDK</h3>
-              <p>Integrate our virtual makeup API or SDK across multiple devices, native operating systems, and headless architectures.</p>
-            </div>
-            <div className="integrate-card">
-              <span className="integrate-badge">Enterprise</span>
-              <h3>Cross-platform Integration</h3>
-              <p>Deploy as a smart beauty mirror, in-store digital kiosk, e-commerce website, tablet sales tool, and mobile application.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. FOUNDATION SHADE FINDER Banner */}
-      <section className="vm-foundation-callout-section">
-        <div className="container">
-          <div className="foundation-banner-card">
-            <div className="foundation-banner-text">
-              <span className="foundation-tag">FOUNDATION SHADE FINDER</span>
-              <h2>Recommend Foundation By Auto-detection Of Skin Tone</h2>
-              <p>Reduce purchase barriers by empowering users to find the right foundation shade effortlessly.</p>
-            </div>
-            <Link to="/foundation-shadefinder" className="btn btn-primary btn-lg">
-              Explore Shade Finder →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Real Makeup Product Catalog */}
+      {/* 9. Real Makeup Products Catalog */}
       <ProductCatalog 
         initialCategory="lipstick"
         showFilters={true}
-        title="Ready-to-Test Virtual Makeup Catalog"
+        title="Ready-to-Test Virtual Makeup Formulations"
         subtitle="Test actual M·A·C, Charlotte Tilbury, and Fenty Beauty formulations with instant AR shaders."
       />
 

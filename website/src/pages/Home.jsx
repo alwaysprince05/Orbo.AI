@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSlider from '../components/HeroSlider';
+import InteractiveBeautyCanvas from '../components/InteractiveBeautyCanvas';
 import ProductCatalog from '../components/ProductCatalog';
 import ContactForm from '../components/ContactForm';
+import OrboMouseScroll from '../components/OrboMouseScroll';
 import './Home.css';
 
 const solutionsList = [
@@ -82,6 +84,14 @@ const solutionsList = [
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('api');
+  const [apiResponseStatus, setApiResponseStatus] = useState('idle');
+
+  const runApiSimulation = () => {
+    setApiResponseStatus('loading');
+    setTimeout(() => {
+      setApiResponseStatus('success');
+    }, 600);
+  };
 
   return (
     <div className="home-page">
@@ -113,18 +123,34 @@ export default function Home() {
               Elevate customer experience with Visual AI automation. Boost conversions by 3.2x, reduce product returns by 40%, and deliver hyper-personalized beauty consultations on Web, Mobile, and Smart Mirrors.
             </p>
             <div className="brand-hero-cta">
-              <a href="#products" className="btn btn-primary btn-lg">
-                Explore Beauty Products & Formulations →
+              <a href="#canvas-studio" className="btn btn-primary btn-lg">
+                ✨ Launch Interactive AI Studio
               </a>
-              <Link to="/technology" className="btn btn-outline btn-lg">
-                Explore Technology Stack
-              </Link>
+              <a href="#products" className="btn btn-outline btn-lg">
+                Explore Beauty Products & SKUs
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Stats / MOAT Bar */}
+      {/* 4. Live Interactive AI Studio / Before-After Canvas */}
+      <section className="section" id="canvas-studio">
+        <div className="container">
+          <div className="text-center">
+            <span className="section-tag">Hands-On Demonstration</span>
+            <h2 className="section-title">Experience Orbo Visual AI In Action</h2>
+            <p className="section-subtitle">
+              Drag the interactive slider below to test Virtual Makeup, Clinical Skin Analysis, and Foundation Shade classification in real time.
+            </p>
+          </div>
+
+          <InteractiveBeautyCanvas />
+          <OrboMouseScroll />
+        </div>
+      </section>
+
+      {/* 5. Stats / MOAT Bar */}
       <section className="metrics-bar">
         <div className="container-lg">
           <div className="metrics-grid">
@@ -148,7 +174,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Complete 8 Solutions Showcase */}
+      {/* 6. Complete 8 Solutions Showcase */}
       <section className="section solutions-section" id="solutions">
         <div className="container">
           <div className="text-center">
@@ -185,16 +211,17 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <OrboMouseScroll />
         </div>
       </section>
 
-      {/* 6. Real Skincare & Beauty Product Catalog */}
+      {/* 7. Real Skincare & Beauty Product Catalog */}
       <ProductCatalog 
         title="Personalized Beauty Products & Recommendations"
         subtitle="Filter by skin type, concern, and budget to view AI match percentages and active formulation science."
       />
 
-      {/* 7. Integration Channels Section (API / SDK / Shopify) */}
+      {/* 8. Integration Channels Section (API / SDK / Shopify) */}
       <section className="section integration-section">
         <div className="container">
           <div className="text-center">
@@ -240,33 +267,38 @@ export default function Home() {
                       <li>RGB skin-tone sub-classification & hydration levels</li>
                       <li>Batch processing and webhook event callbacks</li>
                     </ul>
-                    <a href="#requestDemo" className="btn btn-primary">Get API Key →</a>
+                    <button onClick={runApiSimulation} className="btn btn-primary">
+                      {apiResponseStatus === 'loading' ? '⏳ Sending Stream...' : '⚡ Test Live Endpoint'}
+                    </button>
                   </div>
                   <div className="code-box">
                     <div className="code-box-header">
                       <span className="dot red"></span>
                       <span className="dot yellow"></span>
                       <span className="dot green"></span>
-                      <span className="code-title">POST /api/v1/skin-analysis</span>
+                      <span className="code-title">POST /api/v1/skin-analysis • 200 OK (11.4ms)</span>
                     </div>
                     <pre>
                       <code>{`// Request payload
 curl -X POST "https://api.orbo.ai/v1/analyze" \\
-  -H "Authorization: Bearer ORBO_KEY_xxx" \\
+  -H "Authorization: Bearer ORBO_KEY_PROD" \\
   -F "image=@customer_selfie.jpg" \\
   -F "include_landmarks=true"
 
-// Response (12ms)
+// Response (Status: 200 OK • 11.4ms)
 {
   "status": "success",
   "skin_profile": {
     "tone_category": "Warm_Medium_04",
-    "hydration_index": 84.2,
-    "oiliness_score": 31.0,
-    "texture_grade": "Smooth",
+    "hydration_index": 88.4,
+    "oiliness_score": 28.0,
+    "texture_grade": "Smooth (Grade A)",
     "acne_risk": "Low"
   },
-  "recommended_skus": ["SKU_HYDRA_CREAM_01", "SKU_SPF50_MATTE"]
+  "matched_products": [
+    { "sku": "CERAVE_HYDRA_01", "match": "98%" },
+    { "sku": "ORDINARY_NIACIN_10", "match": "96%" }
+  ]
 }`}</code>
                     </pre>
                   </div>
@@ -352,7 +384,7 @@ orboCamera.applyMakeup(
         </div>
       </section>
 
-      {/* 8. Contact / Demo Section */}
+      {/* 9. Contact / Demo Section */}
       <ContactForm />
     </div>
   );

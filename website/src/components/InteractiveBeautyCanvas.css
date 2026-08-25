@@ -1,0 +1,356 @@
+.beauty-canvas-container {
+  background: #FFF;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+  max-width: 880px;
+  margin: 0 auto var(--space-3xl);
+}
+
+/* Top Bar */
+.canvas-top-bar {
+  background: #09121D;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.canvas-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.c-tab-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #A0AEC0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.c-tab-btn--active {
+  background: #FF2E63;
+  color: #FFF;
+  box-shadow: 0 2px 10px rgba(255, 46, 99, 0.4);
+}
+
+.canvas-fps-badge {
+  font-size: 0.72rem;
+  color: #64FFDA;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: pulse 2s infinite;
+}
+
+/* Viewport & Layers */
+.canvas-viewport {
+  position: relative;
+  height: 400px;
+  background: radial-gradient(circle, #F8FAFC 0%, #E2E8F0 100%);
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portrait-visual {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.layer-label {
+  position: absolute;
+  bottom: 16px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  z-index: 10;
+}
+
+.label-before {
+  left: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFF;
+}
+
+.label-after {
+  right: 20px;
+  background: #FF2E63;
+  color: #FFF;
+  box-shadow: 0 4px 12px rgba(255, 46, 99, 0.4);
+}
+
+.face-oval {
+  width: 220px;
+  height: 280px;
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.natural-skin {
+  background: #FCE7F3;
+}
+
+.natural-eyes {
+  position: absolute;
+  top: 85px;
+  left: 45px;
+  right: 45px;
+  height: 12px;
+  border-bottom: 3px solid #78350F;
+  border-radius: 50%;
+}
+
+.natural-lips {
+  position: absolute;
+  bottom: 50px;
+  left: 80px;
+  width: 60px;
+  height: 18px;
+  background: #E5A99B;
+  border-radius: 8px;
+}
+
+/* AR Layer Features */
+.ar-skin {
+  background: #FDF2F8;
+  box-shadow: 0 0 30px rgba(255, 46, 99, 0.2);
+}
+
+.ar-eyeshadow-glam {
+  position: absolute;
+  top: 75px;
+  left: 35px;
+  right: 35px;
+  height: 24px;
+  background: radial-gradient(ellipse, rgba(235, 87, 87, 0.6) 0%, transparent 80%);
+}
+
+.ar-eyeliner-wing {
+  position: absolute;
+  top: 85px;
+  left: 40px;
+  right: 40px;
+  height: 4px;
+  background: #111827;
+  border-radius: 2px;
+}
+
+.ar-blush-flush {
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  right: 20px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.4) 0%, transparent 70%);
+}
+
+.ar-lips-applied {
+  position: absolute;
+  bottom: 48px;
+  left: 75px;
+  width: 70px;
+  height: 22px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Skin Scanner HUD Overlay */
+.skin-scanner-hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #64FFDA;
+  border-radius: 50% 50% 45% 45%;
+}
+
+.hud-laser-line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #64FFDA, transparent);
+  animation: scanHUD 2.5s infinite ease-in-out;
+}
+
+@keyframes scanHUD {
+  0% { top: 10%; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 90%; opacity: 0; }
+}
+
+.hud-metric-pill {
+  position: absolute;
+  background: rgba(9, 18, 29, 0.85);
+  color: #64FFDA;
+  font-size: 0.68rem;
+  font-family: monospace;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.m-1 { top: 20px; right: -40px; }
+.m-2 { top: 110px; left: -40px; }
+.m-3 { bottom: 30px; right: -30px; }
+
+/* Draggable Divider */
+.slider-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #FFF;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.divider-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FF2E63;
+  color: #FFF;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 46, 99, 0.5);
+  border: 2px solid #FFF;
+}
+
+/* Bottom Controls */
+.canvas-bottom-controls {
+  background: #F8F9FA;
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.makeup-controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.shades-inline,
+.finishes-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ctrl-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-transform: uppercase;
+}
+
+.palette-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.p-dot-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #FFF;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+}
+
+.p-dot-btn--active {
+  border-color: #09121D;
+  transform: scale(1.15);
+}
+
+.finish-pills {
+  display: flex;
+  gap: 6px;
+}
+
+.fin-btn {
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #FFF;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+}
+
+.fin-btn--active {
+  background: #09121D;
+  color: #FFF;
+}
+
+.skin-metrics-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.metric-chip {
+  background: #FFF;
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.shade-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.82rem;
+}
+
+.rec-sku strong {
+  color: #FF2E63;
+}

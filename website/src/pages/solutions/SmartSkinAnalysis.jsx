@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ProductCatalog from '../../components/ProductCatalog';
 import ContactForm from '../../components/ContactForm';
+import InteractiveBeautyCanvas from '../../components/InteractiveBeautyCanvas';
+import OrboMouseScroll from '../../components/OrboMouseScroll';
 import './SolutionsCommon.css';
 
 export default function SmartSkinAnalysis() {
@@ -8,110 +10,101 @@ export default function SmartSkinAnalysis() {
 
   return (
     <div className="solution-page">
-      <section className="solution-hero" style={{ background: 'linear-gradient(135deg, #FEBBAD 0%, #27AE60 100%)' }}>
+      {/* 1. Hero Peach Card */}
+      <section className="solution-hero-section">
         <div className="container-lg">
-          <div className="solution-hero-grid">
-            <div>
-              <span className="solution-hero-badge">SMART SKIN ANALYSIS</span>
-              <h1 className="solution-hero-title">Clinical-Grade AI Skin Diagnostic Platform</h1>
-              <p className="solution-hero-desc">
+          <div className="vm-hero-card" style={{ background: '#FEBBAD' }}>
+            <div className="vm-hero-left">
+              <span className="vm-hero-tag">SMART SKIN ANALYSIS</span>
+              <h1 className="vm-hero-title">Clinical-Grade AI Skin Diagnostic Platform</h1>
+              <p className="vm-hero-subtitle">
                 Extract vital data on hydration levels, fine lines, dark circles, acne severity, and pore congestion in under 2 seconds. Deliver dermatologist-verified personalized skincare regimens.
               </p>
-              <a href="#demo" className="solution-cta-btn">
-                Run Diagnostic Scan →
-              </a>
+              <div className="vm-hero-btn-wrap">
+                <a href="#canvas-studio" className="btn vm-try-btn">
+                  Run Diagnostic Scan →
+                </a>
+              </div>
             </div>
 
-            <div className="simulator-box" id="demo">
-              <div className="simulator-header">
-                <span className="sim-title">🔬 Skin Diagnostic Health Index</span>
-                <span className="sim-badge">Overall Score: 88/100</span>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <div style={{ background: '#F9FBF9', padding: '10px 14px', borderRadius: '8px', border: '1px solid #E2EFE2' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: '700', marginBottom: '4px' }}>
-                    <span>Hydration & Moisture</span>
-                    <span style={{ color: '#27AE60' }}>82% (Optimal)</span>
-                  </div>
-                  <div style={{ height: '6px', background: '#E0E0E0', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div style={{ width: '82%', height: '100%', background: '#27AE60' }}></div>
+            <div className="vm-hero-right">
+              <div className="vm-model-cutout-wrap">
+                <div className="vm-model-circle-bg" style={{ background: 'radial-gradient(circle, #FFF 0%, #FED7AA 100%)' }}>
+                  <div className="vm-photo-woman">
+                    <div className="woman-face-profile">
+                      <div className="skin-scan-overlay-lines"></div>
+                    </div>
                   </div>
                 </div>
-
-                <div style={{ background: '#F9FBF9', padding: '10px 14px', borderRadius: '8px', border: '1px solid #E2EFE2' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: '700', marginBottom: '4px' }}>
-                    <span>Texture & Smoothness</span>
-                    <span style={{ color: '#2D9CDB' }}>91% (Very Smooth)</span>
-                  </div>
-                  <div style={{ height: '6px', background: '#E0E0E0', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div style={{ width: '91%', height: '100%', background: '#2D9CDB' }}></div>
-                  </div>
-                </div>
-
-                <div style={{ background: '#F9FBF9', padding: '10px 14px', borderRadius: '8px', border: '1px solid #E2EFE2' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: '700', marginBottom: '4px' }}>
-                    <span>Pigmentation & Spots</span>
-                    <span style={{ color: '#F2994A' }}>74% (Mild Sun Damage)</span>
-                  </div>
-                  <div style={{ height: '6px', background: '#E0E0E0', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div style={{ width: '74%', height: '100%', background: '#F2994A' }}></div>
-                  </div>
-                </div>
-
-                <div style={{ background: '#F9FBF9', padding: '10px 14px', borderRadius: '8px', border: '1px solid #E2EFE2' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: '700', marginBottom: '4px' }}>
-                    <span>Fine Lines / Firmness</span>
-                    <span style={{ color: '#27AE60' }}>89% (High Elasticity)</span>
-                  </div>
-                  <div style={{ height: '6px', background: '#E0E0E0', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div style={{ width: '89%', height: '100%', background: '#27AE60' }}></div>
-                  </div>
-                </div>
+                <div className="vm-model-line"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Targeted Formulations based on Diagnostic Scores */}
+      {/* 2. Live Interactive Before/After & Scanner HUD */}
+      <section className="section" id="canvas-studio">
+        <div className="container">
+          <div className="text-center">
+            <span className="section-tag">Interactive AI Studio</span>
+            <h2 className="vm-sec-heading-center">Live Biometric Diagnostic Scanner</h2>
+            <p className="section-subtitle">Drag the slider horizontally to compare natural baseline skin against Orbo's sub-surface clinical diagnostic overlay.</p>
+          </div>
+
+          <InteractiveBeautyCanvas defaultCategory="skin" />
+        </div>
+      </section>
+
+      {/* 3. Ease Of Adoption & Red Bullets */}
+      <section className="section" style={{ background: '#F8FAFC' }}>
+        <div className="container">
+          <div className="vm-two-col-grid">
+            <div className="vm-col-visual">
+              <div className="adoption-portrait-container">
+                <div className="adoption-portrait-frame" style={{ background: '#F0FDF4' }}>
+                  <div className="badge-camera-top">Clinical AI 🔬</div>
+                  <div style={{ padding: '20px 10px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>✨</div>
+                    <strong style={{ fontSize: '1.1rem', color: '#166534' }}>Overall Score: 92/100</strong>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '16px', textAlign: 'left' }}>
+                      <div style={{ background: '#FFF', padding: '8px 12px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: '700' }}>
+                        💧 Hydration: <span style={{ color: '#16A34A' }}>88% (Optimal)</span>
+                      </div>
+                      <div style={{ background: '#FFF', padding: '8px 12px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: '700' }}>
+                        🛡️ Barrier Defense: <span style={{ color: '#16A34A' }}>94% (Strong)</span>
+                      </div>
+                      <div style={{ background: '#FFF', padding: '8px 12px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: '700' }}>
+                        ☀️ UV Sun Damage: <span style={{ color: '#EAB308' }}>Mild Forehead Spots</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="vm-col-content">
+              <h2 className="vm-sec-heading">14 Biomarkers In 2 Seconds</h2>
+              <ul className="vm-red-bullet-list">
+                <li>Extracts fine lines, deep wrinkles, sebum ratio, dark circles, redness, and acne lesions</li>
+                <li>Generates personalized AM/PM regimens mapped directly to active ingredient molecules</li>
+                <li>Enables weekly customer scan comparisons to track treatment efficacy and increase retention</li>
+              </ul>
+              <OrboMouseScroll />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Diagnostic-Matched Formulations */}
       <ProductCatalog 
         initialCategory="serum"
         showFilters={true}
         title="Diagnostic-Matched Skincare Products"
-        subtitle="Formulations matched directly with diagnostic scores for Barrier Repair, Vitamin C Radiance, and BHA Exfoliation."
+        subtitle="Formulations matched directly with clinical diagnostic scores for Barrier Repair, Vitamin C Radiance, and BHA Exfoliation."
       />
 
-      <section className="section">
-        <div className="container">
-          <div className="text-center">
-            <span className="section-tag">Scientific Skincare</span>
-            <h2 className="section-title">Deep Learning Multi-Layer Diagnostics</h2>
-            <p className="section-subtitle">
-              Combining frequency localization and vision transformers to analyze sub-surface skin condition variations.
-            </p>
-          </div>
-
-          <div className="feature-cards-grid">
-            <div className="feat-card">
-              <div className="feat-icon">📊</div>
-              <h3>14 Clinical Biomarkers</h3>
-              <p>Scores hydration, sebum balance, wrinkle depth, pore enlargement, dark circles, redness, and acne severity.</p>
-            </div>
-            <div className="feat-card">
-              <div className="feat-icon">🗓️</div>
-              <h3>Progress & Regimen Tracking</h3>
-              <p>Enables repeat users to take weekly scans and visualize improvement metrics as skincare products take effect.</p>
-            </div>
-            <div className="feat-card">
-              <div className="feat-icon">🌿</div>
-              <h3>Targeted Formulation Matching</h3>
-              <p>Recommends exact active ingredients (e.g. Hyaluronic Acid, Retinol, Salicylic Acid, Ceramides) suited for the user.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* 5. Contact Form */}
       <ContactForm />
     </div>
   );

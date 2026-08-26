@@ -177,7 +177,10 @@ class BeautyRecommender:
                         '_category_score', '_budget_score', '_rating_score', 
                         '_popularity_score', '_content_score', '_preference_score', '_hybrid_score']:
                 if col in row:
-                    score_breakdown[col.replace('_', '').replace('score', '')] = round(float(row[col]), 3)
+                    key = col.strip('_')
+                    if key.endswith('_score'):
+                        key = key[: -len('_score')]
+                    score_breakdown[key] = round(float(row[col]), 3)
             
             explanation = generate_explanation(
                 row,
@@ -277,6 +280,37 @@ class BeautyRecommender:
         return pd.Series(all_ingredients).value_counts().head(top_n).index.tolist()
 
 
+LIST_COLUMNS = ['ingredients_normalized', 'skin_types', 'skin_concerns']
+
+
+def normalize_list_columns(products_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Parquet round-trips Python list columns into numpy arrays, and CSV stores
+    them as string reprs like "['a', 'b']". Downstream scoring/filtering checks
+    `isinstance(x, list)`, so both forms must be converted back to real lists
+    or matching silently degrades to zero.
+    """
+    import ast
+
+    def _as_list(val):
+        if isinstance(val, list):
+            return val
+        if isinstance(val, np.ndarray):
+            return val.tolist()
+        if isinstance(val, str) and val.strip():
+            try:
+                parsed = ast.literal_eval(val)
+                return parsed if isinstance(parsed, list) else []
+            except (ValueError, SyntaxError):
+                return []
+        return []
+
+    for col in LIST_COLUMNS:
+        if col in products_df.columns:
+            products_df[col] = products_df[col].map(_as_list)
+    return products_df
+
+
 def build_recommender(
     products_path: str,
     model_path: str,
@@ -284,8 +318,11 @@ def build_recommender(
     hybrid_weights: Optional[Dict[str, float]] = None
 ) -> BeautyRecommender:
     """Factory function to build recommender from saved artifacts."""
-    # Load products
-    products_df = pd.read_parquet(products_path)
+    if products_path.endswith('.parquet'):
+        products_df = pd.read_parquet(products_path)
+    else:
+        products_df = pd.read_csv(products_path)
+    products_df = normalize_list_columns(products_df)
     logger.info(f"Loaded {len(products_df)} products from {products_path}")
     
     # Load content model

@@ -38,18 +38,20 @@ export default function VirtualHairStyling() {
                 <div style={{
                   height: '160px',
                   borderRadius: '16px',
-                  background: 'radial-gradient(circle, #E8E0FF 0%, #D4C5FF 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'column',
-                  gap: '8px'
+                  overflow: 'hidden',
+                  position: 'relative'
                 }}>
-                  <div style={{ fontSize: '3rem' }}>💇‍♀️</div>
-                  <strong>{selectedStyle.name}</strong>
-                  <span style={{ fontSize: '0.75rem', background: '#FFF', padding: '3px 10px', borderRadius: '9999px' }}>
-                    Best for: {selectedStyle.match} Face Shapes
-                  </span>
+                  <img
+                    src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500&h=300&fit=crop&q=80"
+                    alt={selectedStyle.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                  <div style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+                    <strong style={{ background: 'rgba(9,18,29,0.8)', color: '#FFF', padding: '4px 14px', borderRadius: '9999px', fontSize: '0.85rem', backdropFilter: 'blur(8px)' }}>{selectedStyle.name}</strong>
+                    <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.9)', padding: '3px 10px', borderRadius: '9999px', fontWeight: 700 }}>
+                      Best for: {selectedStyle.match} Face Shapes
+                    </span>
+                  </div>
                 </div>
               </div>
 

@@ -6,12 +6,14 @@ const articles = [
   {
     id: 1,
     title: 'How Can AI Be Used in the Beauty Industry? Steps to Implement',
-    excerpt: 'Beauty brands are competing in a market where consumer preferences shift fast, and every click, swipe, or selfie can influence purchase decisions. Discover the technical and commercial roadmap to deploying Visual AI in 2025.',
+    excerpt: 'Beauty brands are competing in a market where consumer preferences shift fast. Discover the technical and commercial roadmap to deploying Visual AI in 2026.',
     category: 'Industry Trends',
     readTime: '10 min read',
-    date: 'Dec 8, 2025',
+    date: 'Aug 14, 2026',
     author: 'Team Orbo',
-    featured: true
+    featured: true,
+    href: 'https://blog.orbo.ai/',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop&q=80'
   },
   {
     id: 2,
@@ -19,8 +21,10 @@ const articles = [
     excerpt: 'A comprehensive engineering guide on leveraging computer vision endpoints to diagnose skin hydration, texture, and acne severity directly inside your mobile application.',
     category: 'Developer Guide',
     readTime: '7 min read',
-    date: 'Nov 24, 2025',
-    author: 'Danish Jamil'
+    date: 'Jul 30, 2026',
+    author: 'Danish Jamil',
+    href: 'https://blog.orbo.ai/',
+    image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&h=400&fit=crop&q=80'
   },
   {
     id: 3,
@@ -28,8 +32,10 @@ const articles = [
     excerpt: 'Analyzing real-world e-commerce metrics: how photorealistic AR try-on reduced lipstick return rates by 42% and boosted Average Order Value across 50+ cosmetics stores.',
     category: 'Case Study',
     readTime: '6 min read',
-    date: 'Nov 12, 2025',
-    author: 'Manoj Shinde'
+    date: 'Jul 10, 2026',
+    author: 'Manoj Shinde',
+    href: 'https://blog.orbo.ai/',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&h=400&fit=crop&q=80'
   },
   {
     id: 4,
@@ -37,8 +43,10 @@ const articles = [
     excerpt: 'How brick-and-mortar retail stores are reinventing the cosmetic counter with touchless smart mirror kiosks that bridge offline testing with digital mobile checkouts.',
     category: 'Retail Tech',
     readTime: '8 min read',
-    date: 'Oct 29, 2025',
-    author: 'Abhit Sinha'
+    date: 'Jun 18, 2026',
+    author: 'Abhit Sinha',
+    href: 'https://blog.orbo.ai/',
+    image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=400&fit=crop&q=80'
   },
   {
     id: 5,
@@ -46,17 +54,21 @@ const articles = [
     excerpt: 'Deep dive into convolutional neural networks and spatial edge detection algorithms that isolate individual hair strands without face-boundary bleeding.',
     category: 'AI Research',
     readTime: '12 min read',
-    date: 'Oct 15, 2025',
-    author: 'Team Orbo'
+    date: 'May 22, 2026',
+    author: 'Team Orbo',
+    href: 'https://blog.orbo.ai/',
+    image: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&q=80'
   },
   {
     id: 6,
-    title: 'Green AI: Why On-Device Computer Vision Outperforms Cloud Infrastructure',
-    excerpt: 'Why eliminating recurring GPU server costs and prioritizing edge inference creates faster user experiences, reduces carbon emissions, and ensures strict GDPR compliance.',
+    title: 'Green AI: Why On-Device Vision Outperforms Cloud Infrastructure',
+    excerpt: 'Eliminating recurring GPU server costs and prioritizing edge inference creates faster experiences, reduces carbon emissions, and ensures strict GDPR compliance.',
     category: 'Sustainability',
     readTime: '5 min read',
-    date: 'Sep 30, 2025',
-    author: 'Team Orbo'
+    date: 'Apr 9, 2026',
+    author: 'Team Orbo',
+    href: 'https://blog.orbo.ai/',
+    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop&q=80'
   }
 ];
 
@@ -88,14 +100,20 @@ export default function Blog() {
         <div className="container">
           {/* Featured Article Card */}
           {featured && selectedCategory === 'All' && (
-            <div className="featured-card">
+            <a
+              href={featured.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="featured-card"
+              style={{ textDecoration: 'none', display: 'flex' }}
+            >
               <div className="featured-card__graphic">
                 <div className="featured-badge">Featured Story</div>
-                <div className="featured-visual-art">
-                  <div className="art-circle"></div>
-                  <span className="art-icon">✨ 💄 👁️</span>
-                  <h3>How AI Is Reshaping Beauty Retail</h3>
-                </div>
+                <img
+                  src={featured.image}
+                  alt={featured.title}
+                  className="featured-real-img"
+                />
               </div>
               <div className="featured-card__content">
                 <span className="blog-cat">{featured.category}</span>
@@ -108,8 +126,9 @@ export default function Blog() {
                   <span>•</span>
                   <span>⏱️ {featured.readTime}</span>
                 </div>
+                <span className="featured-read-link">Read Article →</span>
               </div>
-            </div>
+            </a>
           )}
 
           {/* Category Filter */}
@@ -128,7 +147,17 @@ export default function Blog() {
           {/* Articles Grid */}
           <div className="articles-grid">
             {filtered.map((item) => (
-              <div key={item.id} className="article-card">
+              <a
+                key={item.id}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="article-card"
+                style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column' }}
+              >
+                <div className="article-card__img">
+                  <img src={item.image} alt={item.title} loading="lazy" />
+                </div>
                 <div className="article-card__header">
                   <span className="article-cat">{item.category}</span>
                   <span className="article-read">{item.readTime}</span>
@@ -139,7 +168,8 @@ export default function Blog() {
                   <span className="article-author">{item.author}</span>
                   <span className="article-date">{item.date}</span>
                 </div>
-              </div>
+                <span className="article-read-more">Read more →</span>
+              </a>
             ))}
           </div>
         </div>

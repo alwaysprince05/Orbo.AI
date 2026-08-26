@@ -118,6 +118,20 @@
   animation: scan 2.8s infinite ease-in-out;
 }
 
+/* ── FIXED: @keyframes scan was missing — this caused a broken animation ── */
+@keyframes scan {
+  0%   { top: 15%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 85%; opacity: 0; }
+}
+
+/* pulse used by .live-indicator */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 0.6; }
+}
+
 .mesh-label {
   display: flex;
   align-items: center;

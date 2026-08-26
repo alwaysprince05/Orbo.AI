@@ -40,7 +40,11 @@ export default function FoundationShadeFinder() {
             <div className="foundation-card-right">
               <div className="foundation-circle-cutout-wrap">
                 <div className="foundation-circle-bg">
-                  <div className="foundation-woman-mesh"></div>
+                  <img
+                    src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop&q=80"
+                    alt="Foundation shade analysis"
+                    className="foundation-real-photo"
+                  />
                 </div>
                 <div className="foundation-white-line"></div>
               </div>
@@ -139,7 +143,12 @@ export default function FoundationShadeFinder() {
 
             {/* Swatches Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '12px' }}>
-              {shadeMatrix.map((s) => (
+              {shadeMatrix
+                .filter(s =>
+                  filterUndertone === 'All' ||
+                  s.undertone.toLowerCase().includes(filterUndertone.toLowerCase())
+                )
+                .map((s) => (
                 <button
                   key={s.code}
                   onClick={() => setSelectedShade(s)}

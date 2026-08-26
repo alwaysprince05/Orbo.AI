@@ -7,15 +7,15 @@ AGGREGATE METRICS
 Number of test profiles: 10
 Top-K recommendations: 5
 
-Precision@5:    0.6600
-Recall@5:    0.0585
-NDCG@5:    0.6806
-MAP@5:    0.0549
-Diversity:    0.9142
-Coverage:    0.0234
+Precision@5:    0.8600
+Recall@5:    0.0832
+NDCG@5:    0.8322
+MAP@5:    0.0753
+Diversity:    0.8851
+Coverage:    0.0240
 
-Avg Latency:  7901.02 ms
-P95 Latency:  29861.58 ms
+Avg Latency:  18.36 ms
+P95 Latency:  33.82 ms
 
 Fallbacks used in 0 profiles
 
@@ -26,68 +26,68 @@ Profile: Dry Skin - Hydration Focus
   Precision@5: 1.000
   Recall@5:    0.020
   NDCG@5:      1.000
-  Diversity:    0.867
+  Diversity:    0.663
   Fallback:     No
 
 Profile: Oily Skin - Acne Treatment
-  Precision@5: 0.000
-  Recall@5:    0.000
-  NDCG@5:      0.000
-  Diversity:    0.902
+  Precision@5: 0.800
+  Recall@5:    0.118
+  NDCG@5:      0.661
+  Diversity:    0.935
   Fallback:     No
 
 Profile: Combination Skin - Brightening Serum
-  Precision@5: 0.400
-  Recall@5:    0.065
-  NDCG@5:      0.345
-  Diversity:    0.949
+  Precision@5: 0.800
+  Recall@5:    0.129
+  NDCG@5:      0.661
+  Diversity:    0.913
   Fallback:     No
 
 Profile: Sensitive Skin - Soothing Moisturizer
   Precision@5: 1.000
   Recall@5:    0.035
   NDCG@5:      1.000
-  Diversity:    0.865
+  Diversity:    0.765
   Fallback:     No
 
 Profile: Mature Skin - Anti-Aging Serum
-  Precision@5: 0.800
-  Recall@5:    0.068
-  NDCG@5:      0.869
-  Diversity:    0.959
+  Precision@5: 1.000
+  Recall@5:    0.085
+  NDCG@5:      1.000
+  Diversity:    0.931
   Fallback:     No
 
 Profile: Sun Protection for Sensitive Skin
-  Precision@5: 0.800
-  Recall@5:    0.089
-  NDCG@5:      0.869
-  Diversity:    0.976
+  Precision@5: 1.000
+  Recall@5:    0.111
+  NDCG@5:      1.000
+  Diversity:    0.960
   Fallback:     No
 
 Profile: Texture Treatment - Exfoliation
   Precision@5: 1.000
   Recall@5:    0.069
   NDCG@5:      1.000
-  Diversity:    0.811
+  Diversity:    0.887
   Fallback:     No
 
 Profile: Budget-Friendly Moisturizer
   Precision@5: 1.000
   Recall@5:    0.200
   NDCG@5:      1.000
-  Diversity:    0.916
+  Diversity:    0.922
   Fallback:     No
 
 Profile: Open Search - No Specific Requirements
   Precision@5: 0.000
   Recall@5:    0.000
   NDCG@5:      0.000
-  Diversity:    0.947
+  Diversity:    0.950
   Fallback:     No
 
 Profile: Rare Combination - Difficult Match
-  Precision@5: 0.600
-  Recall@5:    0.039
-  NDCG@5:      0.723
-  Diversity:    0.950
+  Precision@5: 1.000
+  Recall@5:    0.066
+  NDCG@5:      1.000
+  Diversity:    0.927
   Fallback:     No

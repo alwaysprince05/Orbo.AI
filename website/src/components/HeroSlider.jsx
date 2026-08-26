@@ -17,9 +17,9 @@ const slides = [
     id: 2,
     bg: '#FAC4DE',
     tag: 'HYPER-PERSONALIZED DIAGNOSTICS',
-    title: 'Get Tailored Beauty Routine For As Per Your Preferences And Unique Skin Needs',
-    subtitle: 'Extract clinical skin parameters, melanin index, and hydration in under 2 seconds.',
-    ctaText: 'BeautyGPT',
+    title: 'Get a Tailored Beauty Routine Matched to Your Unique Skin Needs',
+    subtitle: 'Extract clinical skin parameters, melanin index, and hydration levels in under 2 seconds.',
+    ctaText: 'Try BeautyGPT',
     badge: 'BETA',
     ctaLink: 'https://beautygpt.orbo.ai/',
     type: 'routine'
@@ -28,11 +28,11 @@ const slides = [
     id: 3,
     bg: '#B5A9FF',
     tag: 'OMNICHANNEL COMMERCE LAYER',
-    title: 'Personalized Beauty Recommendations: Right At Your Fingertips',
+    title: 'Personalized Beauty Recommendations Right At Your Fingertips',
     subtitle: 'Seamless virtual try-ons and ingredient matching across Web, iOS, Android, and Smart Mirror kiosks.',
-    ctaText: 'BeautyGPT',
-    badge: 'BETA',
-    ctaLink: 'https://beautygpt.orbo.ai/',
+    ctaText: 'Explore Platform',
+    badge: 'LIVE',
+    ctaLink: 'https://www.orbo.ai/',
     type: 'omni'
   }
 ];
@@ -99,19 +99,23 @@ export default function HeroSlider() {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onMouseEnter={() => { if (autoPlayRef.current) clearInterval(autoPlayRef.current); }}
+      onMouseLeave={() => { autoPlayRef.current = setInterval(nextSlide, 4200); }}
+      aria-roledescription="carousel"
+      aria-label="Orbo AI feature highlights"
     >
       {/* Navigation Arrows */}
       <button 
         className="slider-arrow slider-arrow--prev" 
         onClick={() => { prevSlide(); resetTimer(); }}
-        aria-label="Previous Slide"
+        aria-label="Previous slide"
       >
         ‹
       </button>
       <button 
         className="slider-arrow slider-arrow--next" 
         onClick={() => { nextSlide(); resetTimer(); }}
-        aria-label="Next Slide"
+        aria-label="Next slide"
       >
         ›
       </button>
@@ -120,6 +124,8 @@ export default function HeroSlider() {
       <div 
         className="hero-slider-track"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        aria-live="polite"
+        aria-atomic="true"
       >
         {slides.map((slide, idx) => (
           <div 
@@ -173,44 +179,58 @@ export default function HeroSlider() {
 
                   {slide.type === 'routine' && (
                     <div className="visual-routine-box">
-                      <div className="routine-header-pill">AI Diagnosis Matched</div>
-                      <div className="routine-step-row">
-                        <span className="step-badge">01</span>
-                        <div>
-                          <strong>Barrier Hydrating Cleanser</strong>
-                          <p>Ceramide + Hyaluronic Acid</p>
+                      <img
+                        src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=360&fit=crop&q=80"
+                        alt="Skincare routine"
+                        className="hero-visual-photo"
+                      />
+                      <div className="routine-overlay">
+                        <div className="routine-header-pill">AI Diagnosis Matched</div>
+                        <div className="routine-step-row">
+                          <span className="step-badge">01</span>
+                          <div>
+                            <strong>Barrier Hydrating Cleanser</strong>
+                            <p>Ceramide + Hyaluronic Acid</p>
+                          </div>
+                          <span className="match-pill">98%</span>
                         </div>
-                        <span className="match-pill">98%</span>
-                      </div>
-                      <div className="routine-step-row">
-                        <span className="step-badge">02</span>
-                        <div>
-                          <strong>Niacinamide 10% Serum</strong>
-                          <p>Pore refinement & balance</p>
+                        <div className="routine-step-row">
+                          <span className="step-badge">02</span>
+                          <div>
+                            <strong>Niacinamide 10% Serum</strong>
+                            <p>Pore refinement & balance</p>
+                          </div>
+                          <span className="match-pill">96%</span>
                         </div>
-                        <span className="match-pill">96%</span>
-                      </div>
-                      <div className="routine-step-row">
-                        <span className="step-badge">03</span>
-                        <div>
-                          <strong>SPF 50 Mineral Defense</strong>
-                          <p>Broad spectrum daily shield</p>
+                        <div className="routine-step-row">
+                          <span className="step-badge">03</span>
+                          <div>
+                            <strong>SPF 50 Mineral Defense</strong>
+                            <p>Broad spectrum daily shield</p>
+                          </div>
+                          <span className="match-pill">99%</span>
                         </div>
-                        <span className="match-pill">99%</span>
                       </div>
                     </div>
                   )}
 
                   {slide.type === 'omni' && (
                     <div className="visual-omni-box">
-                      <div className="omni-core-hub">
-                        <div className="hub-ping"></div>
-                        <span>Orbo AI Vision Core</span>
+                      <img
+                        src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=500&h=360&fit=crop&q=80"
+                        alt="Omnichannel beauty platform"
+                        className="hero-visual-photo"
+                      />
+                      <div className="omni-overlay">
+                        <div className="omni-core-hub">
+                          <div className="hub-ping"></div>
+                          <span>Orbo AI Vision Core</span>
+                        </div>
+                        <div className="omni-node n-web">🌐 Web / Shopify</div>
+                        <div className="omni-node n-app">📱 iOS / Android</div>
+                        <div className="omni-node n-kiosk">🖥️ Smart Kiosk</div>
+                        <div className="omni-node n-mirror">🪞 Smart Mirror</div>
                       </div>
-                      <div className="omni-node n-web">🌐 Web / Shopify</div>
-                      <div className="omni-node n-app">📱 iOS / Android</div>
-                      <div className="omni-node n-kiosk">🖥️ Smart Kiosk</div>
-                      <div className="omni-node n-mirror">🪞 Smart Mirror</div>
                     </div>
                   )}
                 </div>

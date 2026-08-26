@@ -317,3 +317,21 @@
     display: none;
   }
 }
+
+/* ── AI Recommender highlighted link ── */
+.navbar__link--recommend {
+  background: linear-gradient(90deg, var(--color-primary), #ff6b8a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700 !important;
+}
+
+.navbar__link--recommend:hover {
+  opacity: 0.8;
+}
+
+.navbar__mobile-link--highlight {
+  color: var(--color-primary) !important;
+  font-weight: 700;
+}

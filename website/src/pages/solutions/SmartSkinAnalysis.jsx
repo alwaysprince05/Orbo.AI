@@ -30,11 +30,11 @@ export default function SmartSkinAnalysis() {
             <div className="vm-hero-right">
               <div className="vm-model-cutout-wrap">
                 <div className="vm-model-circle-bg" style={{ background: 'radial-gradient(circle, #FFF 0%, #FED7AA 100%)' }}>
-                  <div className="vm-photo-woman">
-                    <div className="woman-face-profile">
-                      <div className="skin-scan-overlay-lines"></div>
-                    </div>
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=600&fit=crop&q=80"
+                    alt="AI skin analysis"
+                    className="vm-hero-real-photo"
+                  />
                 </div>
                 <div className="vm-model-line"></div>
               </div>

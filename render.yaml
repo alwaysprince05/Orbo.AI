@@ -1,0 +1,49 @@
+# Render deployment blueprint — Orbo Beauty AI
+# Two services:
+#   1. orbo-api      FastAPI recommendation backend  (Python)
+#   2. orbo-frontend React/Vite SPA                  (Static site)
+#
+# Deploy: render.com → New → Blueprint → point at this repo.
+
+services:
+  # ── FastAPI Backend ─────────────────────────────────────────────────────────
+  - type: web
+    name: orbo-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: PRODUCTS_PATH
+        value: data/processed/products_processed.parquet
+      - key: MODEL_PATH
+        value: data/processed/content_model.joblib
+
+  # ── React / Vite Frontend ───────────────────────────────────────────────────
+  - type: web
+    name: orbo-frontend
+    runtime: static
+    buildCommand: cd website && npm ci && npm run build
+    staticPublishPath: website/dist
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      # Rewrite all paths to index.html for client-side React Router
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # Set this to the live orbo-api URL after first deploy, e.g.:
+      #   https://orbo-api-xxxx.onrender.com
+      # The Vite build injects it so the React app can reach the API directly.
+      - key: VITE_API_BASE_URL
+        value: ""

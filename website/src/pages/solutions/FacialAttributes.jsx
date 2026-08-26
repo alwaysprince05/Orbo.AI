@@ -31,17 +31,20 @@ export default function FacialAttributes() {
               <div style={{
                 height: '140px',
                 borderRadius: '16px',
-                background: `radial-gradient(circle, rgba(255,230,235,${glow/100}) 0%, rgba(254,187,173,0.6) 100%)`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexDirection: 'column',
+                overflow: 'hidden',
+                position: 'relative',
                 boxShadow: '0 8px 24px rgba(235, 87, 87, 0.25)',
                 marginBottom: '16px'
               }}>
-                <span style={{ fontSize: '2.5rem' }}>🌟</span>
-                <strong>Radiant Skin Filter Active</strong>
-                <span style={{ fontSize: '0.75rem', opacity: 0.8 }}>Smoothing: {smoothing}% • Luminescence: {glow}%</span>
+                <img
+                  src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=500&h=280&fit=crop&q=80"
+                  alt="Facial enhancement demo"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: `blur(${(100 - smoothing) * 0.02}px) brightness(${1 + glow * 0.002})` }}
+                />
+                <div style={{ position: 'absolute', bottom: '8px', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+                  <strong style={{ background: 'rgba(9,18,29,0.75)', color: '#FFF', padding: '4px 14px', borderRadius: '9999px', fontSize: '0.8rem', backdropFilter: 'blur(8px)' }}>Radiant Skin Filter Active</strong>
+                  <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.85)', padding: '2px 10px', borderRadius: '9999px', fontWeight: 700 }}>Smoothing: {smoothing}% • Luminescence: {glow}%</span>
+                </div>
               </div>
 
               <div style={{ marginBottom: '12px' }}>

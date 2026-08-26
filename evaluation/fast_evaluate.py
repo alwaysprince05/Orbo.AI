@@ -16,7 +16,7 @@ import sys
 # Suppress logging during evaluation
 logging.disable(logging.WARNING)
 
-sys.path.insert(0, '/Users/princemaurya/orbo-beauty-recommender')
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from app.recommender import build_recommender
 
 
@@ -112,25 +112,44 @@ def get_relevant_products(products_df: pd.DataFrame, profile: Dict[str, Any]) ->
     return relevant_ids
 
 
-def load_products_with_lists(csv_path: str):
-    """Load products CSV and parse list columns correctly."""
+def load_products_with_lists(products_path: str):
+    """Load products from Parquet (preferred) or CSV, parsing list columns correctly."""
     import ast
-    
-    products_df = pd.read_csv(csv_path)
-    
+
+    if products_path.endswith('.parquet'):
+        products_df = pd.read_parquet(products_path)
+        # Parquet may store lists as numpy arrays — normalise back to Python lists
+        for col in ('ingredients_normalized', 'skin_types', 'skin_concerns'):
+            if col in products_df.columns:
+                def to_list(x):
+                    if isinstance(x, list):
+                        return x
+                    if hasattr(x, 'tolist'):   # numpy array
+                        return x.tolist()
+                    try:
+                        if pd.isna(x):
+                            return []
+                    except Exception:
+                        pass
+                    return []
+                products_df[col] = products_df[col].apply(to_list)
+        return products_df
+
+    # CSV fallback
+    products_df = pd.read_csv(products_path)
+
     def parse_list(col):
         if pd.isna(col) or col == '':
             return []
         try:
             result = ast.literal_eval(col)
             return result if isinstance(result, list) else []
-        except:
+        except Exception:
             return []
-    
+
     products_df['ingredients_normalized'] = products_df['ingredients_normalized'].apply(parse_list)
-    products_df['skin_types'] = products_df['skin_types'].apply(parse_list)
+    products_df['skin_types']    = products_df['skin_types'].apply(parse_list)
     products_df['skin_concerns'] = products_df['skin_concerns'].apply(parse_list)
-    
     return products_df
 
 
@@ -144,9 +163,8 @@ def run_fast_evaluation(
     print("Loading recommender...")
     recommender = build_recommender(products_path, model_path)
     
-    # Load products from CSV (parquet has issues with list columns)
-    csv_path = products_path.replace('.parquet', '.csv')
-    products_df = load_products_with_lists(csv_path)
+    # Load products for relevance checking (supports both parquet and csv)
+    products_df = load_products_with_lists(products_path)
     
     with open(profiles_path) as f:
         profiles = json.load(f)

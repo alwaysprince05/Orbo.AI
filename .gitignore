@@ -1,32 +1,48 @@
-# Byte-compiled / optimized / DLL files
+# ── Python ────────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.pyd
 
-# Environments
+# ── Virtual environments ───────────────────────────────────────────────────────
 venv/
 env/
 ENV/
+.venv/
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
 .env
+*.env.local
 
-# Logs
+# ── Logs ──────────────────────────────────────────────────────────────────────
 *.log
-backend.log
-frontend.log
 
-# Node & Frontend
-website/node_modules/
-website/dist/
-.DS_Store
-
-# IDEs
-.idea/
-.vscode/
-.claude/
-.agents/
-
-# Testing & Cache
+# ── Test & coverage artefacts ─────────────────────────────────────────────────
 .pytest_cache/
 .coverage
 htmlcov/
+.tox/
+
+# ── Node / React (website/) ───────────────────────────────────────────────────
+website/node_modules/
+website/dist/
+website/.env.local
+
+# ── OS artefacts ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE configs ───────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Kiro / AI tool metadata ───────────────────────────────────────────────────
+.claude/
+.agents/
+.kiro/
+
+# ── Evaluation scratch ────────────────────────────────────────────────────────
+evaluation/__pycache__/

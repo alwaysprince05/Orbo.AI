@@ -12,9 +12,41 @@ const hairShades = [
   { name: 'Pastel Rose Gold', hex: '#E8A598', type: 'Fantasy' }
 ];
 
+const APPLICATION_STYLES = ['Full Tint', 'Ombré Gradient', 'Balayage Highlights', 'Split Dye'];
+
+// Scale a hex colour's channels — factor < 1 darkens, > 1 lightens. Used to
+// derive the second tone in a split dye and the root/tip tones in an ombré.
+function shift(hex, factor) {
+  const n = parseInt(hex.slice(1), 16);
+  return (
+    '#' +
+    [(n >> 16) & 255, (n >> 8) & 255, n & 255]
+      .map((v) => Math.max(0, Math.min(255, Math.round(v * factor))))
+      .map((v) => v.toString(16).padStart(2, '0'))
+      .join('')
+  );
+}
+
+// The colour layer painted over the model's hair for each application style.
+function tintFor(style, hex) {
+  switch (style) {
+    case 'Ombré Gradient':
+      return `linear-gradient(180deg, ${shift(hex, 0.55)} 0%, ${hex} 52%, ${shift(hex, 1.35)} 100%)`;
+    case 'Balayage Highlights':
+      return `repeating-linear-gradient(100deg, ${hex} 0px, ${hex} 16px, ${shift(hex, 1.4)} 16px, ${shift(hex, 1.4)} 30px)`;
+    case 'Split Dye':
+      return `linear-gradient(90deg, ${hex} 0 49.5%, ${shift(hex, 0.5)} 50.5% 100%)`;
+    default:
+      return hex;
+  }
+}
+
 export default function VirtualHairColor() {
   const [selectedShade, setSelectedShade] = useState(hairShades[0]);
-  const [mode, setMode] = useState('Full');
+  // Must match one of APPLICATION_STYLES, otherwise no style reads as selected
+  // on first paint (the previous default of 'Full' matched no button).
+  const [mode, setMode] = useState(APPLICATION_STYLES[0]);
+  const [photoOk, setPhotoOk] = useState(true);
 
   return (
     <div className="solution-page">
@@ -38,10 +70,12 @@ export default function VirtualHairColor() {
             <div className="vm-hero-right">
               <div className="vm-model-cutout-wrap">
                 <div className="vm-model-circle-bg" style={{ background: 'radial-gradient(circle, #EDE9FE 0%, #DDD6FE 100%)' }}>
-                  <div className="vm-photo-woman">
-                    <div className="woman-hair-voluminous" style={{ backgroundColor: selectedShade.hex }}></div>
-                    <div className="woman-face-profile"></div>
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=600&fit=crop&q=80"
+                    alt="Virtual hair color model"
+                    className="vm-hero-real-photo"
+                  />
+                  <div className="vm-lip-tint-overlay" style={{ background: `radial-gradient(ellipse at 50% 25%, ${selectedShade.hex}66 0%, transparent 50%)` }}></div>
                 </div>
                 <div className="vm-model-line"></div>
               </div>
@@ -69,7 +103,7 @@ export default function VirtualHairColor() {
                       boxShadow: `0 8px 24px ${selectedShade.hex}60`
                     }}></div>
                     <strong style={{ fontSize: '1.1rem', color: '#4C1D95' }}>{selectedShade.name}</strong>
-                    <p style={{ fontSize: '0.8rem', color: '#6B7280' }}>Technique: {mode} Blending</p>
+                    <p style={{ fontSize: '0.8rem', color: '#6B7280' }}>Technique: {mode}</p>
                   </div>
                 </div>
               </div>

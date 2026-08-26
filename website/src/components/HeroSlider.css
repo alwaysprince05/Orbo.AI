@@ -213,12 +213,19 @@
 
 /* Routine Card (Slide 2) */
 .visual-routine-box {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(16px);
+  position: relative;
   border-radius: 24px;
-  padding: 24px 20px;
+  overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  min-height: 290px;
+}
+
+.routine-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -277,14 +284,20 @@
 .visual-omni-box {
   position: relative;
   height: 290px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
   border-radius: 24px;
-  padding: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.omni-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  padding: 20px;
 }
 
 .omni-core-hub {
@@ -323,11 +336,35 @@
 
 /* Arrows */
 .slider-arrow {
-  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,0,0,0.08);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #09121D;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transition: all 0.2s ease;
 }
 
-.slider-arrow--prev { display: none; }
-.slider-arrow--next { display: none; }
+.slider-arrow:hover {
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slider-arrow--prev { left: 18px; }
+.slider-arrow--next { right: 18px; }
 
 /* Dots Indicator */
 .hero-slider-dots-bar {

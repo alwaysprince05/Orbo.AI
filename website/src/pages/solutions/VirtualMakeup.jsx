@@ -69,14 +69,12 @@ export default function VirtualMakeup() {
             <div className="vm-hero-right">
               <div className="vm-model-cutout-wrap">
                 <div className="vm-model-circle-bg">
-                  <div className="vm-photo-woman">
-                    <div className="woman-hair-voluminous"></div>
-                    <div className="woman-face-profile">
-                      <div className="woman-eyes-sparkle"></div>
-                      <div className="woman-lips-red" style={{ backgroundColor: selectedLip }}></div>
-                      <div className="woman-hand-touch"></div>
-                    </div>
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&h=600&fit=crop&q=80"
+                    alt="Virtual makeup model"
+                    className="vm-hero-real-photo"
+                  />
+                  <div className="vm-lip-tint-overlay" style={{ background: `radial-gradient(ellipse at 50% 75%, ${selectedLip}55 0%, transparent 45%)` }}></div>
                 </div>
                 <div className="vm-model-line"></div>
               </div>
@@ -94,10 +92,12 @@ export default function VirtualMakeup() {
                 <div className="adoption-portrait-frame">
                   <div className="badge-camera-top">Camera 📷</div>
                   <div className="badge-cart-top">Cart 🛒</div>
-                  <div className="adoption-model-head">
-                    <div className="model-blonde-curls"></div>
-                    <div className="model-lips-violet" style={{ backgroundColor: selectedLip }}></div>
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=500&fit=crop&q=80"
+                    alt="Model with virtual makeup applied"
+                    className="adoption-real-photo"
+                  />
+                  <div className="vm-lip-tint-overlay" style={{ background: `radial-gradient(ellipse at 50% 72%, ${selectedLip}55 0%, transparent 40%)` }}></div>
                   {/* Fan of lipstick shades */}
                   <div className="fan-shades-deck">
                     <div className="stick-holder stick-1" style={{ backgroundColor: '#BA0C2F' }} onClick={() => setSelectedLip('#BA0C2F')}></div>
@@ -167,8 +167,8 @@ export default function VirtualMakeup() {
                     {/* Model 1 */}
                     <div className={`model-pane-box ${activeModel === 1 ? 'box--active' : ''}`} onClick={() => setActiveModel(1)}>
                       <div className="model-render-face">
-                        <div className="render-eyes-pair"></div>
-                        <div className="render-lips-pair" style={{ backgroundColor: selectedLip, opacity: activeFinish === 'Sheer' ? 0.7 : 1 }}></div>
+                        <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=300&h=350&fit=crop&q=80" alt="Model Fair" className="model-pane-photo" />
+                        <div className="model-lip-tint" style={{ background: `radial-gradient(ellipse at 50% 78%, ${selectedLip}66 0%, transparent 35%)`, opacity: activeFinish === 'Sheer' ? 0.5 : 1 }}></div>
                       </div>
                       <span className="model-label-pill pink-pill">Model 1 (Fair)</span>
                     </div>
@@ -212,8 +212,8 @@ export default function VirtualMakeup() {
                     {/* Model 2 */}
                     <div className={`model-pane-box ${activeModel === 2 ? 'box--active' : ''}`} onClick={() => setActiveModel(2)}>
                       <div className="model-render-face face--deep">
-                        <div className="render-eyes-pair"></div>
-                        <div className="render-lips-pair" style={{ backgroundColor: selectedLip, opacity: activeFinish === 'Sheer' ? 0.7 : 1 }}></div>
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=350&fit=crop&q=80" alt="Model Olive" className="model-pane-photo" />
+                        <div className="model-lip-tint" style={{ background: `radial-gradient(ellipse at 50% 78%, ${selectedLip}66 0%, transparent 35%)`, opacity: activeFinish === 'Sheer' ? 0.5 : 1 }}></div>
                       </div>
                       <span className="model-label-pill pink-pill">Model 2 (Olive)</span>
                     </div>
@@ -344,13 +344,11 @@ export default function VirtualMakeup() {
               <h2 className="integration-column-title">API and SDK</h2>
               <div className="integration-circular-visual">
                 <div className="circle-glow-bg">
-                  <div className="half-face-half-phone">
-                    <div className="face-natural-side"></div>
-                    <div className="phone-makeup-side">
-                      <div className="makeup-applied-eye"></div>
-                      <div className="makeup-applied-lip"></div>
-                    </div>
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=300&h=300&fit=crop&q=80"
+                    alt="API SDK beauty integration"
+                    className="integration-real-photo"
+                  />
                 </div>
               </div>
               <p className="integration-column-desc">
@@ -366,14 +364,11 @@ export default function VirtualMakeup() {
               <h2 className="integration-column-title">Cross-platform Integration</h2>
               <div className="integration-circular-visual">
                 <div className="circle-glow-bg pink-glow">
-                  <div className="omnichannel-devices-cluster">
-                    <div className="device-phone">📱</div>
-                    <div className="device-smart-kiosk">
-                      <div className="kiosk-screen-face"></div>
-                      <div className="kiosk-swatches"></div>
-                    </div>
-                    <div className="device-desktop">💻</div>
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&h=300&fit=crop&q=80"
+                    alt="Cross-platform beauty integration"
+                    className="integration-real-photo"
+                  />
                 </div>
               </div>
               <p className="integration-column-desc">
@@ -404,10 +399,11 @@ export default function VirtualMakeup() {
             <div className="foundation-card-right">
               <div className="foundation-circle-cutout-wrap">
                 <div className="foundation-circle-bg">
-                  <div className="foundation-woman-mesh">
-                    <div className="mesh-polygon-lines"></div>
-                    <div className="woman-applicator-sponge"></div>
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop&q=80"
+                    alt="Foundation shade matching"
+                    className="foundation-real-photo"
+                  />
                 </div>
                 <div className="foundation-white-line"></div>
               </div>

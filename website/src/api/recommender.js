@@ -46,7 +46,7 @@ async function request(path, options = {}, timeoutMs = DEFAULT_TIMEOUT_MS) {
 export const api = {
   health: (signal) => request('/health', { signal }),
 
-  metadata: () => request('/metadata'),
+  metadata: (signal) => request('/metadata', signal ? { signal } : {}),
 
   /** @param {AbortSignal} [signal] Pass controller.signal to cancel on unmount */
   recommend: (payload, signal) =>

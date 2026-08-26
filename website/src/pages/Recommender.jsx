@@ -191,11 +191,13 @@ export default function Recommender() {
   const [latencyMs, setLatencyMs] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
 
-  // Fetch metadata on mount
+  // Fetch metadata on mount — cancel cleanly on unmount
   useEffect(() => {
-    api.metadata()
-      .then(setMeta)
-      .catch(err => setMetaError(err.message));
+    const controller = new AbortController();
+    api.metadata(controller.signal)
+      .then(data => { if (!controller.signal.aborted) setMeta(data); })
+      .catch(err => { if (!controller.signal.aborted) setMetaError(err.message); });
+    return () => controller.abort();
   }, []);
 
   const toggleConcern = useCallback((c) => {

@@ -12,12 +12,18 @@ Computes:
 """
 
 import json
+import sys
 import time
 import numpy as np
 import pandas as pd
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Set
 import logging
+
+# Ensure project root is on sys.path for app imports
+_PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
 
 from app.recommender import build_recommender
 

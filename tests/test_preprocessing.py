@@ -3,9 +3,6 @@ Tests for preprocessing pipeline.
 """
 
 import pytest
-import sys
-
-sys.path.insert(0, '/Users/princemaurya/orbo-beauty-recommender')
 
 from app.utils.preprocessing import (
     normalize_category,

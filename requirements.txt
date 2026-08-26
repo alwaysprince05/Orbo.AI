@@ -17,3 +17,6 @@ pyarrow==25.0.1
 
 # Model persistence
 joblib==1.5.3
+
+# Config
+python-dotenv==1.0.1

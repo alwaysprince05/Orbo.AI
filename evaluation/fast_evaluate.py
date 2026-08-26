@@ -16,7 +16,11 @@ import sys
 # Suppress logging during evaluation
 logging.disable(logging.WARNING)
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+# Ensure project root is on sys.path for app imports
+_PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
+
 from app.recommender import build_recommender
 
 

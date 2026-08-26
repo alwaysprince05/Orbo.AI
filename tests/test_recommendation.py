@@ -3,9 +3,6 @@ Tests for recommendation engine.
 """
 
 import pytest
-import sys
-
-sys.path.insert(0, '/Users/princemaurya/orbo-beauty-recommender')
 
 
 class TestRecommendation:

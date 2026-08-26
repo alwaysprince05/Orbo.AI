@@ -1,0 +1,11 @@
+[project]
+name = "orbo-beauty-ai"
+version = "1.0.0"
+description = "Orbo Beauty AI — Personalized Skincare Recommendation System"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v --tb=short"

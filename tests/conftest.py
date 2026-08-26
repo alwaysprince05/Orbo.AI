@@ -6,9 +6,6 @@ import pytest
 import pandas as pd
 import numpy as np
 from pathlib import Path
-import sys
-
-sys.path.insert(0, '/Users/princemaurya/orbo-beauty-recommender')
 
 from fastapi.testclient import TestClient
 from app.main import app
@@ -20,7 +17,7 @@ from app.recommender import build_recommender
 def products_df():
     """Load processed products."""
     from evaluation.fast_evaluate import load_products_with_lists
-    return load_products_with_lists('data/processed/products_processed.csv')
+    return load_products_with_lists('data/processed/products_processed.parquet')
 
 
 @pytest.fixture(scope="session")

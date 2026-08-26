@@ -4,9 +4,17 @@ Main FastAPI application for Orbo Beauty AI Recommendation System.
 
 import os
 import logging
+from pathlib import Path
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# Load .env file if present (non-failing)
+try:
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).resolve().parent.parent / '.env')
+except ImportError:
+    pass
 
 from app.api.routes import router, set_recommender
 from app.recommender import build_recommender

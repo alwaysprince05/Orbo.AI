@@ -7,12 +7,17 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+
     server: {
       port: 3000,
       host: true,
+
+      // ── SPA fallback: serve index.html for any unknown path ────────────────
+      // Without this, refreshing on /recommend, /about-us, etc. returns 404
+      // because the browser asks the dev server for that path directly.
+      historyApiFallback: true,
+
       proxy: {
-        // In dev, /api/* is proxied to the FastAPI backend.
-        // In production the React app uses VITE_API_BASE_URL directly.
         '/api': {
           target: apiTarget,
           changeOrigin: true,
@@ -20,9 +25,12 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
+
     preview: {
       port: 4173,
       host: true,
+      // Same fix for `vite preview` (production preview mode)
+      historyApiFallback: true,
     },
   };
 });

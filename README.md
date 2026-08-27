@@ -12,19 +12,30 @@
 
 ## Submission Checklist
 
-| Deliverable | Status | Location |
+| Deliverable | Status | Link |
 |---|---|---|
-| Working recommendation system | ✅ | `app/` (ML engine) |
-| Testing interface — deployed UI | ✅ | React frontend at `website/` — run `npm run dev` |
-| Documentation | ✅ | This README |
+| GitHub Repository | ✅ | https://github.com/alwaysprince05/Orbo.AI |
+| Live Deployment | ✅ | https://orbo-frontend-j0cg.onrender.com |
+| AI Recommender UI | ✅ | https://orbo-frontend-j0cg.onrender.com/recommend |
+| API Backend | ✅ | https://orbo-api.onrender.com |
+| API Documentation | ✅ | https://orbo-api.onrender.com/docs |
+| Documentation (README) | ✅ | This file |
 | Bonus: Nykaa comparison | ✅ | [Bonus section](#bonus-comparison-with-nykaa) |
 
 **Quick start for evaluators:**  
+
+1. Open **https://orbo-frontend-j0cg.onrender.com/recommend**
+2. Select your skin type (dry, oily, combination, normal, sensitive)
+3. Tick your skin concerns (hydration, acne, aging, pigmentation, etc.)
+4. Set your budget and preferred ingredients
+5. Click **Find My Products**
+6. View ranked recommendations with match percentages and explanations
+
+**For local development:**  
 ```bash
 ./run.sh                # starts FastAPI on :8000
 cd website && npm run dev  # starts React UI on :3000
 ```
-Open **http://localhost:3000/recommend** — select skin type, tick concerns, set budget, hit **Find My Products**.
 
 ---
 
@@ -42,11 +53,13 @@ The global beauty market lists hundreds of thousands of products with complex in
 
 | Interface | URL |
 |---|---|
-| **React UI** | http://localhost:3000 |
-| **AI Recommender page** | http://localhost:3000/recommend |
-| **Product Catalog** | http://localhost:3000/#products |
-| **FastAPI Swagger** | http://localhost:8000/docs |
-| **Health Check** | http://localhost:8000/api/v1/health |
+| **React UI** | https://orbo-frontend-j0cg.onrender.com |
+| **AI Recommender page** | https://orbo-frontend-j0cg.onrender.com/recommend |
+| **Product Catalog** | https://orbo-frontend-j0cg.onrender.com/#products |
+| **FastAPI Swagger** | https://orbo-api.onrender.com/docs |
+| **Health Check** | https://orbo-api.onrender.com/api/v1/health |
+| **BeautyGPT Advisor** | https://orbo-frontend-j0cg.onrender.com/beautygpt |
+| **GitHub Repository** | https://github.com/alwaysprince05/Orbo.AI |
 
 ---
 
@@ -231,7 +244,7 @@ For each selected product:
 ### POST `/api/v1/recommend`
 
 ```bash
-curl -X POST http://localhost:8000/api/v1/recommend \
+curl -X POST https://orbo-api.onrender.com/api/v1/recommend \
   -H "Content-Type: application/json" \
   -d '{
     "skin_type": "dry",
@@ -444,7 +457,7 @@ Run `python evaluation/fast_evaluate.py` to reproduce.
 - Add `min_rating` and `brand` query params to the `/products` API endpoint so client-side filtering is server-side
 - Wire real Formspree / email backend to the contact form (currently uses a placeholder endpoint ID)
 - Add screenshots to `docs/screenshots/` and update README image badges
-- Push to public GitHub and deploy frontend to Vercel, API to Render
+- ~~Push to public GitHub and deploy frontend to Vercel, API to Render~~ ✅ Done — deployed on Render
 
 ### Algorithm (1–3 months)
 - **Two-Tower retrieval** to scale candidate generation to 100K+ products
@@ -659,9 +672,17 @@ cd website && npm run build
 
 ## Deployment
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for step-by-step instructions.
+The application is deployed on Render using the `render.yaml` blueprint:
+
+| Service | URL | Status |
+|---|---|---|
+| **Frontend** | https://orbo-frontend-j0cg.onrender.com | ✅ Live |
+| **API Backend** | https://orbo-api.onrender.com | ✅ Live |
+| **API Docs** | https://orbo-api.onrender.com/docs | ✅ Live |
 
 **Quick path:** push to GitHub → connect repo to [Render](https://render.com) → the `render.yaml` blueprint creates both the FastAPI service and a React static site automatically.
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
 
 ---
 

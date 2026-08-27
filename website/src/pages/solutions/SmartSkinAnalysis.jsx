@@ -63,19 +63,19 @@ export default function SmartSkinAnalysis() {
             <div className="vm-col-visual">
               <div className="adoption-portrait-container">
                 <div className="adoption-portrait-frame" style={{ background: '#F0FDF4' }}>
-                  <div className="badge-camera-top">Clinical AI 🔬</div>
+                  <div className="badge-camera-top">Clinical AI</div>
                   <div style={{ padding: '20px 10px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>✨</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#10b981', marginBottom: '8px' }}>AI</div>
                     <strong style={{ fontSize: '1.1rem', color: '#166534' }}>Overall Score: 92/100</strong>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '16px', textAlign: 'left' }}>
                       <div style={{ background: '#FFF', padding: '8px 12px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: '700' }}>
-                        💧 Hydration: <span style={{ color: '#16A34A' }}>88% (Optimal)</span>
+                        Hydration: <span style={{ color: '#16A34A' }}>88% (Optimal)</span>
                       </div>
                       <div style={{ background: '#FFF', padding: '8px 12px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: '700' }}>
-                        🛡️ Barrier Defense: <span style={{ color: '#16A34A' }}>94% (Strong)</span>
+                        Barrier Defense: <span style={{ color: '#16A34A' }}>94% (Strong)</span>
                       </div>
                       <div style={{ background: '#FFF', padding: '8px 12px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: '700' }}>
-                        ☀️ UV Sun Damage: <span style={{ color: '#EAB308' }}>Mild Forehead Spots</span>
+                        UV Sun Damage: <span style={{ color: '#EAB308' }}>Mild Forehead Spots</span>
                       </div>
                     </div>
                   </div>

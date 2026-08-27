@@ -8,8 +8,8 @@
     "avg_map_at_k": 0.07532697022854165,
     "avg_diversity": 0.8851321279528243,
     "catalog_coverage": 0.02403542061986085,
-    "avg_latency_ms": 18.364763259887695,
-    "p95_latency_ms": 33.82474184036253,
+    "avg_latency_ms": 15.543270111083984,
+    "p95_latency_ms": 23.351633548736565,
     "num_fallbacks_used": 0
   },
   "profile_results": [
@@ -21,7 +21,7 @@
       "ndcg_at_k": 1.0,
       "average_precision": 0.0199203187250996,
       "diversity": 0.6626593219538304,
-      "latency_ms": 42.92011260986328,
+      "latency_ms": 25.139808654785156,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 251
@@ -34,7 +34,7 @@
       "ndcg_at_k": 0.6608397947263839,
       "average_precision": 0.07990196078431373,
       "diversity": 0.9348502452658409,
-      "latency_ms": 14.161825180053711,
+      "latency_ms": 13.171911239624023,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 34
@@ -47,7 +47,7 @@
       "ndcg_at_k": 0.6608397947263839,
       "average_precision": 0.08763440860215053,
       "diversity": 0.9128628547378548,
-      "latency_ms": 15.781164169311523,
+      "latency_ms": 14.780998229980469,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 31
@@ -60,7 +60,7 @@
       "ndcg_at_k": 1.0,
       "average_precision": 0.034722222222222224,
       "diversity": 0.7647703830598612,
-      "latency_ms": 20.84183692932129,
+      "latency_ms": 19.920825958251953,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 144
@@ -73,7 +73,7 @@
       "ndcg_at_k": 1.0,
       "average_precision": 0.0847457627118644,
       "diversity": 0.9310530904280905,
-      "latency_ms": 19.615888595581055,
+      "latency_ms": 18.01896095275879,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 59
@@ -86,7 +86,7 @@
       "ndcg_at_k": 1.0,
       "average_precision": 0.1111111111111111,
       "diversity": 0.9597697992692054,
-      "latency_ms": 8.955001831054688,
+      "latency_ms": 8.511066436767578,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 45
@@ -99,7 +99,7 @@
       "ndcg_at_k": 1.0,
       "average_precision": 0.06944444444444445,
       "diversity": 0.88654457580512,
-      "latency_ms": 15.352725982666016,
+      "latency_ms": 13.485193252563477,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 72
@@ -112,7 +112,7 @@
       "ndcg_at_k": 1.0,
       "average_precision": 0.2,
       "diversity": 0.9216350631214003,
-      "latency_ms": 8.846044540405273,
+      "latency_ms": 7.88569450378418,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 25
@@ -125,7 +125,7 @@
       "ndcg_at_k": 0.0,
       "average_precision": 0.0,
       "diversity": 0.9501060677354104,
-      "latency_ms": 22.70817756652832,
+      "latency_ms": 21.166086196899414,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 0
@@ -138,7 +138,7 @@
       "ndcg_at_k": 1.0,
       "average_precision": 0.06578947368421052,
       "diversity": 0.9270698781516294,
-      "latency_ms": 14.464855194091797,
+      "latency_ms": 13.352155685424805,
       "num_recommended": 5,
       "is_fallback": false,
       "num_relevant": 76

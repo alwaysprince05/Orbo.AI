@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import ProductCatalog from '../../components/ProductCatalog';
 import ContactForm from '../../components/ContactForm';
+import { formatPrice } from '../../utils/formatPrice';
 import './SolutionsCommon.css';
 
 export default function SmartBeautyMirror() {
-  const [activeScreen, setActiveScreen] = useState('Split');
+  const [activeScreen, setActiveScreen] = useState('Split Before/After');
 
   return (
     <div className="solution-page">
@@ -23,7 +25,7 @@ export default function SmartBeautyMirror() {
 
             <div className="simulator-box" id="demo">
               <div className="simulator-header">
-                <span className="sim-title">🪞 Smart Mirror Kiosk OS UI</span>
+                <span className="sim-title">Smart Mirror Kiosk OS UI</span>
                 <span className="sim-badge">4K Touchless Ready</span>
               </div>
 
@@ -54,7 +56,7 @@ export default function SmartBeautyMirror() {
                     <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&h=300&fit=crop&q=80" alt="Virtual Makeup" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,46,99,0.15)' }} />
                     <span style={{ position: 'absolute', top: 10, left: '50%', transform: 'translateX(-50%)', background: '#FF2E63', color: '#fff', fontSize: '0.7rem', fontWeight: 800, padding: '3px 12px', borderRadius: 999 }}>
-                      ✨ AR Makeup Active — Lipstick #E63946
+                      AR Makeup Active — Lipstick #E63946
                     </span>
                   </div>
                 )}
@@ -81,7 +83,7 @@ export default function SmartBeautyMirror() {
                       ))}
                     </div>
                     <p style={{ fontSize: '0.7rem', color: '#374151', fontWeight: 700, margin: 0 }}>Scan to add items to cart</p>
-                    <p style={{ fontSize: '0.62rem', color: '#9ca3af', margin: 0 }}>3 products · $56.48 saved to session</p>
+                    <p style={{ fontSize: '0.62rem', color: '#9ca3af', margin: 0 }}>3 products · {formatPrice(56.48)} saved to session</p>
                   </div>
                 )}
               </div>
@@ -121,23 +123,30 @@ export default function SmartBeautyMirror() {
 
           <div className="feature-cards-grid">
             <div className="feat-card">
-              <div className="feat-icon">👋</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8V6a2 2 0 0 0-4 0v1"/><path d="M14 8V4a2 2 0 0 0-4 0v4"/><path d="M10 8V5a2 2 0 0 0-4 0v9l-1.5-2a2 2 0 0 0-3 3l5.5 5a8 8 0 0 0 8-8V8a2 2 0 0 0-4 0"/></svg></div>
               <h3>Touchless Gesture Control</h3>
               <p>Hygiene-safe interaction allows shoppers to swipe shades and change categories with simple hand gestures.</p>
             </div>
             <div className="feat-card">
-              <div className="feat-icon">🛍️</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
               <h3>Scan-To-Mobile Cart</h3>
               <p>Shoppers scan a generated on-screen QR code to save their tailored routine directly to their smartphone.</p>
             </div>
             <div className="feat-card">
-              <div className="feat-icon">📊</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
               <h3>Footfall & Tester Analytics</h3>
               <p>Brands gain aggregate demographic and shade preference heatmaps without capturing private user imagery.</p>
             </div>
           </div>
         </div>
       </section>
+
+      <ProductCatalog
+        initialCategory="all"
+        showFilters={true}
+        title="Beauty Counter Product Catalog"
+        subtitle="Products recommended by the Smart Mirror during interactive consultations."
+      />
 
       <ContactForm />
     </div>

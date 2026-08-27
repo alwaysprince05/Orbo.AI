@@ -31,19 +31,19 @@ export default function InteractiveBeautyCanvas({ defaultCategory = 'makeup' }) 
             className={`c-tab-btn ${activeTab === 'makeup' ? 'c-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('makeup')}
           >
-            💄 Virtual Makeup AR
+            Virtual Makeup AR
           </button>
           <button 
             className={`c-tab-btn ${activeTab === 'skin' ? 'c-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('skin')}
           >
-            🔬 Clinical Skin HUD
+            Clinical Skin HUD
           </button>
           <button 
             className={`c-tab-btn ${activeTab === 'shade' ? 'c-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('shade')}
           >
-            🎨 Shade & Undertone
+            Shade & Undertone
           </button>
         </div>
 
@@ -114,10 +114,10 @@ export default function InteractiveBeautyCanvas({ defaultCategory = 'makeup' }) 
               <div className="skin-scanner-photo-hud">
                 <div className="hud-laser-line"></div>
                 <div className="hud-mesh-overlay"></div>
-                <div className="hud-metric-pill m-1">💧 Hydration: 88% Optimal</div>
-                <div className="hud-metric-pill m-2">✨ Texture: Grade A+</div>
-                <div className="hud-metric-pill m-3">🛡️ Barrier: 94% Strong</div>
-                <div className="hud-metric-pill m-4">☀️ Melanin: Class 04</div>
+                <div className="hud-metric-pill m-1">Hydration: 88% Optimal</div>
+                <div className="hud-metric-pill m-2">Texture: Grade A+</div>
+                <div className="hud-metric-pill m-3">Barrier: 94% Strong</div>
+                <div className="hud-metric-pill m-4">Melanin: Class 04</div>
               </div>
             )}
 
@@ -187,10 +187,10 @@ export default function InteractiveBeautyCanvas({ defaultCategory = 'makeup' }) 
 
         {activeTab === 'skin' && (
           <div className="skin-metrics-row">
-            <div className="metric-chip">💧 Hydration: <strong>88%</strong></div>
-            <div className="metric-chip">✨ Glow Index: <strong>92%</strong></div>
-            <div className="metric-chip">🛡️ Barrier Health: <strong>Optimal</strong></div>
-            <div className="metric-chip">🔬 Pores: <strong>Minimized (Grade A)</strong></div>
+            <div className="metric-chip">Hydration: <strong>88%</strong></div>
+            <div className="metric-chip">Glow Index: <strong>92%</strong></div>
+            <div className="metric-chip">Barrier Health: <strong>Optimal</strong></div>
+            <div className="metric-chip">Pores: <strong>Minimized (Grade A)</strong></div>
           </div>
         )}
 

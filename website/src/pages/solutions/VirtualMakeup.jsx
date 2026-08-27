@@ -90,8 +90,8 @@ export default function VirtualMakeup() {
             <div className="vm-col-visual">
               <div className="adoption-portrait-container">
                 <div className="adoption-portrait-frame">
-                  <div className="badge-camera-top">Camera 📷</div>
-                  <div className="badge-cart-top">Cart 🛒</div>
+                  <div className="badge-camera-top">Camera</div>
+                  <div className="badge-cart-top">Cart</div>
                   <img
                     src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=500&fit=crop&q=80"
                     alt="Model with virtual makeup applied"
@@ -156,7 +156,7 @@ export default function VirtualMakeup() {
                   <div className="software-top-tabs">
                     <div className="sw-tab"><span>Concealer</span></div>
                     <div className="sw-tab"><span>Highlighter</span></div>
-                    <div className="sw-tab sw-tab--active"><span className="lip-ico">💄</span><span>Lipstick</span></div>
+                    <div className="sw-tab sw-tab--active"><span>Lipstick</span></div>
                     <div className="sw-tab"><span>Eyeshadow</span></div>
                     <div className="sw-tab"><span>Eyeliner</span></div>
                     <div className="sw-tab"><span>Eyelash</span></div>
@@ -298,11 +298,11 @@ export default function VirtualMakeup() {
                       {/* Floating Similar Products Box */}
                       <div className="floating-similar-products-card">
                         <div className="similar-hdr">
-                          <span>🛒 Similar Products</span>
+                          <span>Similar Products</span>
                           <span className="close-x">×</span>
                         </div>
                         <div className="similar-item-content">
-                          <span className="sim-prod-icon">💄</span>
+                          <span className="sim-prod-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#BA0C2F" strokeWidth="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/></svg></span>
                           <div className="sim-prod-info">
                             <strong>Intense Matte Lipstick</strong>
                             <p>584 Ruby Red, 3.8 gm</p>
@@ -312,10 +312,10 @@ export default function VirtualMakeup() {
                       </div>
 
                       <div className="phone-category-icons-row">
-                        <span className="cat-bubble">👁️</span>
-                        <span className="cat-bubble">✨</span>
-                        <span className="cat-bubble active-bubble">💄</span>
-                        <span className="cat-bubble">🎭</span>
+                        <span className="cat-bubble">Eye</span>
+                        <span className="cat-bubble">Lip</span>
+                        <span className="cat-bubble active-bubble">Lip</span>
+                        <span className="cat-bubble">Eye</span>
                       </div>
                     </div>
                   </div>
@@ -459,22 +459,22 @@ export default function VirtualMakeup() {
 
           <div className="who-grid">
             <div className="who-card">
-              <div className="who-icon">📱</div>
+              <div className="who-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
               <h3>Developers and camera apps</h3>
               <p>Deliver a great customer experience with lightweight on-device WebGL and CoreML libraries.</p>
             </div>
             <div className="who-card">
-              <div className="who-icon">🏪</div>
+              <div className="who-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
               <h3>Online and offline retailers</h3>
               <p>Create a powerful conversion funnel across e-commerce, digital kiosks, and smart mirror booths.</p>
             </div>
             <div className="who-card">
-              <div className="who-icon">💄</div>
+              <div className="who-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
               <h3>Color cosmetics brands</h3>
               <p>Bridge the gap between product & customer with zero-cost digital sampling at global scale.</p>
             </div>
             <div className="who-card">
-              <div className="who-icon">📢</div>
+              <div className="who-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
               <h3>Advertising & marketing agencies</h3>
               <p>Enable agencies to create viral AR try-on ad campaigns and engaging interactive sponsorships.</p>
             </div>

@@ -30,7 +30,7 @@ export default function VirtualHairStyling() {
 
             <div className="simulator-box" id="demo">
               <div className="simulator-header">
-                <span className="sim-title">✂️ Hairstyle 3D Geometry Fitting</span>
+                <span className="sim-title">Hairstyle 3D Geometry Fitting</span>
                 <span className="sim-badge">Generative Morph</span>
               </div>
 
@@ -96,17 +96,17 @@ export default function VirtualHairStyling() {
 
           <div className="feature-cards-grid">
             <div className="feat-card">
-              <div className="feat-icon">📐</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 2h20v20H2z"/><path d="M2 8h20M8 2v20"/></svg></div>
               <h3>Automatic Face-Shape Matching</h3>
               <p>Recommends optimal cuts and partings tailored to round, oval, square, and heart facial dimensions.</p>
             </div>
             <div className="feat-card">
-              <div className="feat-icon">🌬️</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg></div>
               <h3>Physics-Based Flow & Motion</h3>
               <p>Hair moves naturally with head rotation and tilt, providing dynamic 360-degree consultation.</p>
             </div>
             <div className="feat-card">
-              <div className="feat-icon">🏪</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
               <h3>Salon & Retail Ready</h3>
               <p>Easily integrates into tablet-based salon POS terminals and wig/hair extension e-commerce sites.</p>
             </div>

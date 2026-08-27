@@ -60,7 +60,7 @@ export default function FoundationShadeFinder() {
             <div className="vm-col-visual">
               <div className="adoption-portrait-container">
                 <div className="adoption-portrait-frame" style={{ background: '#EFF6FF' }}>
-                  <div className="badge-camera-top">AI Shade Detector 🔍</div>
+                  <div className="badge-camera-top">AI Shade Detector</div>
                   <div style={{ textAlign: 'center', marginTop: '40px' }}>
                     <div style={{
                       width: '120px',

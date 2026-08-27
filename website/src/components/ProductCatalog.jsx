@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../api/recommender';
+import { formatPrice } from '../utils/formatPrice';
 import './ProductCatalog.css';
 
 // ─── Product image map ────────────────────────────────────────────────────────
@@ -185,9 +186,9 @@ function ProductCard({ product }) {
 
         {/* Price row */}
         <div className="pc-card__price-row">
-          <span className="pc-card__price">${Number(product.price).toFixed(2)}</span>
+          <span className="pc-card__price">{formatPrice(product.price)}</span>
           {mrp && (
-            <span className="pc-card__mrp">${mrp.toFixed(2)}</span>
+            <span className="pc-card__mrp">{formatPrice(mrp)}</span>
           )}
           {discount && (
             <span className="pc-card__discount">{discount}% off</span>
@@ -252,16 +253,16 @@ function ProductCard({ product }) {
 
 // ─── Filter bar constants ─────────────────────────────────────────────────────
 const CATEGORY_TABS = [
-  { id: 'all',         label: 'All',         icon: '✨' },
-  { id: 'moisturizer', label: 'Moisturizers', icon: '🧴' },
-  { id: 'serum',       label: 'Serums',      icon: '💉' },
-  { id: 'cleanser',    label: 'Cleansers',   icon: '🫧' },
-  { id: 'sunscreen',   label: 'Sunscreen',   icon: '🌞' },
-  { id: 'toner',       label: 'Toners',      icon: '💦' },
-  { id: 'mask',        label: 'Masks',       icon: '🎭' },
-  { id: 'exfoliator',  label: 'Exfoliators', icon: '🌀' },
-  { id: 'face_oil',    label: 'Face Oils',   icon: '🫒' },
-  { id: 'eye_care',    label: 'Eye Care',    icon: '👁️' },
+  { id: 'all',         label: 'All' },
+  { id: 'moisturizer', label: 'Moisturizers' },
+  { id: 'serum',       label: 'Serums' },
+  { id: 'cleanser',    label: 'Cleansers' },
+  { id: 'sunscreen',   label: 'Sunscreen' },
+  { id: 'toner',       label: 'Toners' },
+  { id: 'mask',        label: 'Masks' },
+  { id: 'exfoliator',  label: 'Exfoliators' },
+  { id: 'face_oil',    label: 'Face Oils' },
+  { id: 'eye_care',    label: 'Eye Care' },
 ];
 
 const SKIN_TYPE_OPTIONS = [
@@ -330,6 +331,22 @@ export default function ProductCatalog({
   const [concern, setConcern]           = useState('all');
   const [maxBudget, setMaxBudget]       = useState(300);
   const [sortBy, setSortBy]             = useState('default');
+  const [priceMax, setPriceMax]         = useState(300);
+
+  // Fetch metadata to get actual max price
+  useEffect(() => {
+    const ctrl = new AbortController();
+    api.metadata(ctrl.signal)
+      .then(data => {
+        if (!ctrl.signal.aborted && data?.price_range?.max) {
+          const max = Math.ceil(data.price_range.max);
+          setPriceMax(max);
+          setMaxBudget(max);
+        }
+      })
+      .catch(() => {});
+    return () => ctrl.abort();
+  }, []);
 
   // Cancel stale requests when filters change rapidly
   const abortRef = useRef(null);
@@ -344,8 +361,8 @@ export default function ProductCatalog({
       const params = {
         page:      pageNum,
         page_size: PAGE_SIZE,
-        ...(activeCategory !== 'all' && { category: activeCategory }),
-        max_price: maxBudget,
+      ...(activeCategory !== 'all' && { category: activeCategory }),
+      max_price: maxBudget < priceMax ? maxBudget : undefined,
       };
       const data = await api.products(params, abortRef.current.signal);
 
@@ -385,7 +402,7 @@ export default function ProductCatalog({
     setCategory('all');
     setSkinType('all');
     setConcern('all');
-    setMaxBudget(300);
+    setMaxBudget(priceMax);
     setSortBy('default');
   };
 
@@ -401,7 +418,7 @@ export default function ProductCatalog({
             <p className="pc-header__subtitle">{subtitle}</p>
           </div>
           <Link to="/recommend" className="pc-header__cta btn btn-primary">
-            ✨ Get My AI Picks →
+            Get My AI Picks
           </Link>
         </div>
 
@@ -415,7 +432,6 @@ export default function ProductCatalog({
               className={`pc-cat-tab${activeCategory === tab.id ? ' pc-cat-tab--active' : ''}`}
               onClick={() => setCategory(tab.id)}
             >
-              <span className="pc-cat-tab__icon">{tab.icon}</span>
               <span className="pc-cat-tab__label">{tab.label}</span>
             </button>
           ))}
@@ -456,14 +472,14 @@ export default function ProductCatalog({
 
             <div className="pc-filter-group pc-filter-group--budget">
               <label className="pc-filter-label" htmlFor="filter-budget">
-                Budget <span className="pc-budget-val">${maxBudget}</span>
+                Budget <span className="pc-budget-val">{formatPrice(maxBudget)}</span>
               </label>
               <input
                 id="filter-budget"
                 type="range"
                 className="pc-range"
                 min={5}
-                max={300}
+                max={priceMax}
                 step={5}
                 value={maxBudget}
                 onChange={e => setMaxBudget(Number(e.target.value))}
@@ -495,7 +511,7 @@ export default function ProductCatalog({
         )} {/* end showFilters */}
 
         {/* ── Active filter chips ── */}
-        {(skinType !== 'all' || concern !== 'all' || maxBudget < 300 || activeCategory !== 'all') && (
+        {(skinType !== 'all' || concern !== 'all' || maxBudget < priceMax || activeCategory !== 'all') && (
           <div className="pc-active-filters">
             <span className="pc-active-filters__label">Active filters:</span>
             {activeCategory !== 'all' && (
@@ -513,9 +529,9 @@ export default function ProductCatalog({
                 {concern.replace('_', ' ')} ✕
               </button>
             )}
-            {maxBudget < 300 && (
-              <button className="pc-filter-chip" onClick={() => setMaxBudget(300)}>
-                under ${maxBudget} ✕
+            {maxBudget < priceMax && (
+              <button className="pc-filter-chip" onClick={() => setMaxBudget(priceMax)}>
+                under {formatPrice(maxBudget)} ✕
               </button>
             )}
             <button className="pc-filter-chip pc-filter-chip--clear" onClick={resetFilters}>
@@ -547,7 +563,7 @@ export default function ProductCatalog({
         {/* ── Empty state ── */}
         {!loading && !error && products.length === 0 && (
           <div className="pc-empty">
-            <div className="pc-empty__icon">🔍</div>
+            <div className="pc-empty__icon">0</div>
             <h3 className="pc-empty__title">No products match your filters</h3>
             <p className="pc-empty__desc">Try a higher budget, different skin type, or broader category.</p>
             <button className="btn btn-outline" onClick={resetFilters}>Reset Filters</button>
@@ -566,7 +582,7 @@ export default function ProductCatalog({
         {/* ── Bottom CTA banner ── */}
         {!loading && products.length > 0 && (
           <div className="pc-cta-banner">
-            <div className="pc-cta-banner__icon">✨</div>
+            <div className="pc-cta-banner__icon">AI</div>
             <div className="pc-cta-banner__text">
               <strong>Want personalised recommendations?</strong>
               <span>

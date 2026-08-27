@@ -14,8 +14,8 @@ MAP@5:    0.0753
 Diversity:    0.8851
 Coverage:    0.0240
 
-Avg Latency:  18.36 ms
-P95 Latency:  33.82 ms
+Avg Latency:  15.54 ms
+P95 Latency:  23.35 ms
 
 Fallbacks used in 0 profiles
 

@@ -59,10 +59,10 @@ export default function Technology() {
                 We adhere to all the international standards of data privacy and strict compliance with GDPR and CCPA.
               </p>
               <div className="moat-highlights">
-                <div className="moat-pill">⚡ Zero Cloud Cost</div>
-                <div className="moat-pill">🌱 90% Carbon Reduction</div>
-                <div className="moat-pill">🔒 100% Privacy Preserving</div>
-                <div className="moat-pill">📶 Fully Offline Capable</div>
+                <div className="moat-pill">Zero Cloud Cost</div>
+                <div className="moat-pill">90% Carbon Reduction</div>
+                <div className="moat-pill">100% Privacy Preserving</div>
+                <div className="moat-pill">Fully Offline Capable</div>
               </div>
             </div>
           </div>
@@ -145,21 +145,21 @@ export default function Technology() {
 
             <div className="arch-pillars-grid">
               <div className="arch-pillar">
-                <div className="arch-icon">〰️</div>
+                <div className="arch-icon">01</div>
                 <h3>Frequency Localization</h3>
                 <p>
                   Extracts features and processes signals in spatial-frequency domains, accurately identifying subtle micro-variations in skin conditions such as fine lines, localized redness, and pore depth.
                 </p>
               </div>
               <div className="arch-pillar">
-                <div className="arch-icon">🔮</div>
+                <div className="arch-icon">02</div>
                 <h3>Vision Transformers</h3>
                 <p>
                   Transformers model long-range spatial dependencies across the entire facial geometry, enhancing robustness, occlusion tolerance, and context awareness in clinical skin analysis.
                 </p>
               </div>
               <div className="arch-pillar">
-                <div className="arch-icon">📊</div>
+                <div className="arch-icon">03</div>
                 <h3>Hybrid Recommendation</h3>
                 <p>
                   Calculates compatibility scores by marrying INCI ingredient profiles, skin sensitivity constraints, and color undertones to exact brand SKU catalogs with high precision.
@@ -183,27 +183,27 @@ export default function Technology() {
 
           <div className="omnichannel-grid">
             <div className="omni-channel-card">
-              <div className="omni-icon">🌐</div>
+              <div className="omni-icon">Web</div>
               <h3>Web</h3>
               <p>WebAssembly & WebGL lightweight browser SDK for Shopify, Magento, WooCommerce, and custom web builds.</p>
             </div>
             <div className="omni-channel-card">
-              <div className="omni-icon">🤖</div>
+              <div className="omni-icon">Android</div>
               <h3>Android</h3>
               <p>Native Android SDK optimized with NNAPI and GPU acceleration for flawless 60 FPS performance.</p>
             </div>
             <div className="omni-channel-card">
-              <div className="omni-icon">🍏</div>
+              <div className="omni-icon">iOS</div>
               <h3>iOS</h3>
               <p>CoreML & Metal optimized engine delivering ultra-fast tracking and sub-millimeter AR rendering.</p>
             </div>
             <div className="omni-channel-card">
-              <div className="omni-icon">🪞</div>
+              <div className="omni-icon">Mirror</div>
               <h3>Smart Mirror</h3>
               <p>Turnkey interactive mirror kiosks with gesture controls and high-definition dual-camera sensors.</p>
             </div>
             <div className="omni-channel-card">
-              <div className="omni-icon">🖥️</div>
+              <div className="omni-icon">Kiosk</div>
               <h3>Digital Kiosk</h3>
               <p>Interactive self-service store kiosks powering virtual consultation and direct POS checkouts.</p>
             </div>

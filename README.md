@@ -192,7 +192,7 @@ For each selected product:
 | Total products | **1,581** |
 | Brands | **419** |
 | Categories | **10** (moisturizer, cleanser, serum, sunscreen, toner, exfoliator, mask, eye_care, lip_care, face_oil) |
-| Price range | **$2.48 – $292.10** (median $30.00) |
+| Price range | **₹206 – ₹24,244** (median ₹2,490) |
 | Rating range | **3.5 – 4.9** (mean 4.17) |
 
 ### Feature Engineering Pipeline (`app/utils/preprocessing.py`)
@@ -265,8 +265,7 @@ curl -X POST http://localhost:8000/api/v1/recommend \
       "product_id": "prod_000001",
       "name": "CeraVe Moisturising Cream 454g",
       "brand": "Cerave",
-      "category": "moisturizer",
-      "price": 20.32,
+      "category": "moisturizer",        "price": 20.32,
       "rating": 4.5,
       "review_count": 3489,
       "match_percentage": 94,
@@ -274,7 +273,7 @@ curl -X POST http://localhost:8000/api/v1/recommend \
         "Matches your dry skin type",
         "Addresses your hydration concern",
         "Contains preferred ingredient: ceramide",
-        "Well within your $50 budget ($20.32)",
+        "Well within your ₹4,150 budget (₹1,687)",
         "Highly rated (4.5 / 5.0)"
       ],
       "warnings": [],
@@ -322,7 +321,7 @@ Run `python evaluation/fast_evaluate.py` to reproduce.
 | **P95 latency** | **31.4 ms** |
 | Fallbacks used | 0 / 10 |
 
-> **Why recall is low:** The relevant set for a profile like "dry + hydration + moisturizer + $50" contains 251 products — returning 5 of them is inherently low recall. Precision and NDCG capture ranking quality, which is the meaningful signal here.
+> **Why recall is low:** The relevant set for a profile like "dry + hydration + moisturizer + ₹4,150" contains 251 products — returning 5 of them is inherently low recall. Precision and NDCG capture ranking quality, which is the meaningful signal here.
 
 ### Per-Profile Breakdown
 
@@ -335,7 +334,7 @@ Run `python evaluation/fast_evaluate.py` to reproduce.
 | Mature Skin – Anti-Aging Serum | 1.00 | 1.00 | 0.93 | No |
 | Sun Protection for Sensitive Skin | 1.00 | 1.00 | 0.96 | No |
 | Texture Treatment – Exfoliation | 1.00 | 1.00 | 0.89 | No |
-| Budget-Friendly Moisturizer (≤$15) | 1.00 | 1.00 | 0.92 | No |
+| Budget-Friendly Moisturizer (≤₹1,245) | 1.00 | 1.00 | 0.92 | No |
 | Open Search – No Constraints | 0.00 | 0.00 | 0.95 | No |
 | Rare Combination – Difficult Match | 1.00 | 1.00 | 0.93 | No |
 
@@ -347,7 +346,7 @@ Run `python evaluation/fast_evaluate.py` to reproduce.
 
 ### Successful Scenarios
 
-**1. Dry skin / hydration / moisturizer / $50 budget**
+**1. Dry skin / hydration / moisturizer / ₹4,150 budget**
 ```json
 { "skin_type": "dry", "concerns": ["hydration"], "category": "moisturizer",
   "budget": 50, "preferred_ingredients": ["ceramide", "hyaluronic acid"],
@@ -355,7 +354,7 @@ Run `python evaluation/fast_evaluate.py` to reproduce.
 ```
 → Returns CeraVe, The Ordinary, and Weleda moisturisers with match percentages 82–94 %. P@5 = 1.0, NDCG = 1.0. All five reasons include ceramide/HA matches.
 
-**2. Oily skin / acne / cleanser / $30**
+**2. Oily skin / acne / cleanser / ₹2,490**
 ```json
 { "skin_type": "oily", "concerns": ["acne"], "category": "cleanser",
   "budget": 30, "preferred_ingredients": ["salicylic acid", "niacinamide"],
@@ -363,16 +362,16 @@ Run `python evaluation/fast_evaluate.py` to reproduce.
 ```
 → P@5 = 0.80. All results are oil-control cleansers. One result misses niacinamide (reason for 0.8 not 1.0).
 
-**3. Sensitive + sun protection / sunscreen / $35**
+**3. Sensitive + sun protection / sunscreen / ₹2,905**
 → P@5 = 1.0. Five mineral sunscreens, all fragrance-free, all SPF-labelled.
 
-**4. Budget-Friendly — $15 cap**
-→ P@5 = 1.0. System correctly enforces hard budget ceiling; all results under $15.
+**4. Budget-Friendly — ₹1,245 cap**
+→ P@5 = 1.0. System correctly enforces hard budget ceiling; all results under ₹1,245.
 
-**5. Rare combination — oily + acne + aging serum / $100**
+**5. Rare combination — oily + acne + aging serum / ₹8,300**
 → P@5 = 1.0 even on a niche multi-concern query. Demonstrates cross-concern ranking.
 
-**6. Anti-aging serum — retinol + peptide + vitamin C / $80**
+**6. Anti-aging serum — retinol + peptide + vitamin C / ₹6,640**
 → P@5 = 1.0. MMR ensures results span The Ordinary, Medik8, and Estée Lauder (brand diversity = 0.93).
 
 ### Failure / Edge Case Scenarios
@@ -391,14 +390,14 @@ Run `python evaluation/fast_evaluate.py` to reproduce.
 ```
 → Candidate pool shrinks significantly. System activates fallback chain but still returns 5 results with warnings indicating concern mismatches.
 
-**9. Impossible budget ($3)**
+**9. Impossible budget (₹249)**
 ```json
 { "budget": 3, "category": "serum", "top_k": 5 }
 ```
 → Hard filter finds < 20 candidates. Budget relaxed +20 % automatically. Returns cheapest serums with a fallback notice. Does not crash.
 
-**10. No matching category (request "eye_care" with budget $5)**
-→ Only ~3 eye care products under $5 exist. Fallback chain drops category filter and returns general low-cost products with a fallback message explaining the constraint relaxation.
+**10. No matching category (request "eye_care" with budget ₹415)**
+→ Only ~3 eye care products under ₹415 exist. Fallback chain drops category filter and returns general low-cost products with a fallback message explaining the constraint relaxation.
 
 ---
 

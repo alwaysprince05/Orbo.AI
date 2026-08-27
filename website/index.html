@@ -11,6 +11,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
   </head>
   <body>
+    <style>html, body { overflow: hidden !important; position: fixed !important; width: 100% !important; }</style>
+    <script>
+      // Aggressively prevent browser scroll restoration on refresh
+      (function() {
+        function forceScrollTop() {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }
+        // Disable browser scroll restoration
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        // Lock scroll immediately
+        forceScrollTop();
+        // bfcache restore
+        window.addEventListener('pageshow', function(e) {
+          forceScrollTop();
+          if (e.persisted) {
+            requestAnimationFrame(forceScrollTop);
+            setTimeout(forceScrollTop, 100);
+            setTimeout(forceScrollTop, 300);
+            setTimeout(forceScrollTop, 600);
+          }
+        });
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

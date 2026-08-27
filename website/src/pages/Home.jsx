@@ -15,6 +15,7 @@ const solutionsList = [
     path: '/virtual-makeup',
     color: '#FF4D80',
     tag: 'AR Try-On',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=240&fit=crop&q=80',
     highlights: ['Sub-pixel accuracy', 'Texture preservation (Matte, Gloss, Shimmer)', 'Real-time 60 FPS']
   },
   {
@@ -24,6 +25,7 @@ const solutionsList = [
     path: '/virtual-haircolor',
     color: '#9B51E0',
     tag: 'Hair Segmentation',
+    image: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=240&fit=crop&q=80',
     highlights: ['Individual strand blending', 'Ombré & Balayage support', 'Zero bleed on face']
   },
   {
@@ -33,6 +35,7 @@ const solutionsList = [
     path: '/virtual-hairstyle',
     color: '#2D9CDB',
     tag: '3D Styling',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=240&fit=crop&q=80',
     highlights: ['Length & volume adaptation', 'Face shape matching', 'Instant simulation']
   },
   {
@@ -42,6 +45,7 @@ const solutionsList = [
     path: '/foundation-shadefinder',
     color: '#F2994A',
     tag: 'Shade Match',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=240&fit=crop&q=80',
     highlights: ['Lighting compensation', 'Warm, Cool, Neutral undertone', 'Exact SKU matching']
   },
   {
@@ -51,6 +55,7 @@ const solutionsList = [
     path: '/smart-skinanalysis',
     color: '#27AE60',
     tag: 'Skin Diagnostic',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=240&fit=crop&q=80',
     highlights: ['209 Facial landmarks', 'Dermatologist verified metrics', 'Targeted product routing']
   },
   {
@@ -60,6 +65,7 @@ const solutionsList = [
     path: '/facial-attributes',
     color: '#EB5757',
     tag: 'Retouch AI',
+    image: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=400&h=240&fit=crop&q=80',
     highlights: ['Micro-blemish smoothing', 'Skin glow enhancement', 'Preserves natural features']
   },
   {
@@ -69,6 +75,7 @@ const solutionsList = [
     path: '/smart-beautymirror',
     color: '#56CCF2',
     tag: 'In-Store Retail',
+    image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&h=240&fit=crop&q=80',
     highlights: ['Touchless gesture control', 'Split-screen before/after', 'POS integration']
   },
   {
@@ -78,6 +85,7 @@ const solutionsList = [
     path: '/beautygpt',
     color: '#BB6BD9',
     tag: 'GenAI Advisor',
+    image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=240&fit=crop&q=80',
     highlights: ['Context-aware product recommendations', 'Multi-turn consultations', 'API & Webhook ready']
   }
 ];
@@ -112,7 +120,7 @@ export default function Home() {
             </p>
             <div className="brand-hero-cta">
               <a href="#canvas-studio" className="btn btn-primary btn-lg">
-                ✨ Launch Interactive AI Studio
+                Launch Interactive AI Studio
               </a>
               <a href="#products" className="btn btn-outline btn-lg">
                 Explore Beauty Products & SKUs
@@ -176,11 +184,11 @@ export default function Home() {
           <div className="solutions-grid">
             {solutionsList.map((item) => (
               <div key={item.id} className="solution-card">
-                <div className="solution-card__header">
+                <div className="solution-card__image-wrap">
+                  <img src={item.image} alt={item.title} className="solution-card__image" loading="lazy" />
                   <span className="solution-card__tag" style={{ color: item.color, backgroundColor: `${item.color}15` }}>
                     {item.tag}
                   </span>
-                  <div className="solution-card__circle" style={{ borderColor: item.color }}></div>
                 </div>
                 <h3 className="solution-card__title">{item.title}</h3>
                 <p className="solution-card__desc">{item.subtitle}</p>
@@ -226,19 +234,19 @@ export default function Home() {
                 className={`tab-btn ${activeTab === 'api' ? 'tab-btn--active' : ''}`}
                 onClick={() => setActiveTab('api')}
               >
-                <span className="tab-icon">⚡</span> Cloud & On-Device REST API
+                <span className="tab-icon">01</span> Cloud & On-Device REST API
               </button>
               <button
                 className={`tab-btn ${activeTab === 'sdk' ? 'tab-btn--active' : ''}`}
                 onClick={() => setActiveTab('sdk')}
               >
-                <span className="tab-icon">📱</span> iOS & Android Mobile SDK
+                <span className="tab-icon">02</span> iOS & Android Mobile SDK
               </button>
               <button
                 className={`tab-btn ${activeTab === 'shopify' ? 'tab-btn--active' : ''}`}
                 onClick={() => setActiveTab('shopify')}
               >
-                <span className="tab-icon">🛍️</span> Shopify & E-Commerce Plugin
+                <span className="tab-icon">03</span> Shopify & E-Commerce Plugin
               </button>
             </div>
 
@@ -256,7 +264,7 @@ export default function Home() {
                       <li>Batch processing and webhook event callbacks</li>
                     </ul>
                     <button onClick={runApiSimulation} className="btn btn-primary">
-                      {apiResponseStatus === 'loading' ? '⏳ Sending Stream...' : '⚡ Test Live Endpoint'}
+                      {apiResponseStatus === 'loading' ? 'Sending...' : 'Test Live Endpoint'}
                     </button>
                   </div>
                   <div className="code-box">
@@ -305,7 +313,7 @@ curl -X POST "https://api.orbo.ai/v1/analyze" \\
                       <li>Camera feed pipeline with zero frame stutter</li>
                       <li>Offline mode: 100% user privacy and GDPR compliant</li>
                     </ul>
-                    <a href="#requestDemo" className="btn btn-primary">Download Mobile SDK Docs →</a>
+                    <a href="#requestDemo" className="btn btn-primary">Download Mobile SDK Docs</a>
                   </div>
                   <div className="code-box">
                     <div className="code-box-header">
@@ -345,7 +353,7 @@ orboCamera.applyMakeup(
                       <li>Adds to cart directly from AR try-on interface</li>
                       <li>A/B testing dashboard for conversion tracking</li>
                     </ul>
-                    <a href="#requestDemo" className="btn btn-primary">Install Shopify App →</a>
+                    <a href="#requestDemo" className="btn btn-primary">Install Shopify App</a>
                   </div>
                   <div className="code-box">
                     <div className="code-box-header">
@@ -372,7 +380,7 @@ orboCamera.applyMakeup(
         </div>
       </section>
 
-      {/* 8. Contact / Demo Section */}
+      {/* Contact / Demo Section */}
       <ContactForm />
     </div>
   );

@@ -55,19 +55,56 @@ export default function AboutUs() {
             </div>
 
             <div className="about-hero-visual">
-              <div className="mesh-preview-card">
-                <div className="mesh-face-graphic">
-                  <div className="mesh-oval"></div>
-                  <div className="mesh-grid-lines"></div>
-                  <div className="mesh-dot dot-eye-l"></div>
-                  <div className="mesh-dot dot-eye-r"></div>
-                  <div className="mesh-dot dot-nose"></div>
-                  <div className="mesh-dot dot-lips"></div>
-                  <div className="mesh-dot dot-chin"></div>
-                  <div className="mesh-scan-bar"></div>
-                </div>
-                <div className="mesh-label">
-                  <span className="live-indicator"></span> Real-Time Geometric Facial Mesh
+              <div style={{
+                background: '#FFF',
+                borderRadius: '24px',
+                overflow: 'hidden',
+                boxShadow: '0 20px 50px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(255,255,255,0.8)',
+              }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3' }}>
+                  <img
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=450&fit=crop&q=80"
+                    alt="AI facial recognition technology"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                  {/* Scan overlay */}
+                  <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+                    {/* Scan line */}
+                    <div style={{
+                      position: 'absolute', top: '30%', left: '20%', right: '20%', height: '2px',
+                      background: 'linear-gradient(90deg, transparent, #FF2E63, transparent)',
+                      animation: 'aboutScan 2.5s infinite ease-in-out',
+                    }} />
+                    {/* Face landmark dots */}
+                    {[
+                      { top: '28%', left: '38%' },
+                      { top: '28%', left: '58%' },
+                      { top: '42%', left: '48%' },
+                      { top: '55%', left: '48%' },
+                      { top: '68%', left: '48%' },
+                    ].map((dot, i) => (
+                      <div key={i} style={{
+                        position: 'absolute', top: dot.top, left: dot.left,
+                        width: '8px', height: '8px', borderRadius: '50%',
+                        background: '#FF2E63', boxShadow: '0 0 10px rgba(255,46,99,0.6)',
+                      }} />
+                    ))}
+                    {/* Scanning frame */}
+                    <div style={{
+                      position: 'absolute', top: '15%', left: '25%', width: '50%', height: '60%',
+                      border: '2px solid rgba(255,46,99,0.4)', borderRadius: '50%',
+                    }} />
+                  </div>
+                  <div style={{
+                    position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)',
+                    background: 'rgba(255,255,255,0.9)', padding: '6px 16px', borderRadius: '999px',
+                    fontSize: '0.75rem', fontWeight: 700, color: '#09121D',
+                    display: 'flex', alignItems: 'center', gap: '6px', backdropFilter: 'blur(8px)',
+                  }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16A34A' }} />
+                    209 Facial Landmarks Detected
+                  </div>
                 </div>
               </div>
             </div>
@@ -88,7 +125,7 @@ export default function AboutUs() {
 
           <div className="values-grid">
             <div className="value-card">
-              <div className="value-icon">🌱</div>
+              <div className="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2"><path d="M12 22c4-4 8-8 8-14A8 8 0 0 0 4 8c0 6 4 10 8 14z"/></svg></div>
               <h3>Green & Sustainable Computing</h3>
               <p>
                 By shifting inference computation from power-hungry GPU server farms to consumer edge devices, we save over 90% in carbon emissions and eliminate heavy recurring server costs.
@@ -96,7 +133,7 @@ export default function AboutUs() {
             </div>
 
             <div className="value-card">
-              <div className="value-icon">🔒</div>
+              <div className="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6366F1" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
               <h3>100% Privacy by Design</h3>
               <p>
                 Images and facial streams are processed entirely in ephemeral device memory. Zero facial biometric data is stored or transferred to the cloud, guaranteeing global GDPR & CCPA compliance.
@@ -104,7 +141,7 @@ export default function AboutUs() {
             </div>
 
             <div className="value-card">
-              <div className="value-icon">🎯</div>
+              <div className="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
               <h3>Clinical Grade Accuracy</h3>
               <p>
                 Trained on millions of diverse ethnic skin profiles, our neural networks deliver sub-millimeter tracking accuracy and consistent results across 100+ global skin tones.

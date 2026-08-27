@@ -44,7 +44,7 @@ export default function Footer() {
           <div className="footer__links">
             <div className="footer__links-col">
               <h5 className="footer__links-title">Explore</h5>
-              <Link to="/recommend">✨ AI Recommender</Link>
+              <Link to="/recommend">AI Recommender</Link>
               <Link to="/beautygpt">BeautyGPT API</Link>
               <Link to="/about-us">About Us</Link>
               <Link to="/technology">Technology</Link>
@@ -77,19 +77,19 @@ export default function Footer() {
         {/* Addresses */}
         <div className="footer__addresses">
           <div className="footer__address">
-            <h4 className="footer__address-city">📍 Mumbai</h4>
+            <h4 className="footer__address-city">Mumbai</h4>
             <p>1101-1102, 86 Central by Crystal Group,<br />
             Andheri Ghatkopar Link Rd, Ghatkopar West,<br />
             Mumbai — 400086, Maharashtra</p>
           </div>
           <div className="footer__address">
-            <h4 className="footer__address-city">📍 Noida</h4>
+            <h4 className="footer__address-city">Noida</h4>
             <p>1904, Etherea, 19th Floor, Tower-B,<br />
             Bhutani Alphathum, Sector-90,<br />
             Noida — 201305, Uttar Pradesh</p>
           </div>
           <div className="footer__address">
-            <h4 className="footer__address-city">📬 Contact</h4>
+            <h4 className="footer__address-city">Contact</h4>
             <p>
               <a href="mailto:support@orbo.ai">support@orbo.ai</a><br />
               <a href="tel:+919082125754">+91 90821 25754</a>

@@ -91,7 +91,7 @@ export default function VirtualHairColor() {
             <div className="vm-col-visual">
               <div className="adoption-portrait-container">
                 <div className="adoption-portrait-frame" style={{ background: '#FAF5FF' }}>
-                  <div className="badge-camera-top">Strand AI 💇‍♀️</div>
+                  <div className="badge-camera-top">Strand AI</div>
                   <div style={{ textAlign: 'center', marginTop: '30px' }}>
                     <div style={{
                       width: '130px',
@@ -188,6 +188,65 @@ export default function VirtualHairColor() {
                     {m}
                   </button>
                 ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Hair color preview — model with tint overlay */}
+          <div style={{
+            maxWidth: '820px',
+            margin: '0 auto',
+            background: '#FFF',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
+            border: '1px solid #E2E8F0',
+            position: 'relative',
+          }}>
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10' }}>
+              <img
+                src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=500&fit=crop&q=80"
+                alt="Hair color preview model"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+              {/* Hair color tint overlay */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: tintFor(mode, selectedShade.hex),
+                mixBlendMode: 'color',
+                opacity: 0.65,
+              }} />
+              {/* Info badge */}
+              <div style={{
+                position: 'absolute',
+                bottom: '16px',
+                left: '16px',
+                background: 'rgba(15,23,42,0.85)',
+                color: '#fff',
+                padding: '10px 18px',
+                borderRadius: '12px',
+                backdropFilter: 'blur(8px)',
+                fontSize: '0.85rem',
+                fontWeight: '700',
+              }}>
+                {selectedShade.name} &middot; {mode}
+              </div>
+              {/* Technique badge */}
+              <div style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: selectedShade.hex,
+                color: '#fff',
+                padding: '6px 14px',
+                borderRadius: '999px',
+                fontSize: '0.72rem',
+                fontWeight: '800',
+                letterSpacing: '0.05em',
+                boxShadow: `0 4px 12px ${selectedShade.hex}60`,
+              }}>
+                {selectedShade.type}
               </div>
             </div>
           </div>

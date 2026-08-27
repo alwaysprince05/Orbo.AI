@@ -22,7 +22,7 @@ export default class ErrorBoundary extends React.Component {
           alignItems: 'center', justifyContent: 'center', padding: '2rem',
           textAlign: 'center', fontFamily: 'inherit',
         }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠️</div>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 900, color: '#DC2626' }}>!</div>
           <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.5rem', color: '#09121D' }}>
             Something went wrong
           </h2>

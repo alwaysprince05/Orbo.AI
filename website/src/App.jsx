@@ -75,6 +75,36 @@ function ScrollToTop() {
 
 // ── App ────────────────────────────────────────────────────────────────────────
 export default function App() {
+  // Prevent browser from restoring scroll position on refresh
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    // Unlock scroll after React has mounted and rendered
+    requestAnimationFrame(() => {
+      // Remove the scroll-lock styles injected by index.html
+      const style = document.querySelector('body > style');
+      if (style) style.remove();
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.position = '';
+      document.documentElement.style.width = '';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      window.scrollTo(0, 0);
+    });
+    setTimeout(() => {
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.position = '';
+      document.documentElement.style.width = '';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      window.scrollTo(0, 0);
+    }, 200);
+  }, []);
+
   return (
     <div className="app-layout">
       <ScrollToTop />

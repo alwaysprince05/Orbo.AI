@@ -1,32 +1,18 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { api } from '../api/recommender';
+import { formatPrice } from '../utils/formatPrice';
 import './Recommender.css';
 
-// ─── Constants ───────────────────────────────────────────────────────────────
+// ─── Constants (no emojis — clean text only) ───────────────────────────────────
 
-const SKIN_TYPE_ICONS = {
-  dry: '🌵', oily: '💧', combination: '🌗', normal: '🌿', sensitive: '🌸',
+const SKIN_TYPE_COLORS = {
+  dry: '#8B5CF6', oily: '#3B82F6', combination: '#F59E0B', normal: '#10B981', sensitive: '#EC4899',
 };
 
-const CATEGORY_ICONS = {
-  moisturizer: '🧴', cleanser: '🫧', serum: '💉', sunscreen: '🌞',
-  toner: '💦', exfoliator: '✨', mask: '🎭', eye_care: '👁️',
-  lip_care: '💋', face_oil: '🫒', body_oil: '🧖', other: '🛍️',
+const CONCERN_COLORS = {
+  hydration: '#3B82F6', acne: '#EF4444', aging: '#8B5CF6', pigmentation: '#F59E0B',
+  sensitivity: '#EC4899', texture: '#6B7280', sun_protection: '#F97316',
 };
-
-const CONCERN_ICONS = {
-  hydration: '💧', acne: '🎯', aging: '⏳', pigmentation: '🌟',
-  sensitivity: '🌸', texture: '✨', sun_protection: '☀️',
-};
-
-const PIPELINE_STEPS = [
-  { icon: '🔍', name: 'Hard Filter' },
-  { icon: '🧬', name: 'TF-IDF Content' },
-  { icon: '⚖️', name: 'Preference Score' },
-  { icon: '🔀', name: 'Hybrid Rank' },
-  { icon: '🌈', name: 'MMR Diversity' },
-  { icon: '💡', name: 'Explanations' },
-];
 
 const SCORE_KEYS = [
   { key: 'skin_type',  label: 'Skin Type' },
@@ -34,9 +20,61 @@ const SCORE_KEYS = [
   { key: 'ingredient', label: 'Ingredients' },
   { key: 'budget',     label: 'Budget' },
   { key: 'rating',     label: 'Rating' },
-  { key: 'content',    label: 'Content Sim.' },
-  { key: 'hybrid',     label: '🏆 Final Score', highlight: true },
+  { key: 'content',    label: 'Content Similarity' },
+  { key: 'hybrid',     label: 'Final Score', highlight: true },
 ];
+
+function formatLabel(s) {
+  return String(s).replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+// ── Product image mapping (same as ProductCatalog) ───────────────────────────
+const BRAND_IMAGES = {
+  'the ordinary':    'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop&q=80',
+  'cerave':          'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop&q=80',
+  'la roche-posay':  'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop&q=80',
+  'clinique':        'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop&q=80',
+  'neutrogena':      'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=400&h=400&fit=crop&q=80',
+  'estee lauder':    'https://images.unsplash.com/photo-1631390060000-8b30b71d7b4e?w=400&h=400&fit=crop&q=80',
+  'drunk elephant':  'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop&q=80',
+  "paula's choice": 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=400&fit=crop&q=80',
+  'skinceuticals':   'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400&h=400&fit=crop&q=80',
+  'first aid beauty':'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop&q=80',
+  'medik8':          'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop&q=80',
+  'the inkey list':  'https://images.unsplash.com/photo-1576426863848-c21f53c60b19?w=400&h=400&fit=crop&q=80',
+  'weleda':          'https://images.unsplash.com/photo-1591375462475-4a68bb86fe73?w=400&h=400&fit=crop&q=80',
+  'origins':         'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&h=400&fit=crop&q=80',
+  'murad':           'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&h=400&fit=crop&q=80',
+  'dermalogica':     'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=400&fit=crop&q=80',
+  'aveeno':          'https://images.unsplash.com/photo-1601049541271-f97d47b7e7b2?w=400&h=400&fit=crop&q=80',
+  'bioderma':        'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&h=400&fit=crop&q=80',
+  'nars':            'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop&q=80',
+  'shiseido':        'https://images.unsplash.com/photo-1532413992378-f169ac26fff0?w=400&h=400&fit=crop&q=80',
+  'sanctuary':       'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400&h=400&fit=crop&q=80',
+  'neom':            'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop&q=80',
+};
+
+const CATEGORY_IMAGES = {
+  moisturizer: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop&q=80',
+  serum:       'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop&q=80',
+  cleanser:    'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop&q=80',
+  sunscreen:   'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop&q=80',
+  toner:       'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=400&fit=crop&q=80',
+  mask:        'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400&h=400&fit=crop&q=80',
+  exfoliator:  'https://images.unsplash.com/photo-1576426863848-c21f53c60b19?w=400&h=400&fit=crop&q=80',
+  face_oil:    'https://images.unsplash.com/photo-1591375462475-4a68bb86fe73?w=400&h=400&fit=crop&q=80',
+  eye_care:    'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&h=400&fit=crop&q=80',
+  lip_care:    'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop&q=80',
+  body_oil:    'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&h=400&fit=crop&q=80',
+};
+
+const FALLBACK_IMAGE =
+  'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop&q=80';
+
+function getProductImage(brand, category) {
+  const key = String(brand).toLowerCase();
+  return BRAND_IMAGES[key] ?? CATEGORY_IMAGES[category] ?? FALLBACK_IMAGE;
+}
 
 // ─── Skeleton loader ──────────────────────────────────────────────────────────
 
@@ -53,37 +91,46 @@ function SkeletonCards({ count = 5 }) {
 // ─── Single recommendation card ───────────────────────────────────────────────
 
 function RecCard({ rec, rank }) {
-  const categoryIcon = CATEGORY_ICONS[rec.category] ?? '🧴';
+  const [imgSrc, setImgSrc] = useState(getProductImage(rec.brand, rec.category));
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
     <article className="rec-card">
       {/* Rank badge */}
       <div className="rank-badge" aria-label={`Rank ${rank}`}>{rank}</div>
 
+      {/* Product image */}
+      <div className="rec-card__img">
+        {!imgLoaded && <div className="rec-card__img-skeleton" />}
+        <img
+          src={imgSrc}
+          alt={rec.name}
+          className={`rec-card__img-photo${imgLoaded ? ' rec-card__img-photo--loaded' : ''}`}
+          loading="lazy"
+          onLoad={() => setImgLoaded(true)}
+          onError={() => { setImgSrc(FALLBACK_IMAGE); setImgLoaded(true); }}
+        />
+      </div>
+
       {/* Main body */}
       <div className="rec-card__body">
-        <div
-          className="rec-card__name"
-          title={rec.name}
-        >
-          {categoryIcon} {rec.name}
+        <div className="rec-card__name" title={rec.name}>
+          {rec.name}
         </div>
         <div className="rec-card__meta">
-          by <b>{rec.brand}</b> ·{' '}
-          {String(rec.category).replace('_', ' ')
-            .replace(/\b\w/g, c => c.toUpperCase())}
+          by <b>{rec.brand}</b> &middot; {formatLabel(rec.category)}
         </div>
 
         {/* Skin type + concern chips */}
         <div className="chip-row">
           {(rec.skin_types ?? []).slice(0, 3).map(st => (
             <span key={st} className="chip chip--skin">
-              {SKIN_TYPE_ICONS[st] ?? '🌿'} {st}
+              {st}
             </span>
           ))}
           {(rec.skin_concerns ?? []).slice(0, 3).map(c => (
             <span key={c} className="chip chip--concern">
-              {String(c).replace('_', ' ')}
+              {formatLabel(c)}
             </span>
           ))}
         </div>
@@ -124,7 +171,7 @@ function RecCard({ rec, rank }) {
         {/* Score breakdown */}
         {rec.score_breakdown && (
           <details className="score-accordion">
-            <summary>📊 Score breakdown</summary>
+            <summary>Score breakdown</summary>
             {SCORE_KEYS.map(({ key, label, highlight }) => {
               const val = rec.score_breakdown[key];
               if (val == null) return null;
@@ -158,9 +205,9 @@ function RecCard({ rec, rank }) {
             style={{ width: `${Math.min(rec.match_percentage, 100)}%` }}
           />
         </div>
-        <div className="price-tag">${Number(rec.price).toFixed(2)}</div>
+        <div className="price-tag">{formatPrice(rec.price)}</div>
         <div className="rating-line">
-          ⭐ {rec.rating} · {Number(rec.review_count).toLocaleString()} reviews
+          {rec.rating} / 5 &middot; {Number(rec.review_count).toLocaleString()} reviews
         </div>
       </div>
     </article>
@@ -191,7 +238,7 @@ export default function Recommender() {
   const [latencyMs, setLatencyMs] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
 
-  // Fetch metadata on mount — cancel cleanly on unmount
+  // Fetch metadata on mount
   useEffect(() => {
     const controller = new AbortController();
     api.metadata(controller.signal)
@@ -206,13 +253,10 @@ export default function Recommender() {
     );
   }, []);
 
-  // Ref to cancel in-flight recommend requests
   const abortRef = useRef(null);
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-
-    // Cancel any in-flight request from a previous submit
     if (abortRef.current) abortRef.current.abort();
     abortRef.current = new AbortController();
 
@@ -226,14 +270,8 @@ export default function Recommender() {
       concerns,
       category: category || null,
       budget: noBudget ? null : budget,
-      preferred_ingredients: preferredRaw
-        .split(',')
-        .map(s => s.trim())
-        .filter(Boolean),
-      avoid_ingredients: avoidRaw
-        .split(',')
-        .map(s => s.trim())
-        .filter(Boolean),
+      preferred_ingredients: preferredRaw.split(',').map(s => s.trim()).filter(Boolean),
+      avoid_ingredients: avoidRaw.split(',').map(s => s.trim()).filter(Boolean),
       top_k: topK,
     };
 
@@ -243,7 +281,7 @@ export default function Recommender() {
       setLatencyMs(Math.round(performance.now() - t0));
       setResult(data);
     } catch (err) {
-      if (err.name === 'AbortError') return; // intentionally cancelled
+      if (err.name === 'AbortError') return;
       setError(err.message);
     } finally {
       setLoading(false);
@@ -252,50 +290,27 @@ export default function Recommender() {
 
   const priceMin = meta?.price_range?.min ?? 5;
   const priceMax = meta?.price_range?.max ?? 300;
-  const priceMedian = meta?.price_range?.median ?? 25;
+
+  // Set budget to max price once meta loads
+  useEffect(() => {
+    if (meta?.price_range?.max && budget < meta.price_range.max) {
+      setBudget(Math.ceil(meta.price_range.max));
+    }
+  }, [meta]);
 
   return (
     <div className="rec-page">
-
-      {/* ── Hero ── */}
-      <section className="rec-hero">
-        <div className="container">
-          <div className="rec-hero__badge">AI-Powered Skincare Finder</div>
-          <h1 className="rec-hero__title">
-            Find Products Built<br />
-            <span className="highlight">For Your Skin</span>
-          </h1>
-          <p className="rec-hero__sub">
-            Tell us about your skin. Our 6-stage recommendation engine searches{' '}
-            {meta ? `${meta.total_products.toLocaleString()}` : '1,581'} products
-            and explains exactly why each one fits you.
-          </p>
-          {meta && (
-            <div className="rec-hero__stats">
-              <span className="rec-hero__stat">
-                🧴 <b>{meta.total_products.toLocaleString()}</b> products
-              </span>
-              <span className="rec-hero__stat">
-                🏷️ <b>{meta.brands?.length ?? '—'}</b> brands
-              </span>
-              <span className="rec-hero__stat">
-                💰 <b>${meta.price_range.min}</b>–<b>${meta.price_range.max}</b>
-              </span>
-              <span className="rec-hero__stat">
-                ⭐ avg <b>{meta.rating_range.mean}</b> / 5
-              </span>
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* ── Two-column layout ── */}
       <div className="rec-layout">
 
         {/* ── LEFT: Profile form ── */}
         <aside className="profile-panel">
-          <div className="profile-panel__title">🌸 Your Skin Profile</div>
-
+          <div className="profile-panel__header">
+            <h3>Your Skin Profile</h3>
+            <p>Tell us about your skin to get personalized AI recommendations.</p>
+          </div>
+          <div className="profile-panel__body">
           <form onSubmit={handleSubmit} noValidate>
 
             {/* Skin type */}
@@ -307,10 +322,10 @@ export default function Recommender() {
                 value={skinType}
                 onChange={e => setSkinType(e.target.value)}
               >
-                <option value="">✨ Let the AI decide</option>
+                <option value="">Let the AI decide</option>
                 {(meta?.skin_types ?? ['dry','oily','combination','normal','sensitive']).map(st => (
                   <option key={st} value={st}>
-                    {SKIN_TYPE_ICONS[st] ?? ''} {st.charAt(0).toUpperCase() + st.slice(1)}
+                    {formatLabel(st)}
                   </option>
                 ))}
               </select>
@@ -328,8 +343,7 @@ export default function Recommender() {
                     onClick={() => toggleConcern(c)}
                     aria-pressed={concerns.includes(c)}
                   >
-                    {CONCERN_ICONS[c] ?? ''}{' '}
-                    {String(c).replace('_', ' ').replace(/\b\w/g, ch => ch.toUpperCase())}
+                    {formatLabel(c)}
                   </button>
                 ))}
               </div>
@@ -346,11 +360,10 @@ export default function Recommender() {
                 value={category}
                 onChange={e => setCategory(e.target.value)}
               >
-                <option value="">🛍️ All categories</option>
+                <option value="">All categories</option>
                 {(meta?.categories ?? []).map(cat => (
                   <option key={cat} value={cat}>
-                    {CATEGORY_ICONS[cat] ?? '🧴'}{' '}
-                    {String(cat).replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                    {formatLabel(cat)}
                   </option>
                 ))}
               </select>
@@ -375,7 +388,7 @@ export default function Recommender() {
                     <span style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>
                       Max price
                     </span>
-                    <span className="budget-value">${budget}</span>
+                    <span className="budget-value">{formatPrice(budget)}</span>
                   </div>
                   <input
                     type="range"
@@ -457,10 +470,10 @@ export default function Recommender() {
               {loading ? (
                 <>
                   <span className="btn-spinner" aria-hidden="true" />
-                  Analyzing {meta?.total_products?.toLocaleString() ?? '1,581'} products…
+                  Analyzing {meta?.total_products?.toLocaleString() ?? '1,581'} products...
                 </>
               ) : (
-                '✨ Find My Products'
+                'Find My Products'
               )}
             </button>
 
@@ -468,28 +481,14 @@ export default function Recommender() {
 
           {metaError && (
             <p style={{ fontSize: '0.78rem', color: '#b91c1c', marginTop: '1rem' }}>
-              ⚠️ Could not connect to backend: {metaError}
+              Could not connect to backend: {metaError}
             </p>
           )}
+          </div>
         </aside>
 
         {/* ── RIGHT: Results ── */}
         <section className="results-col" aria-live="polite" aria-label="Recommendation results">
-
-          {/* Pipeline explainer — always visible */}
-          <div className="pipeline-strip" role="img" aria-label="6-stage recommendation pipeline">
-            {PIPELINE_STEPS.map((step, i) => (
-              <React.Fragment key={step.name}>
-                <div className="pipeline-step">
-                  <span className="pipeline-step__icon" aria-hidden="true">{step.icon}</span>
-                  <span className="pipeline-step__name">{step.name}</span>
-                </div>
-                {i < PIPELINE_STEPS.length - 1 && (
-                  <span className="pipeline-arrow" aria-hidden="true">→</span>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
 
           {/* Loading */}
           {loading && <SkeletonCards count={topK} />}
@@ -510,13 +509,13 @@ export default function Recommender() {
                 {/* Summary bar */}
                 <div className="results-summary" role="status">
                   <span className="summary-badge">
-                    <span>✅</span>
+                    <span className="summary-badge__dot" />
                     {recs.length} recommendation{recs.length !== 1 ? 's' : ''}
                   </span>
                   <span className="summary-meta">
                     searched <b>{result.total_candidates?.toLocaleString()}</b> candidates
                     {result.filter_info?.category && (
-                      <> · {result.filter_info.category}</>
+                      <> &middot; {result.filter_info.category}</>
                     )}
                   </span>
                   {latencyMs != null && (
@@ -532,15 +531,14 @@ export default function Recommender() {
                 {/* Fallback notice */}
                 {result.is_fallback && result.fallback_message && (
                   <div className="fallback-notice" role="note">
-                    ℹ️ {result.fallback_message}
+                    {result.fallback_message}
                   </div>
                 )}
 
                 {/* Cards */}
                 {recs.length === 0 ? (
                   <div className="no-results">
-                    <div className="no-results__icon">😔</div>
-                    <div className="no-results__title">No matches found</div>
+                    <div className="no-results__icon">No matches found</div>
                     <div className="no-results__desc">
                       Try relaxing your budget, removing the category filter,
                       or clearing the "avoid ingredients" field.
@@ -557,15 +555,36 @@ export default function Recommender() {
             );
           })()}
 
-          {/* Initial placeholder — before first search */}
+          {/* Empty state – visual guide */}
           {!loading && !error && !result && !hasSearched && (
-            <div className="rec-placeholder">
-              <div className="rec-placeholder__icon">🧴✨</div>
-              <div className="rec-placeholder__title">Set your skin profile</div>
-              <div className="rec-placeholder__desc">
-                Choose your skin type, concerns, and budget in the panel on the left,
-                then hit <strong>Find My Products</strong>. Every result comes with a
-                match score and the exact reasons it fits your skin.
+            <div className="rec-empty">
+              <div className="rec-empty__hero">
+                <img
+                  src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=400&fit=crop&q=80"
+                  alt="Skincare routine"
+                  className="rec-empty__hero-img"
+                />
+                <div className="rec-empty__hero-overlay">
+                  <div className="rec-empty__hero-title">Your Personalised Skincare Awaits</div>
+                  <div className="rec-empty__hero-sub">6 AI stages analyze 1,581 products to find what fits your skin</div>
+                </div>
+              </div>
+              <div className="rec-empty__steps">
+                {[
+                  { step: '01', title: 'Set Your Profile', desc: 'Choose skin type, concerns, and budget', color: '#EC4899' },
+                  { step: '02', title: 'AI Filters Products', desc: '6-stage engine scores every product', color: '#8B5CF6' },
+                  { step: '03', title: 'Get Explanations', desc: 'See why each product matches your skin', color: '#3B82F6' },
+                ].map(s => (
+                  <div key={s.step} className="rec-empty__step">
+                    <div className="rec-empty__step-num" style={{ background: s.color }}>{s.step}</div>
+                    <div className="rec-empty__step-title">{s.title}</div>
+                    <div className="rec-empty__step-desc">{s.desc}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="rec-empty__tip">
+                <span className="rec-empty__tip-icon">i</span>
+                <span>Pro tip: The more details you provide, the better the recommendations. Try selecting a skin type and at least one concern.</span>
               </div>
             </div>
           )}

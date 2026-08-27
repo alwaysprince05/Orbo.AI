@@ -7,14 +7,14 @@ import './BeautyGPT.css';
 // ── Knowledge base ─────────────────────────────────────────────────────────────
 
 const QUICK_PROMPTS = [
-  { label: '🌵 Dry skin routine',       text: 'What is the best routine for dry skin?' },
-  { label: '💧 Oily & acne',            text: 'I have oily skin with acne. What should I use?' },
-  { label: '⏳ Anti-aging',              text: 'Recommend anti-aging products with retinol and peptides' },
-  { label: '🌸 Sensitive skin',          text: 'My skin is sensitive and reactive. What is safe for me?' },
-  { label: '🌟 Brighten dark spots',     text: 'How to reduce pigmentation and get a brighter glow?' },
-  { label: '☀️ Best sunscreen',          text: 'What sunscreen should I use daily?' },
-  { label: '💰 Budget picks under $20',  text: 'Recommend great skincare products under $20' },
-  { label: '🧪 Ceramide vs Hyaluronic',  text: 'What is the difference between ceramide and hyaluronic acid?' },
+  { label: 'Dry skin routine',       text: 'What is the best routine for dry skin?' },
+  { label: 'Oily & acne',            text: 'I have oily skin with acne. What should I use?' },
+  { label: 'Anti-aging',              text: 'Recommend anti-aging products with retinol and peptides' },
+  { label: 'Sensitive skin',          text: 'My skin is sensitive and reactive. What is safe for me?' },
+  { label: 'Brighten dark spots',     text: 'How to reduce pigmentation and get a brighter glow?' },
+  { label: 'Best sunscreen',          text: 'What sunscreen should I use daily?' },
+  { label: 'Budget picks under ₹1,500',  text: 'Recommend great skincare products under ₹1500' },
+  { label: 'Ceramide vs Hyaluronic',  text: 'What is the difference between ceramide and hyaluronic acid?' },
 ];
 
 function getReply(userText) {
@@ -24,11 +24,11 @@ function getReply(userText) {
     return {
       text: `For **dry skin**, your focus should be humectants + occlusives:
 
-1. **CeraVe Moisturising Cream** ($20) — ceramides + HA rebuild the skin barrier
-2. **The Ordinary Hyaluronic Acid 2% + B5** ($8) — draws water into skin
-3. **Weleda Skin Food** ($19) — overnight occlusive balm for very dry areas
+1. **CeraVe Moisturising Cream** (₹1,660) — ceramides + HA rebuild the skin barrier
+2. **The Ordinary Hyaluronic Acid 2% + B5** (₹665) — draws water into skin
+3. **Weleda Skin Food** (₹1,577) — overnight occlusive balm for very dry areas
 
-💡 *Key rule: apply HA to damp skin, then seal with a cream. Avoid harsh sulfate cleansers.*`,
+Key rule: apply HA to damp skin, then seal with a cream. Avoid harsh sulfate cleansers.`,
       products: ['CeraVe', 'The Ordinary', 'Weleda'],
     };
 
@@ -36,11 +36,11 @@ function getReply(userText) {
     return {
       text: `For **oily / acne-prone skin**:
 
-1. **The Ordinary Niacinamide 10% + Zinc 1%** ($6.50) — controls sebum, fades post-acne marks
-2. **La Roche-Posay Effaclar Duo** ($26) — unclogs pores, reduces active spots
-3. **Paula's Choice 2% BHA Liquid Exfoliant** ($34) — weekly use only
+1. **The Ordinary Niacinamide 10% + Zinc 1%** (₹540) — controls sebum, fades post-acne marks
+2. **La Roche-Posay Effaclar Duo** (₹2,158) — unclogs pores, reduces active spots
+3. **Paula's Choice 2% BHA Liquid Exfoliant** (₹2,822) — weekly use only
 
-💡 *Avoid heavy creams and comedogenic oils. Use lightweight gel moisturisers. Never skip SPF.*`,
+Avoid heavy creams and comedogenic oils. Use lightweight gel moisturisers. Never skip SPF.`,
       products: ['The Ordinary', 'La Roche-Posay', "Paula's Choice"],
     };
 
@@ -48,11 +48,11 @@ function getReply(userText) {
     return {
       text: `For **anti-aging**:
 
-1. **The Ordinary Buffet Serum** ($15) — 11 peptide complexes for skin renewal
-2. **Medik8 C-Tetra Serum** ($44) — vitamin C for collagen synthesis
-3. **Estée Lauder Advanced Night Repair** ($66) — overnight cellular repair
+1. **The Ordinary Buffet Serum** (₹1,245) — 11 peptide complexes for skin renewal
+2. **Medik8 C-Tetra Serum** (₹3,652) — vitamin C for collagen synthesis
+3. **Estée Lauder Advanced Night Repair** (₹5,478) — overnight cellular repair
 
-💡 *Start retinol at 0.025% 2× per week to avoid purging. Always follow with SPF the next morning — UV is the #1 accelerant of visible aging.*`,
+Start retinol at 0.025% 2× per week to avoid purging. Always follow with SPF the next morning — UV is the #1 accelerant of visible aging.`,
       products: ['The Ordinary', 'Medik8', 'Estée Lauder'],
     };
 
@@ -60,11 +60,11 @@ function getReply(userText) {
     return {
       text: `For **sensitive / reactive skin**:
 
-1. **La Roche-Posay Toleriane Double Repair** ($23) — prebiotic water, ceramide-3, repairs microbiome
-2. **Avène Thermal Spring Water Spray** ($12) — instant calming mist
-3. **Weleda Sensitive Care Serum** ($30) — fragrance-free, no essential oils
+1. **La Roche-Posay Toleriane Double Repair** (₹1,909) — prebiotic water, ceramide-3, repairs microbiome
+2. **Avène Thermal Spring Water Spray** (₹996) — instant calming mist
+3. **Weleda Sensitive Care Serum** (₹2,490) — fragrance-free, no essential oils
 
-💡 *Patch test everything. Avoid fragrance, essential oils, high-strength acids, and anything with > 1 % retinol. Look for products with fewer than 10 ingredients.*`,
+Patch test everything. Avoid fragrance, essential oils, high-strength acids, and anything with > 1 % retinol. Look for products with fewer than 10 ingredients.`,
       products: ['La Roche-Posay', 'Avène', 'Weleda'],
     };
 
@@ -72,11 +72,11 @@ function getReply(userText) {
     return {
       text: `For **pigmentation & glow**:
 
-1. **The Ordinary Alpha Arbutin 2% + HA** ($10) — inhibits melanin production
-2. **Good Molecules Discoloration Correcting Serum** ($12) — tranexamic acid + kojic acid
-3. **Clinique Even Better Clinical Serum** ($55) — proven to reduce dark spots in 4–6 weeks
+1. **The Ordinary Alpha Arbutin 2% + HA** (₹830) — inhibits melanin production
+2. **Good Molecules Discoloration Correcting Serum** (₹996) — tranexamic acid + kojic acid
+3. **Clinique Even Better Clinical Serum** (₹4,565) — proven to reduce dark spots in 4–6 weeks
 
-💡 *SPF is non-negotiable — UV exposure re-triggers melanin production and undoes all brightening progress. Use SPF 50+ every single morning.*`,
+SPF is non-negotiable — UV exposure re-triggers melanin production and undoes all brightening progress. Use SPF 50+ every single morning.`,
       products: ['The Ordinary', 'Good Molecules', 'Clinique'],
     };
 
@@ -84,23 +84,23 @@ function getReply(userText) {
     return {
       text: `**Top sunscreen picks**:
 
-1. **La Roche-Posay Anthelios SPF 50+** ($22) — ultra-light, no white cast
-2. **CeraVe Facial Moisturising Lotion SPF 25** ($16.50) — all-in-one AM moisturiser
-3. **Supergoop! Unseen Sunscreen SPF 40** ($38) — invisible primer-like finish
+1. **La Roche-Posay Anthelios SPF 50+** (₹1,826) — ultra-light, no white cast
+2. **CeraVe Facial Moisturising Lotion SPF 25** (₹1,370) — all-in-one AM moisturiser
+3. **Supergoop! Unseen Sunscreen SPF 40** (₹3,154) — invisible primer-like finish
 
-💡 *Apply a teaspoon (2 finger widths) to face and neck. Reapply every 2–3 hours in direct sun. Mineral (zinc oxide / titanium dioxide) is gentler for sensitive skin.*`,
+Apply a teaspoon (2 finger widths) to face and neck. Reapply every 2–3 hours in direct sun. Mineral (zinc oxide / titanium dioxide) is gentler for sensitive skin.`,
       products: ['La Roche-Posay', 'CeraVe', 'Supergoop!'],
     };
 
   if (/budget|cheap|affordable|inexpensive|under \$|value/.test(t))
     return {
-      text: `**Best skincare under $15**:
+      text: `**Best skincare under ₹1,250**:
 
-1. **The Ordinary Niacinamide 10% + Zinc** ($6.50) — tackles oiliness, pores, dark spots
-2. **CeraVe Hydrating Cleanser** ($10) — gentle, barrier-safe, fragrance-free
-3. **Neutrogena Hydro Boost Water Gel** ($15) — oil-free HA moisturiser for all skin types
+1. **The Ordinary Niacinamide 10% + Zinc** (₹540) — tackles oiliness, pores, dark spots
+2. **CeraVe Hydrating Cleanser** (₹830) — gentle, barrier-safe, fragrance-free
+3. **Neutrogena Hydro Boost Water Gel** (₹1,245) — oil-free HA moisturiser for all skin types
 
-💡 *All three are clinically validated, widely available, and dermatologist-recommended. Great starting point for any routine.*`,
+All three are clinically validated, widely available, and dermatologist-recommended. Great starting point for any routine.`,
       products: ['The Ordinary', 'CeraVe', 'Neutrogena'],
     };
 
@@ -117,7 +117,7 @@ function getReply(userText) {
 • **BHA (salicylic)** — exfoliates inside pores; best for oily, acne-prone skin
 • **Squalane** — lightweight plant-derived oil; works for all skin types including oily
 
-⚠️ *Never layer Vitamin C + Retinol in the same routine. Use acids max 3× per week.*`,
+Never layer Vitamin C + Retinol in the same routine. Use acids max 3× per week.`,
       products: [],
     };
 
@@ -125,20 +125,20 @@ function getReply(userText) {
     return {
       text: `**Complete AM / PM routine**:
 
-🌅 **Morning (AM)**
+**Morning (AM)**
 1. Gentle cleanser
 2. Vitamin C serum (antioxidant protection)
 3. Moisturiser
 4. SPF 50 (never skip)
 
-🌙 **Evening (PM)**
+**Evening (PM)**
 1. Oil cleanser → foaming cleanser (double cleanse if wearing makeup / SPF)
 2. Toner (optional, hydrating)
 3. Active — retinol *or* an acid (never both on the same night)
 4. Moisturiser
 5. Occlusive (Vaseline / Aquaphor) if very dry
 
-💡 *Start with 3 steps. Add actives one at a time. Give each new product 4–6 weeks before judging.*`,
+Start with 3 steps. Add actives one at a time. Give each new product 4–6 weeks before judging.`,
       products: [],
     };
 
@@ -146,12 +146,12 @@ function getReply(userText) {
     return {
       text: `**Best cleansers by skin type**:
 
-• **Dry / sensitive** → CeraVe Hydrating Cleanser ($10) — no-rinse milk formula
-• **Oily / acne** → La Roche-Posay Effaclar Purifying Foaming Gel ($20)
-• **Combination** → Cetaphil Daily Facial Cleanser ($12)
-• **All types** → CeraVe Foaming Cleanser ($13) — removes excess oil without stripping
+• **Dry / sensitive** → CeraVe Hydrating Cleanser (₹830) — no-rinse milk formula
+• **Oily / acne** → La Roche-Posay Effaclar Purifying Foaming Gel (₹1,660)
+• **Combination** → Cetaphil Daily Facial Cleanser (₹996)
+• **All types** → CeraVe Foaming Cleanser (₹1,079) — removes excess oil without stripping
 
-💡 *Cleanse maximum twice daily. Over-cleansing strips the barrier and triggers more oil production.*`,
+Cleanse maximum twice daily. Over-cleansing strips the barrier and triggers more oil production.`,
       products: ['CeraVe', 'La Roche-Posay', 'Cetaphil'],
     };
 
@@ -159,11 +159,11 @@ function getReply(userText) {
     return {
       text: `**Toners worth using**:
 
-1. **Thayers Witch Hazel Toner** ($12) — pore-tightening, alcohol-free
-2. **Klairs Supple Preparation Toner** ($22) — deeply hydrating, barrier-friendly
-3. **Paula's Choice 6% Mandelic Acid Toner** ($27) — gentle exfoliation for dull skin
+1. **Thayers Witch Hazel Toner** (₹996) — pore-tightening, alcohol-free
+2. **Klairs Supple Preparation Toner** (₹1,826) — deeply hydrating, barrier-friendly
+3. **Paula's Choice 6% Mandelic Acid Toner** (₹2,241) — gentle exfoliation for dull skin
 
-💡 *Modern toners are hydrating prep layers, not astringents. Avoid alcohol-heavy toners — they damage the barrier.*`,
+Modern toners are hydrating prep layers, not astringents. Avoid alcohol-heavy toners — they damage the barrier.`,
       products: ['Thayers', 'Klairs', "Paula's Choice"],
     };
 
@@ -171,11 +171,11 @@ function getReply(userText) {
     return {
       text: `**Eye area care**:
 
-1. **The Ordinary Caffeine Solution 5%** ($8) — reduces puffiness and dark circles
-2. **CeraVe Eye Repair Cream** ($17) — gentle, fragrance-free, ceramide formula
-3. **Clinique All About Eyes Serum** ($43) — clinically tested for dark circles
+1. **The Ordinary Caffeine Solution 5%** (₹665) — reduces puffiness and dark circles
+2. **CeraVe Eye Repair Cream** (₹1,411) — gentle, fragrance-free, ceramide formula
+3. **Clinique All About Eyes Serum** (₹3,569) — clinically tested for dark circles
 
-💡 *Eye skin is 40% thinner than facial skin. Use your ring finger to tap (never rub). Most "anti-aging" face serums work on the eye area too — you don't need a separate eye cream.*`,
+Eye skin is 40% thinner than facial skin. Use your ring finger to tap (never rub). Most anti-aging face serums work on the eye area too — you don't need a separate eye cream.`,
       products: ['The Ordinary', 'CeraVe', 'Clinique'],
     };
 
@@ -183,11 +183,11 @@ function getReply(userText) {
     return {
       text: `**Face mask recommendations**:
 
-• **Oily / congested** → Aztec Secret Indian Healing Clay ($10) — pore-clearing
-• **Dry / dull** → Fresh Rose Face Mask ($45) — intensive hydration
-• **All types** → The Ordinary AHA 30% + BHA 2% Peeling Solution ($8) — 10 min chemical exfoliant
+• **Oily / congested** → Aztec Secret Indian Healing Clay (₹830) — pore-clearing
+• **Dry / dull** → Fresh Rose Face Mask (₹3,735) — intensive hydration
+• **All types** → The Ordinary AHA 30% + BHA 2% Peeling Solution (₹665) — 10 min chemical exfoliant
 
-💡 *Use clay masks max 1–2× per week. Sheet masks are single-use — don't reapply or air-dry them on your face.*`,
+Use clay masks max 1–2× per week. Sheet masks are single-use — don't reapply or air-dry them on your face.`,
       products: ['Aztec Secret', 'Fresh', 'The Ordinary'],
     };
 
@@ -213,7 +213,7 @@ You can also use our **[AI Recommender](/recommend)** to search 1,581 real produ
 function TypingIndicator() {
   return (
     <div className="bgpt-message bgpt-message--bot">
-      <div className="bgpt-avatar">✨</div>
+      <div className="bgpt-avatar">AI</div>
       <div className="bgpt-bubble bgpt-bubble--bot bgpt-typing">
         <span /><span /><span />
       </div>
@@ -239,7 +239,7 @@ function MessageBubble({ msg }) {
 
   return (
     <div className={`bgpt-message ${isBot ? 'bgpt-message--bot' : 'bgpt-message--user'}`}>
-      {isBot && <div className="bgpt-avatar">✨</div>}
+      {isBot && <div className="bgpt-avatar">AI</div>}
       <div className={`bgpt-bubble ${isBot ? 'bgpt-bubble--bot' : 'bgpt-bubble--user'}`}>
         {lines.map((line, i) => (
           <p key={i} style={{ margin: '0 0 4px' }}>
@@ -263,7 +263,7 @@ function MessageBubble({ msg }) {
 const INITIAL_MESSAGES = [
   {
     sender: 'bot',
-    text: `Hi! I'm **BeautyGPT** — your AI skincare advisor. 👋
+    text: `Hi! I'm **BeautyGPT** — your AI skincare advisor.
 
 I can recommend products, explain ingredients, and build a personalized routine for your skin type.
 
@@ -347,7 +347,7 @@ export default function BeautyGPT() {
                   Launch Full BeautyGPT App ↗
                 </a>
                 <Link to="/recommend" className="bgpt-hero-secondary">
-                  ✨ Try AI Product Recommender →
+                  Try AI Product Recommender
                 </Link>
               </div>
             </div>
@@ -377,7 +377,7 @@ export default function BeautyGPT() {
 
             {/* Left sidebar — quick prompts */}
             <aside className="bgpt-sidebar">
-              <div className="bgpt-sidebar-title">💡 Quick Topics</div>
+              <div className="bgpt-sidebar-title">Quick Topics</div>
               <div className="bgpt-quick-list">
                 {QUICK_PROMPTS.map((q) => (
                   <button
@@ -393,9 +393,9 @@ export default function BeautyGPT() {
 
               <div className="bgpt-sidebar-divider" />
 
-              <div className="bgpt-sidebar-title">🔗 Also try</div>
+              <div className="bgpt-sidebar-title">Also try</div>
               <Link to="/recommend" className="bgpt-sidebar-link">
-                ✨ AI Product Recommender
+                AI Product Recommender
                 <span>Search 1,581 real products</span>
               </Link>
               <a
@@ -404,7 +404,7 @@ export default function BeautyGPT() {
                 rel="noopener noreferrer"
                 className="bgpt-sidebar-link"
               >
-                🚀 Full BeautyGPT App
+                Full BeautyGPT App
                 <span>With camera skin scan</span>
               </a>
             </aside>
@@ -487,17 +487,17 @@ export default function BeautyGPT() {
           </div>
           <div className="feature-cards-grid">
             <div className="feat-card">
-              <div className="feat-icon">💬</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
               <h3>Multi-Turn Memory</h3>
               <p>Maintains context across the full conversation — skin type, concerns, budget, and ingredient sensitivities all remembered.</p>
             </div>
             <div className="feat-card">
-              <div className="feat-icon">🧪</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 3h6v8l4 9H5l4-9V3z"/><line x1="9" y1="3" x2="15" y2="3"/></svg></div>
               <h3>100K+ INCI Knowledge</h3>
               <p>Explains actives, contraindications, and synergistic layering — backed by dermatology literature.</p>
             </div>
             <div className="feat-card">
-              <div className="feat-icon">🔌</div>
+              <div className="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v4a6 6 0 0 1-12 0V8z"/></svg></div>
               <h3>API & Webhook Ready</h3>
               <p>Embed in WhatsApp for Business, Shopify PDP, mobile apps, and smart mirror kiosks via REST API.</p>
             </div>

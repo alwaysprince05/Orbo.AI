@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './HeroSlider.css';
 
 const slides = [
@@ -10,7 +11,7 @@ const slides = [
     subtitle: 'ORBO uses visual AI to personalize the buying journey for high-intent beauty shoppers.',
     ctaText: 'BeautyGPT',
     badge: 'BETA',
-    ctaLink: 'https://beautygpt.orbo.ai/',
+    ctaLink: '/beautygpt',
     type: 'scan'
   },
   {
@@ -19,9 +20,9 @@ const slides = [
     tag: 'HYPER-PERSONALIZED DIAGNOSTICS',
     title: 'Get a Tailored Beauty Routine Matched to Your Unique Skin Needs',
     subtitle: 'Extract clinical skin parameters, melanin index, and hydration levels in under 2 seconds.',
-    ctaText: 'Try BeautyGPT',
+    ctaText: 'BeautyGPT',
     badge: 'BETA',
-    ctaLink: 'https://beautygpt.orbo.ai/',
+    ctaLink: '/beautygpt',
     type: 'routine'
   },
   {
@@ -32,7 +33,7 @@ const slides = [
     subtitle: 'Seamless virtual try-ons and ingredient matching across Web, iOS, Android, and Smart Mirror kiosks.',
     ctaText: 'Explore Platform',
     badge: 'LIVE',
-    ctaLink: 'https://www.orbo.ai/',
+    ctaLink: '/recommend',
     type: 'omni'
   }
 ];
@@ -51,10 +52,24 @@ export default function HeroSlider() {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
-  // Auto-play every 4.2 seconds
+  // Reset to slide 0 on bfcache restore (browser back/forward or refresh)
   useEffect(() => {
-    autoPlayRef.current = setInterval(nextSlide, 4200);
+    const handlePageShow = (e) => {
+      if (e.persisted) {
+        setCurrentSlide(0);
+      }
+    };
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
+
+  // Auto-play every 4.2 seconds, but delay first advance so slide 1 stays visible
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      autoPlayRef.current = setInterval(nextSlide, 4200);
+    }, 5000);
     return () => {
+      clearTimeout(timeout);
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
   }, []);
@@ -104,22 +119,6 @@ export default function HeroSlider() {
       aria-roledescription="carousel"
       aria-label="Orbo AI feature highlights"
     >
-      {/* Navigation Arrows */}
-      <button 
-        className="slider-arrow slider-arrow--prev" 
-        onClick={() => { prevSlide(); resetTimer(); }}
-        aria-label="Previous slide"
-      >
-        ‹
-      </button>
-      <button 
-        className="slider-arrow slider-arrow--next" 
-        onClick={() => { nextSlide(); resetTimer(); }}
-        aria-label="Next slide"
-      >
-        ›
-      </button>
-
       {/* Track Container */}
       <div 
         className="hero-slider-track"
@@ -141,15 +140,13 @@ export default function HeroSlider() {
                 <p className="hero-slide-desc">{slide.subtitle}</p>
 
                 <div className="hero-slide-cta-row">
-                  <a 
-                    href={slide.ctaLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                  <Link 
+                    to={slide.ctaLink} 
                     className="hero-slide-main-btn"
                   >
                     <span className="btn-text">{slide.ctaText}</span>
                     <span className="btn-badge">{slide.badge}</span>
-                  </a>
+                  </Link>
                   <a href="#solutions" className="hero-slide-sub-link">
                     Explore Solutions →
                   </a>
@@ -226,10 +223,10 @@ export default function HeroSlider() {
                           <div className="hub-ping"></div>
                           <span>Orbo AI Vision Core</span>
                         </div>
-                        <div className="omni-node n-web">🌐 Web / Shopify</div>
-                        <div className="omni-node n-app">📱 iOS / Android</div>
-                        <div className="omni-node n-kiosk">🖥️ Smart Kiosk</div>
-                        <div className="omni-node n-mirror">🪞 Smart Mirror</div>
+                        <div className="omni-node n-web">Web / Shopify</div>
+                        <div className="omni-node n-app">iOS / Android</div>
+                        <div className="omni-node n-kiosk">Smart Kiosk</div>
+                        <div className="omni-node n-mirror">Smart Mirror</div>
                       </div>
                     </div>
                   )}

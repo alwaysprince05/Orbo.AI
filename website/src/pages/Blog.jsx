@@ -120,11 +120,11 @@ export default function Blog() {
                 <h2 className="featured-title">{featured.title}</h2>
                 <p className="featured-desc">{featured.excerpt}</p>
                 <div className="blog-meta">
-                  <span>✍️ {featured.author}</span>
+                  <span>{featured.author}</span>
                   <span>•</span>
-                  <span>📅 {featured.date}</span>
+                  <span>{featured.date}</span>
                   <span>•</span>
-                  <span>⏱️ {featured.readTime}</span>
+                  <span>{featured.readTime}</span>
                 </div>
                 <span className="featured-read-link">Read Article →</span>
               </div>

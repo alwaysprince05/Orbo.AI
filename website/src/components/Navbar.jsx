@@ -93,10 +93,9 @@ export default function Navbar() {
 
         {/* Product pills */}
         <div className="navbar__pills">
-          <a href="https://beautygpt.orbo.ai/" target="_blank" rel="noopener noreferrer"
-            className="navbar__pill navbar__pill--default">
-            ✨ BeautyGPT
-          </a>
+          <Link to="/beautygpt" className="navbar__pill navbar__pill--default">
+            BeautyGPT
+          </Link>
           <a href="https://www.orbo.ai/beautygpt-api-for-beauty-brands" target="_blank" rel="noopener noreferrer"
             className="navbar__pill navbar__pill--business">
             Enterprise
@@ -111,7 +110,7 @@ export default function Navbar() {
 
           <Link to="/recommend"
             className={`navbar__link navbar__link--recommend ${isActive('/recommend') ? 'navbar__link--active' : ''}`}>
-            ✨ AI Recommender
+            AI Recommender
           </Link>
 
           {/* Products — smooth-scroll, no full-page reload */}
@@ -196,7 +195,7 @@ export default function Navbar() {
       >
         <Link to="/" className="navbar__mobile-link">Home</Link>
         <Link to="/recommend" className="navbar__mobile-link navbar__mobile-link--highlight">
-          ✨ AI Recommender
+          AI Recommender
         </Link>
         <a href="/#products" className="navbar__mobile-link" onClick={handleProductsClick}>
           Products

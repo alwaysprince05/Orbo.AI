@@ -9,7 +9,7 @@ export default function NotFound() {
       padding: '3rem 2rem',
       background: 'linear-gradient(160deg,#fff8f9 0%,#f8f0ff 100%)',
     }}>
-      <div style={{ fontSize: '5rem', marginBottom: '1rem', lineHeight: 1 }}>✨</div>
+      <div style={{ fontSize: '5rem', marginBottom: '1rem', lineHeight: 1, fontWeight: 900, background: 'linear-gradient(90deg,#ff3366,#b5a9ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>?</div>
       <h1 style={{
         fontSize: 'clamp(4rem,10vw,8rem)', fontWeight: 900, lineHeight: 1,
         background: 'linear-gradient(90deg,#ff3366,#b5a9ff)',
@@ -36,7 +36,7 @@ export default function NotFound() {
           padding: '0.8rem 2rem', fontWeight: 700, textDecoration: 'none',
           border: '2px solid #09121D',
         }}>
-          ✨ AI Recommender
+          AI Recommender
         </Link>
       </div>
     </div>

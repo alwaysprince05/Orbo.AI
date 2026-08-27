@@ -534,7 +534,7 @@
 /* ── Card actions ── */
 .pc-card__actions {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   gap: 8px;
   padding: 0.75rem 1rem 1rem;
   border-top: 1px solid #f3f4f6;
@@ -581,6 +581,52 @@
   background: #111827;
   color: #fff;
   border-color: #111827;
+}
+
+.pc-btn-secondary--added {
+  background: #059669;
+  color: #fff;
+  border-color: #059669;
+}
+
+.pc-btn-buy {
+  background: linear-gradient(90deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.pc-btn-buy:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(16,185,129,0.35);
+}
+
+.pc-toast {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 20;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  animation: pcToastIn 0.2s ease;
+}
+
+@keyframes pcToastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 /* ── Skeleton ── */

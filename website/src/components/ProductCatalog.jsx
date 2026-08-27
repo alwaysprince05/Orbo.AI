@@ -124,6 +124,8 @@ function WishlistBtn({ productId }) {
 function ProductCard({ product }) {
   const [imgSrc, setImgSrc]   = useState(getProductImage(product.brand, product.category));
   const [imgLoaded, setLoaded] = useState(false);
+  const [inCart, setInCart]     = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const discount   = getDiscount(product.product_id, product.price);
   const mrp        = discount ? (product.price / (1 - discount / 100)) : null;
@@ -242,10 +244,34 @@ function ProductCard({ product }) {
         <Link to="/recommend" className="pc-btn-primary">
           Get AI Pick
         </Link>
-        <button className="pc-btn-secondary" aria-label="Add to cart">
-          + Cart
+        <button
+          className={`pc-btn-secondary${inCart ? ' pc-btn-secondary--added' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            setInCart(true);
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 2000);
+          }}
+          aria-label={inCart ? 'Added to cart' : 'Add to cart'}
+        >
+          {inCart ? '✓ Added' : '+ Cart'}
+        </button>
+        <button
+          className="pc-btn-buy"
+          onClick={(e) => {
+            e.stopPropagation();
+            window.open(`https://www.nykaa.com/search?query=${encodeURIComponent(product.brand + ' ' + product.name)}`, '_blank');
+          }}
+          aria-label="Buy now"
+        >
+          Buy Now
         </button>
       </div>
+      {showToast && (
+        <div className="pc-toast" role="status">
+          {product.brand} {product.name.slice(0, 30)}... added to cart
+        </div>
+      )}
 
     </div>
   );

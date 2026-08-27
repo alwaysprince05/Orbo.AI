@@ -605,6 +605,50 @@
   100% { background-position: -200% 0; }
 }
 
+/* ── Cold start banner ── */
+.pc-cold-start {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #fef9c3, #fef3c7);
+  border: 1px solid #fde68a;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pc-cold-start__spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #fde68a;
+  border-top-color: #f59e0b;
+  border-radius: 50%;
+  animation: pcSpin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pcSpin {
+  to { transform: rotate(360deg); }
+}
+
+.pc-cold-start__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pc-cold-start__text strong {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #92400e;
+}
+
+.pc-cold-start__text span {
+  font-size: 0.8rem;
+  color: #a16207;
+  line-height: 1.4;
+}
+
 /* ── Error ── */
 .pc-error {
   background: #fff5f5;

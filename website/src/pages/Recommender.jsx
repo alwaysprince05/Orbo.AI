@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { api } from '../api/recommender';
+import { api, isColdStart } from '../api/recommender';
 import { formatPrice } from '../utils/formatPrice';
 import './Recommender.css';
 
@@ -491,7 +491,20 @@ export default function Recommender() {
         <section className="results-col" aria-live="polite" aria-label="Recommendation results">
 
           {/* Loading */}
-          {loading && <SkeletonCards count={topK} />}
+          {loading && (
+            <>
+              {isColdStart() && (
+                <div className="rec-cold-start" role="status">
+                  <div className="rec-cold-start__spinner" />
+                  <div className="rec-cold-start__text">
+                    <strong>Waking up the AI engine...</strong>
+                    <span>First visit takes 30-60 seconds. Subsequent requests are instant.</span>
+                  </div>
+                </div>
+              )}
+              <SkeletonCards count={topK} />
+            </>
+          )}
 
           {/* Error */}
           {!loading && error && (

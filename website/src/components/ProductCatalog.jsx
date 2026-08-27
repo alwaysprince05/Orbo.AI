@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { api } from '../api/recommender';
+import { api, isColdStart } from '../api/recommender';
 import { formatPrice } from '../utils/formatPrice';
 import './ProductCatalog.css';
 
@@ -537,6 +537,17 @@ export default function ProductCatalog({
             <button className="pc-filter-chip pc-filter-chip--clear" onClick={resetFilters}>
               Clear all
             </button>
+          </div>
+        )}
+
+        {/* ── Cold start banner ── */}
+        {loading && isColdStart() && (
+          <div className="pc-cold-start" role="status">
+            <div className="pc-cold-start__spinner" />
+            <div className="pc-cold-start__text">
+              <strong>Waking up the server...</strong>
+              <span>First visit may take 30-60 seconds. Subsequent requests are instant.</span>
+            </div>
           </div>
         )}
 

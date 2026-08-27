@@ -21,7 +21,7 @@ export default function FoundationShadeFinder() {
   return (
     <div className="solution-page">
       {/* 1. Hero Blue Card */}
-      <section className="solution-hero-section">
+      <section className="solution-hero">
         <div className="container-lg">
           <div className="foundation-blue-card">
             <div className="foundation-card-left">

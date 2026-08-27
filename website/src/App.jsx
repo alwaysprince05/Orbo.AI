@@ -21,6 +21,7 @@ const SmartSkinAnalysis   = lazy(() => import('./pages/solutions/SmartSkinAnalys
 const FacialAttributes    = lazy(() => import('./pages/solutions/FacialAttributes'));
 const SmartBeautyMirror   = lazy(() => import('./pages/solutions/SmartBeautyMirror'));
 const BeautyGPT           = lazy(() => import('./pages/solutions/BeautyGPT'));
+const ProductDetail       = lazy(() => import('./pages/ProductDetail'));
 
 // Legal
 const Terms   = lazy(() => import('./pages/legal/Terms'));
@@ -96,6 +97,9 @@ export default function App() {
               <Route path="/technology"            element={<Technology />} />
               <Route path="/blog"                  element={<Blog />} />
               <Route path="/recommend"             element={<Recommender />} />
+
+              {/* Product detail */}
+              <Route path="/product/:id"           element={<ProductDetail />} />
 
               {/* Solution routes */}
               <Route path="/virtual-makeup"        element={<VirtualMakeup />} />

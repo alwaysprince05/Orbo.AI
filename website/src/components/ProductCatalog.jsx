@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { api, isColdStart } from '../api/recommender';
 import { formatPrice } from '../utils/formatPrice';
 import './ProductCatalog.css';
@@ -126,6 +126,7 @@ function ProductCard({ product }) {
   const [imgLoaded, setLoaded] = useState(false);
   const [inCart, setInCart]     = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const navigate = useNavigate();
 
   const discount   = getDiscount(product.product_id, product.price);
   const mrp        = discount ? (product.price / (1 - discount / 100)) : null;
@@ -136,7 +137,7 @@ function ProductCard({ product }) {
   const concerns = (product.skin_concerns ?? []).slice(0, 2);
 
   return (
-    <div className="pc-card">
+    <div className="pc-card" onClick={() => navigate(`/product/${product.product_id}`)} style={{ cursor: 'pointer' }}>
 
       {/* ── Image block ── */}
       <div className="pc-card__img-wrap">
@@ -241,11 +242,8 @@ function ProductCard({ product }) {
 
       {/* ── Actions ── */}
       <div className="pc-card__actions">
-        <Link to="/recommend" className="pc-btn-primary">
-          Get AI Pick
-        </Link>
         <button
-          className={`pc-btn-secondary${inCart ? ' pc-btn-secondary--added' : ''}`}
+          className={`pc-btn-cart${inCart ? ' pc-btn-cart--added' : ''}`}
           onClick={(e) => {
             e.stopPropagation();
             setInCart(true);
@@ -254,22 +252,12 @@ function ProductCard({ product }) {
           }}
           aria-label={inCart ? 'Added to cart' : 'Add to cart'}
         >
-          {inCart ? '✓ Added' : '+ Cart'}
-        </button>
-        <button
-          className="pc-btn-buy"
-          onClick={(e) => {
-            e.stopPropagation();
-            window.open(`https://www.nykaa.com/search?query=${encodeURIComponent(product.brand + ' ' + product.name)}`, '_blank');
-          }}
-          aria-label="Buy now"
-        >
-          Buy Now
+          {inCart ? '✓ Added to Cart' : '+ Add to Cart'}
         </button>
       </div>
       {showToast && (
         <div className="pc-toast" role="status">
-          {product.brand} {product.name.slice(0, 30)}... added to cart
+          ✓ Added to cart
         </div>
       )}
 

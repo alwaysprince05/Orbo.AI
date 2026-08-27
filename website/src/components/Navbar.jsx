@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 const solutionLinks = [
@@ -31,6 +32,7 @@ export default function Navbar() {
   const navigate  = useNavigate();
   const dropdownRef = useRef(null);
   const timeoutRef  = useRef(null);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
@@ -169,6 +171,16 @@ export default function Navbar() {
             Blog
           </Link>
         </div>
+
+        {/* Cart */}
+        <Link to="/cart" className="navbar__cart" aria-label="Shopping cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          {totalItems > 0 && <span className="navbar__cart-badge">{totalItems}</span>}
+        </Link>
 
         {/* CTA */}
         <a href="#requestDemo" className="navbar__cta" onClick={handleRequestDemo}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { api } from '../api/recommender';
+import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/formatPrice';
 import './ProductDetail.css';
 
@@ -66,8 +67,9 @@ export default function ProductDetail() {
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [inCart, setInCart] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
+  const { addItem, isInCart } = useCart();
+  const inCart = product ? isInCart(product.product_id) : false;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -238,14 +240,14 @@ export default function ProductDetail() {
           <div className="pd-actions">
             <button
               className={`pd-btn pd-btn--cart${inCart ? ' pd-btn--added' : ''}`}
-              onClick={() => setInCart(true)}
+              onClick={() => { if (!inCart) addItem(product); }}
             >
               {inCart ? '✓ Added to Cart' : 'Add to Cart'}
             </button>
             <button
               className="pd-btn pd-btn--buy"
               onClick={() => {
-                setInCart(true);
+                if (!inCart) addItem(product);
                 alert(`Order placed for ${product.name} at ${formatPrice(product.price)}! (Demo)`);
               }}
             >

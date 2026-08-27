@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { api, isColdStart } from '../api/recommender';
+import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/formatPrice';
 import './ProductCatalog.css';
 
@@ -124,9 +125,10 @@ function WishlistBtn({ productId }) {
 function ProductCard({ product }) {
   const [imgSrc, setImgSrc]   = useState(getProductImage(product.brand, product.category));
   const [imgLoaded, setLoaded] = useState(false);
-  const [inCart, setInCart]     = useState(false);
   const [showToast, setShowToast] = useState(false);
   const navigate = useNavigate();
+  const { addItem, isInCart } = useCart();
+  const inCart = isInCart(product.product_id);
 
   const discount   = getDiscount(product.product_id, product.price);
   const mrp        = discount ? (product.price / (1 - discount / 100)) : null;
@@ -246,9 +248,11 @@ function ProductCard({ product }) {
           className={`pc-btn-cart${inCart ? ' pc-btn-cart--added' : ''}`}
           onClick={(e) => {
             e.stopPropagation();
-            setInCart(true);
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 2000);
+            if (!inCart) {
+              addItem(product);
+              setShowToast(true);
+              setTimeout(() => setShowToast(false), 2000);
+            }
           }}
           aria-label={inCart ? 'Added to cart' : 'Add to cart'}
         >

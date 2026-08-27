@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
+import { CartProvider } from './context/CartContext';
 
 // ── Lazy-load every page (code splitting) ──────────────────────────────────────
 const Home                = lazy(() => import('./pages/Home'));
@@ -22,6 +23,7 @@ const FacialAttributes    = lazy(() => import('./pages/solutions/FacialAttribute
 const SmartBeautyMirror   = lazy(() => import('./pages/solutions/SmartBeautyMirror'));
 const BeautyGPT           = lazy(() => import('./pages/solutions/BeautyGPT'));
 const ProductDetail       = lazy(() => import('./pages/ProductDetail'));
+const Cart                = lazy(() => import('./pages/Cart'));
 
 // Legal
 const Terms   = lazy(() => import('./pages/legal/Terms'));
@@ -85,6 +87,7 @@ export default function App() {
   }, []);
 
   return (
+    <CartProvider>
     <div className="app-layout">
       <ScrollToTop />
       <Navbar />
@@ -98,8 +101,9 @@ export default function App() {
               <Route path="/blog"                  element={<Blog />} />
               <Route path="/recommend"             element={<Recommender />} />
 
-              {/* Product detail */}
+              {/* Product detail & Cart */}
               <Route path="/product/:id"           element={<ProductDetail />} />
+              <Route path="/cart"                  element={<Cart />} />
 
               {/* Solution routes */}
               <Route path="/virtual-makeup"        element={<VirtualMakeup />} />
@@ -125,5 +129,6 @@ export default function App() {
       </main>
       <Footer />
     </div>
+    </CartProvider>
   );
 }

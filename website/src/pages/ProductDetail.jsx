@@ -75,7 +75,6 @@ export default function ProductDetail() {
     window.scrollTo(0, 0);
     setLoading(true);
     setError(null);
-    setInCart(false);
     setImgLoaded(false);
 
     const ctrl = new AbortController();

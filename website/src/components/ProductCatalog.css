@@ -533,11 +533,7 @@
 
 /* ── Card actions ── */
 .pc-card__actions {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 8px;
-  padding: 0.75rem 1rem 1rem;
-  border-top: 1px solid #f3f4f6;
+  padding: 0 1rem 1rem;
   margin-top: auto;
 }
 
@@ -564,63 +560,44 @@
   box-shadow: 0 5px 16px rgba(255,51,102,0.35);
 }
 
-.pc-btn-secondary {
-  background: #f9fafb;
-  color: #374151;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 9px 14px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  white-space: nowrap;
-}
-
-.pc-btn-secondary:hover {
+.pc-btn-cart {
+  width: 100%;
   background: #111827;
   color: #fff;
-  border-color: #111827;
-}
-
-.pc-btn-secondary--added {
-  background: #059669;
-  color: #fff;
-  border-color: #059669;
-}
-
-.pc-btn-buy {
-  background: linear-gradient(90deg, #10b981, #059669);
-  color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 9px 14px;
-  font-size: 0.78rem;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.18s ease;
-  white-space: nowrap;
+  transition: all 0.2s ease;
+  text-align: center;
 }
 
-.pc-btn-buy:hover {
+.pc-btn-cart:hover {
+  background: #374151;
   transform: translateY(-1px);
-  box-shadow: 0 5px 16px rgba(16,185,129,0.35);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.pc-btn-cart--added {
+  background: #059669;
 }
 
 .pc-toast {
   position: absolute;
-  bottom: 70px;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
-  background: #111827;
+  background: #059669;
   color: #fff;
   padding: 8px 16px;
   border-radius: 8px;
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   white-space: nowrap;
   z-index: 20;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 16px rgba(5,150,105,0.35);
   animation: pcToastIn 0.2s ease;
 }
 

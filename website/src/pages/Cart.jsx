@@ -1,13 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/formatPrice';
 import './Cart.css';
 
 export default function Cart() {
   const { items, removeItem, clearCart, totalItems, totalPrice } = useCart();
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const navigate = useNavigate();
 
-  if (items.length === 0) {
+  if (items.length === 0 && !orderPlaced) {
     return (
       <div className="cart-page">
         <div className="cart-empty">
@@ -25,12 +27,34 @@ export default function Cart() {
     );
   }
 
+  if (orderPlaced) {
+    return (
+      <div className="order-success-overlay">
+        <div className="order-success-modal">
+          <button className="order-success__close" onClick={() => { setOrderPlaced(false); navigate('/'); }}>✕</button>
+          <div className="order-success__check">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="#22c55e" strokeWidth="3" fill="none"/>
+              <path d="M18 30 L26 38 L42 22" stroke="#22c55e" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <h2 className="order-success__title">Woohoo!</h2>
+          <p className="order-success__subtitle">Your order has been placed</p>
+          <p className="order-success__desc">Pull up a chair, sit back and relax as your order is on its way to you!</p>
+          <div className="order-success__bar" />
+          <button className="order-success__btn" onClick={() => { setOrderPlaced(false); navigate('/'); }}>
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="cart-page">
       <h1 className="cart-title">Shopping Cart ({totalItems} items)</h1>
 
       <div className="cart-layout">
-        {/* Items list */}
         <div className="cart-items">
           {items.map(item => (
             <div key={item.product_id} className="cart-item">
@@ -57,7 +81,6 @@ export default function Cart() {
           ))}
         </div>
 
-        {/* Order summary */}
         <div className="cart-summary">
           <h2 className="cart-summary__title">Order Summary</h2>
           <div className="cart-summary__row">
@@ -76,8 +99,8 @@ export default function Cart() {
           <button
             className="cart-btn cart-btn--checkout"
             onClick={() => {
-              alert(`Order placed successfully! Total: ${formatPrice(totalPrice)} (Demo)`);
               clearCart();
+              setOrderPlaced(true);
             }}
           >
             Place Order at {formatPrice(totalPrice)}

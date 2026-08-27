@@ -21,9 +21,9 @@ export default function SmartSkinAnalysis() {
                 Extract vital data on hydration levels, fine lines, dark circles, acne severity, and pore congestion in under 2 seconds. Deliver dermatologist-verified personalized skincare regimens.
               </p>
               <div className="vm-hero-btn-wrap">
-                <a href="#canvas-studio" className="btn vm-try-btn">
+                <button className="btn vm-try-btn" onClick={() => document.getElementById('canvas-studio')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
                   Run Diagnostic Scan →
-                </a>
+                </button>
               </div>
             </div>
 

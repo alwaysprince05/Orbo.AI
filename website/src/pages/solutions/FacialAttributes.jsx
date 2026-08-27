@@ -26,9 +26,9 @@ export default function FacialAttributes() {
               <p className="solution-hero-desc">
                 Recommend personalized skincare products by identifying skin issues of your customers — hydration, texture, wrinkles, dark spots, and acne — in under 2 seconds.
               </p>
-              <a href="#demo" className="solution-cta-btn">
+              <button className="solution-cta-btn" onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
                 Try it now
-              </a>
+              </button>
             </div>
 
             <div className="simulator-box" id="demo" style={{ background: 'rgba(255,255,255,0.9)' }}>

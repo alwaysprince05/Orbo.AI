@@ -61,9 +61,9 @@ export default function VirtualHairColor() {
                 Our hair segmentation technology sets a new standard of realism. Using computer vision, we seamlessly blend hair color and highlights with natural hair textures instead of appearing as a fake overlay.
               </p>
               <div className="vm-hero-btn-wrap">
-                <a href="#hair-studio" className="btn vm-try-btn">
+                <button className="btn vm-try-btn" onClick={() => document.getElementById('hair-studio')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
                   Try it now
-                </a>
+                </button>
               </div>
             </div>
 

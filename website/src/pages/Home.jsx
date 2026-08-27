@@ -119,12 +119,12 @@ export default function Home() {
               Elevate customer experience with Visual AI automation. Boost conversions by 3.2x, reduce product returns by 40%, and deliver hyper-personalized beauty consultations on Web, Mobile, and Smart Mirrors.
             </p>
             <div className="brand-hero-cta">
-              <a href="#canvas-studio" className="btn btn-primary btn-lg">
+              <button className="btn btn-primary btn-lg" onClick={() => document.getElementById('canvas-studio')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
                 Launch Interactive AI Studio
-              </a>
-              <a href="#products" className="btn btn-outline btn-lg">
+              </button>
+              <button className="btn btn-outline btn-lg" onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
                 Explore Beauty Products & SKUs
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -313,7 +313,7 @@ curl -X POST "https://api.orbo.ai/v1/analyze" \\
                       <li>Camera feed pipeline with zero frame stutter</li>
                       <li>Offline mode: 100% user privacy and GDPR compliant</li>
                     </ul>
-                    <a href="#requestDemo" className="btn btn-primary">Download Mobile SDK Docs</a>
+                    <button className="btn btn-primary" onClick={() => document.getElementById('requestDemo')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Download Mobile SDK Docs</button>
                   </div>
                   <div className="code-box">
                     <div className="code-box-header">
@@ -353,7 +353,7 @@ orboCamera.applyMakeup(
                       <li>Adds to cart directly from AR try-on interface</li>
                       <li>A/B testing dashboard for conversion tracking</li>
                     </ul>
-                    <a href="#requestDemo" className="btn btn-primary">Install Shopify App</a>
+                    <button className="btn btn-primary" onClick={() => document.getElementById('requestDemo')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Install Shopify App</button>
                   </div>
                   <div className="code-box">
                     <div className="code-box-header">

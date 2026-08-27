@@ -18,9 +18,9 @@ export default function SmartBeautyMirror() {
               <p className="solution-hero-desc">
                 Transform physical retail beauty counters into high-engagement experiential destinations. Customers enjoy touchless AR try-on, instant skin analysis, and direct QR code purchasing right in front of the mirror.
               </p>
-              <a href="#demo" className="solution-cta-btn">
+              <button className="solution-cta-btn" onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
                 Request Mirror Hardware Demo →
-              </a>
+              </button>
             </div>
 
             <div className="simulator-box" id="demo">

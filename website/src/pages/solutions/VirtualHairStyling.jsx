@@ -23,9 +23,15 @@ export default function VirtualHairStyling() {
               <p className="solution-hero-desc">
                 Allow customers to preview hundreds of trending hairstyles, cuts, curls, and bangs matched directly to their facial proportions and head geometry before taking the salon scissors.
               </p>
-              <a href="#demo" className="solution-cta-btn">
+              <button
+                className="solution-cta-btn"
+                onClick={() => {
+                  const el = document.getElementById('demo');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+              >
                 Try Hairstyle Simulator →
-              </a>
+              </button>
             </div>
 
             <div className="simulator-box" id="demo">

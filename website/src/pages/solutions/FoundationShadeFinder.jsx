@@ -31,9 +31,9 @@ export default function FoundationShadeFinder() {
                 Reduce purchase barriers by empowering users to find the right foundation shade effortlessly with AI-powered sub-tone calibration.
               </p>
               <div className="foundation-card-btn-wrap">
-                <a href="#shade-matrix" className="btn btn-primary btn-lg">
+                <button className="btn btn-primary btn-lg" onClick={() => document.getElementById('shade-matrix')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
                   Try Shade Matcher →
-                </a>
+                </button>
               </div>
             </div>
 

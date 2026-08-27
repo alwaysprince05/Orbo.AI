@@ -60,9 +60,9 @@ export default function VirtualMakeup() {
                 Personalize the buying experience of customers by recommending customized beauty products
               </p>
               <div className="vm-hero-btn-wrap">
-                <a href="#live-demo" className="btn vm-try-btn">
+                <button className="btn vm-try-btn" onClick={() => document.getElementById('live-demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
                   Try it now
-                </a>
+                </button>
               </div>
             </div>
 

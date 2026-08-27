@@ -277,11 +277,15 @@ export default function BeautyGPT() {
   const [inputVal,  setInputVal]  = useState('');
   const [isTyping,  setIsTyping]  = useState(false);
   const chatEndRef  = useRef(null);
+  const messagesRef = useRef(null);
   const inputRef    = useRef(null);
 
-  // Auto-scroll on every new message
+  // Auto-scroll messages container only (not the whole page)
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = messagesRef.current;
+    if (el) {
+      el.scrollTop = el.scrollHeight;
+    }
   }, [messages, isTyping]);
 
   const sendMessage = useCallback((text) => {
@@ -319,7 +323,7 @@ export default function BeautyGPT() {
   };
 
   return (
-    <div className="solution-page">
+    <div className="solution-page bgpt-page">
 
       {/* ── Hero ── */}
       <section
@@ -429,7 +433,7 @@ export default function BeautyGPT() {
               </div>
 
               {/* Messages */}
-              <div className="bgpt-messages" role="log" aria-live="polite" aria-label="Chat messages">
+              <div className="bgpt-messages" ref={messagesRef} role="log" aria-live="polite" aria-label="Chat messages">
                 {messages.map((msg, i) => (
                   <MessageBubble key={i} msg={msg} />
                 ))}
